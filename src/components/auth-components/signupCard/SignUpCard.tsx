@@ -1,0 +1,132 @@
+'use client'
+
+import { Grid, IconButton, InputAdornment, Typography } from "@mui/material"
+import { useState } from "react"
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import ActionButton from "@/layouts/Button/ActionButton";
+import Input from "@/layouts/Input/Input";
+
+const SingUpCard = () => {
+
+    const handleBlur = () => {
+        console.log('blur');
+    }
+    const handleChange = (event: any) => {
+        console.log(event.target.value);
+    }
+    const handleClickShowPassword = () => { setShowPassword(!showPassword) }
+    const handleClickShowConfirmPassword = () => { setShowConfirmPassword(!showConfirmPassword) }
+
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
+    const [isDisabled, setDisabled] = useState(false)
+
+    return (
+        <Grid container spacing={5} >
+            <Grid item xs={12} marginTop={2}>
+                <Typography variant="h3" align="left" fontWeight={'bold'} color={"#333"}>Sign Up</Typography>
+            </Grid>
+
+            <Grid container item xs={12} spacing={2}>
+
+                <Grid item xs={6}>
+                    <Input
+                        type="text"
+                        value=""
+                        name="fname"
+                        handleBlur={handleBlur}
+                        handleChange={handleChange}
+                        placeholder="Enter Your First Name"
+                        label="First Name"
+                        error=""
+                    />
+                </Grid>
+                <Grid item xs={6}>
+                    <Input
+                        type="text"
+                        value=""
+                        name="lname"
+                        handleBlur={handleBlur}
+                        handleChange={handleChange}
+                        placeholder="Enter Your Last Name"
+                        label="Last Name"
+                        error=""
+                    />
+                </Grid>
+
+            </Grid>
+
+            <Grid item xs={12}>
+                <Input
+                    type="email"
+                    value=""
+                    name="email"
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    placeholder="Enter Your Email"
+                    label="Email"
+                    error=""
+                />
+            </Grid>
+
+            <Grid item xs={12}>
+                <Input
+                    type={showPassword ? "text" : "password"}
+                    value=""
+                    name="password"
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    placeholder="Enter Your Password"
+                    label="Password"
+                    error=""
+                    endAdornment={
+                        <InputAdornment position="end">
+                            <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                edge="end"
+                                size="medium"
+                            >
+                                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                            </IconButton>
+                        </InputAdornment>
+                    }
+                />
+            </Grid>
+            <Grid item xs={12}>
+                <Input
+                    type={showConfirmPassword ? "text" : "password"}
+                    value=""
+                    name="confirm-password"
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    placeholder="Enter Your Password"
+                    label="Confirm Password"
+                    error=""
+                    endAdornment={
+                        <InputAdornment position="end">
+                            <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowConfirmPassword}
+                                edge="end"
+                                size="medium"
+                            >
+                                {showConfirmPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                            </IconButton>
+                        </InputAdornment>
+                    }
+                />
+            </Grid>
+
+
+            <Grid item xs={12}>
+                <ActionButton content="Sign Up" variant="contained" disabled={isDisabled} />
+            </Grid>
+        </Grid>
+
+    )
+}
+
+export default SingUpCard
