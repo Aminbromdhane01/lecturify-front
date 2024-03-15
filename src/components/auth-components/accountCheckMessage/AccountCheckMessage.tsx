@@ -8,6 +8,7 @@ const AccountCheckMessage = styled(Typography)(({ theme }) => ({
     fontWeight: 'bold',
     color: '#007bff'
 
+
 }));
 
 export default AccountCheckMessage

@@ -11,6 +11,7 @@ import AccountCheckMessage from "../accountCheckMessage/AccountCheckMessage";
 import Link from "next/link";
 import Toast from "@/toasts/Toast";
 import { SubmitHandler, useForm } from "react-hook-form";
+import CardTitle from "../cardTitle/CardTitle";
 const LoginCard = () => {
 
     type Input = {
@@ -18,17 +19,9 @@ const LoginCard = () => {
         password: string
     }
 
-    const handleBlur = () => {
-        console.log('blur');
-    }
-    const handleChange = (event: any) => {
-        console.log(event.target.value);
-    }
     const handleLoginClick = () => {
         setShowToast(true)
     };
-
-
 
     const handleClickShowPassword = () => { setShowPassword(!showPassword) }
     const [showPassword, setShowPassword] = useState(false)
@@ -45,7 +38,7 @@ const LoginCard = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={3} >
                 <Grid item xs={12} marginTop={2}>
-                    <Typography variant="h3" align="left" fontWeight={'bold'} color={"#333"}>Login</Typography>
+                    <CardTitle variant="h3" align="left">Login</CardTitle>
                 </Grid>
                 <Grid item xs={12} >
                     <Link href={'signup'}> <AccountCheckMessage variant="body1" align="right" onClick={handleLoginClick} >Don't you have an account ?</AccountCheckMessage></Link>
@@ -56,10 +49,6 @@ const LoginCard = () => {
                     <Input
 
                         type="email"
-
-
-                        //  handleBlur={handleBlur}
-                        // handleChange={handleChange}
                         placeholder="Enter Your Email"
                         label="Email"
                         error=""
@@ -74,7 +63,6 @@ const LoginCard = () => {
                         fullWidth
 
                     >
-
                     </OutlinedInput >
                 </Grid>
 
@@ -84,9 +72,6 @@ const LoginCard = () => {
                         name="password"
                         type={showPassword ? "text" : "password"}
                         value=""
-
-                        //  handleBlur={handleBlur}
-                        // handleChange={handleChange}
                         placeholder="Enter Your Password"
                         label="Password"
                         error=""

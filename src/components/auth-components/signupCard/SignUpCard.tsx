@@ -6,6 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
+import { palette } from "@/theme/palette";
 
 const SingUpCard = () => {
 
@@ -26,7 +27,7 @@ const SingUpCard = () => {
     return (
         <Grid container spacing={5} >
             <Grid item xs={12} marginTop={2}>
-                <Typography variant="h3" align="left" fontWeight={'bold'} color={"#333"}>Sign Up</Typography>
+                <Typography variant="h3" align="left" fontWeight={'bold'} color={palette.text3}>Sign Up</Typography>
             </Grid>
 
             <Grid container item xs={12} spacing={2}>
