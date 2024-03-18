@@ -1,6 +1,6 @@
 'use client'
 import { Grid } from "@mui/material";
-import { AnimatedCardPaper } from "../animatedCardPaper/AnimatedCardPaper";
+import { AnimatedCardPaper } from "../animatedCardPaper/AnimatedCardPaper.styles";
 import { useEffect, useState } from "react";
 
 interface AnimatedCardProps {

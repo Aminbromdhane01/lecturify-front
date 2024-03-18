@@ -11,7 +11,10 @@ import AccountCheckMessage from "../accountCheckMessage/AccountCheckMessage";
 import Link from "next/link";
 import Toast from "@/toasts/Toast";
 import { SubmitHandler, useForm } from "react-hook-form";
-import CardTitle from "../cardTitle/CardTitle";
+import CardTitle from "../cardTitle/CardTitle.styles";
+import { z } from "zod";
+import { constants } from "@/consatnts/constants";
+import { zodResolver } from "@hookform/resolvers/zod";
 const LoginCard = () => {
 
     type Input = {
@@ -27,13 +30,18 @@ const LoginCard = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [isDisabled, setDisabled] = useState(false)
     const [showToast, setShowToast] = useState(false)
-
-    const { register, handleSubmit, watch } = useForm<Input>(
-
+    const loginValuesSchema = z.object({
+        login: z.string().email({ message: "Invalid email format" }),
+        password: z.string().regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+}{":;'?\/><.,])(?=.*[^a-zA-Z\d\s:;'?\/><.,]).{8,}$/,
+            { message: constants.PASSWORD_VALIDATION_MESSAGE })
+    });
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<Input>(
+        { resolver: zodResolver(loginValuesSchema) }
     )
     const onSubmit: SubmitHandler<Input> = (data) => {
         console.log(data);
     }
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={3} >
@@ -45,36 +53,30 @@ const LoginCard = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-
                     <Input
 
                         type="email"
                         placeholder="Enter Your Email"
                         label="Email"
-                        error=""
-                        name="input"
+                        register={register('login')}
+
+
+
+
                     />
                 </Grid>
-                <Grid item xs={12}>
 
-                    <OutlinedInput
-                        placeholder="Enter Your Email"
-                        {...register('login')}
-                        fullWidth
-
-                    >
-                    </OutlinedInput >
-                </Grid>
 
 
                 <Grid item xs={12}>
                     <Input
                         name="password"
                         type={showPassword ? "text" : "password"}
-                        value=""
                         placeholder="Enter Your Password"
                         label="Password"
-                        error=""
+                        register={register('password')}
+                        err={errors.password ? errors.password.message : ""}
+
                         endAdornment={
                             <InputAdornment position="end">
                                 <IconButton

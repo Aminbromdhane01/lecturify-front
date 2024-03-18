@@ -2,10 +2,10 @@ import ResetPasswordCard from '@/components/auth-components/resetPasswordCard/Re
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
 import React from 'react'
 
-const page = () => {
+const ResetPassword = () => {
     return (
         <AuthWrapper card={<ResetPasswordCard />} />
     )
 }
 
-export default page
+export default ResetPassword

@@ -1,6 +1,5 @@
-import { Grid } from "@mui/material";
 import { styled, keyframes } from "@mui/system";
-import CardPaper from "../cardPaper/CardPaper";
+import CardPaper from "../cardPaper/CardPaper..styles";
 
 const fadeIn = keyframes`
   from {

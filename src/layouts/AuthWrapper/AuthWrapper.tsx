@@ -1,10 +1,10 @@
 'use client'
 import { AnimatedCard } from "@/components/auth-components/animatedCard/AnimatedCard"
-import AuthElementsGrid from "@/components/auth-components/authElementsGrid/AuthElemntsGrid"
-import CardGrid from "@/components/auth-components/cardGrid/CardGrid"
-import CardPaper from "@/components/auth-components/cardPaper/CardPaper"
-import Container from "@/components/auth-components/container/Container"
-import LogoGrid from "@/components/auth-components/logo/LogoGrid"
+import AuthElementsGrid from "@/components/auth-components/authElementsGrid/AuthElemntsGrid.styles"
+import CardGrid from "@/components/auth-components/cardGrid/CardGrid.styles"
+import CardPaper from "@/components/auth-components/cardPaper/CardPaper..styles"
+import Container from "@/components/auth-components/container/Container.styles"
+import LogoGrid from "@/components/auth-components/logo/LogoGrid.styles"
 import { Grid } from "@mui/material"
 import React from "react"
 

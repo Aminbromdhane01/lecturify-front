@@ -6,6 +6,7 @@ import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import CardTitle from "../cardTitle/CardTitle.styles";
 
 const ForgetPasswordCard = () => {
 
@@ -25,7 +26,7 @@ const ForgetPasswordCard = () => {
     return (
         <Grid container spacing={5} >
             <Grid item xs={12} marginTop={2}>
-                <Typography variant="h3" align="left" fontWeight={'bold'} color={"#333"}>Reset Password</Typography>
+                <CardTitle variant="h3" align="left" >Reset Password</CardTitle>
             </Grid>
 
 
@@ -34,11 +35,10 @@ const ForgetPasswordCard = () => {
                     type={showPassword ? "text" : "password"}
                     value=""
                     name="reset-password"
-                    handleBlur={handleBlur}
-                    handleChange={handleChange}
+
                     placeholder="Enter Your Password"
                     label="New Password"
-                    error=""
+
                     endAdornment={
                         <InputAdornment position="end">
                             <IconButton
@@ -58,11 +58,10 @@ const ForgetPasswordCard = () => {
                     type={showConfirmPassword ? "text" : "password"}
                     value=""
                     name="confirm-reset-password"
-                    handleBlur={handleBlur}
-                    handleChange={handleChange}
+
                     placeholder="Enter Your Password"
                     label="Confirm Password"
-                    error=""
+
                     endAdornment={
                         <InputAdornment position="end">
                             <IconButton

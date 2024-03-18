@@ -37,11 +37,10 @@ const SingUpCard = () => {
                         type="text"
                         value=""
                         name="fname"
-                        handleBlur={handleBlur}
-                        handleChange={handleChange}
+
                         placeholder="Enter Your First Name"
                         label="First Name"
-                        error=""
+
                     />
                 </Grid>
                 <Grid item xs={6}>
@@ -49,11 +48,10 @@ const SingUpCard = () => {
                         type="text"
                         value=""
                         name="lname"
-                        handleBlur={handleBlur}
-                        handleChange={handleChange}
+
                         placeholder="Enter Your Last Name"
                         label="Last Name"
-                        error=""
+
                     />
                 </Grid>
 
@@ -64,11 +62,10 @@ const SingUpCard = () => {
                     type="email"
                     value=""
                     name="email"
-                    handleBlur={handleBlur}
-                    handleChange={handleChange}
+
                     placeholder="Enter Your Email"
                     label="Email"
-                    error=""
+
                 />
             </Grid>
 
@@ -77,11 +74,10 @@ const SingUpCard = () => {
                     type={showPassword ? "text" : "password"}
                     value=""
                     name="password"
-                    handleBlur={handleBlur}
-                    handleChange={handleChange}
+
                     placeholder="Enter Your Password"
                     label="Password"
-                    error=""
+
                     endAdornment={
                         <InputAdornment position="end">
                             <IconButton
@@ -101,11 +97,10 @@ const SingUpCard = () => {
                     type={showConfirmPassword ? "text" : "password"}
                     value=""
                     name="confirm-password"
-                    handleBlur={handleBlur}
-                    handleChange={handleChange}
+
                     placeholder="Enter Your Password"
                     label="Confirm Password"
-                    error=""
+
                     endAdornment={
                         <InputAdornment position="end">
                             <IconButton
