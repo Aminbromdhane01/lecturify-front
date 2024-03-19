@@ -4,4 +4,5 @@ export const constants = {
     PASSWORD_DO_NOT_MATCH_MESSAGE: 'Password do not match',
     FIRST_NAME_VALIDATION_MESSAGE: 'First name cannot be empty',
     LAST_NAME_VALIDATION_MESSAGE: 'Last name cannot be empty',
+    BASE_URL: 'http://localhost:3000'
 }
