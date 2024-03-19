@@ -1,21 +1,19 @@
 'use client'
 
-import { Grid, IconButton, InputAdornment, Typography } from "@mui/material"
+import { CircularProgress, Grid, IconButton, InputAdornment, Typography } from "@mui/material"
 import { useState } from "react"
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import CardTitle from "../cardTitle/CardTitle.styles";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { resetPasswordValuesSchema } from "./ResetPasswordValidation";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { ResetPassword } from "./rest-password.type";
 
 const ForgetPasswordCard = () => {
 
-    const handleBlur = () => {
-        console.log('blur');
-    }
-    const handleChange = (event: any) => {
-        console.log(event.target.value);
-    }
     const [isDisabled, setDisabled] = useState(false)
     const handleClickShowPassword = () => { setShowPassword(!showPassword) }
     const handleClickShowConfirmPassword = () => { setShowConfirmPassword(!showConfirmPassword) }
@@ -23,67 +21,69 @@ const ForgetPasswordCard = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
+    const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<ResetPassword>(
+        { resolver: zodResolver(resetPasswordValuesSchema) }
+    )
+
+    const onSubmit: SubmitHandler<ResetPassword> = (data) => {
+        console.log(data);
+    }
+
     return (
-        <Grid container spacing={5} >
-            <Grid item xs={12} marginTop={2}>
-                <CardTitle variant="h3" align="left" >Reset Password</CardTitle>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <Grid container spacing={5} >
+                <Grid item xs={12} marginTop={2}>
+                    <CardTitle variant="h3" align="left" >Reset Password</CardTitle>
+                </Grid>
+
+
+                <Grid item xs={12}>
+                    <Input
+                        type={showPassword ? "text" : "password"}
+                        register={register('newPassword')}
+                        placeholder="Enter Your Password"
+                        label="New Password"
+                        err={errors.newPassword ? errors.newPassword.message : ''}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    edge="end"
+                                    size="medium"
+                                >
+                                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                </IconButton>
+                            </InputAdornment>
+                        }
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <Input
+                        type={showConfirmPassword ? "text" : "password"}
+                        register={register('confirmPassword')}
+                        placeholder="Enter Your Password"
+                        label="Confirm Password"
+                        err={errors.newPassword ? errors.newPassword.message : ''}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowConfirmPassword}
+                                    edge="end"
+                                    size="medium"
+                                >
+                                    {showConfirmPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                                </IconButton>
+                            </InputAdornment>
+                        }
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <ActionButton content={isSubmitting ? <CircularProgress /> : 'Login'} variant="contained" disabled={isSubmitting} />
+                </Grid>
             </Grid>
-
-
-            <Grid item xs={12}>
-                <Input
-                    type={showPassword ? "text" : "password"}
-                    value=""
-                    name="reset-password"
-
-                    placeholder="Enter Your Password"
-                    label="New Password"
-
-                    endAdornment={
-                        <InputAdornment position="end">
-                            <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                edge="end"
-                                size="medium"
-                            >
-                                {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                            </IconButton>
-                        </InputAdornment>
-                    }
-                />
-            </Grid>
-            <Grid item xs={12}>
-                <Input
-                    type={showConfirmPassword ? "text" : "password"}
-                    value=""
-                    name="confirm-reset-password"
-
-                    placeholder="Enter Your Password"
-                    label="Confirm Password"
-
-                    endAdornment={
-                        <InputAdornment position="end">
-                            <IconButton
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowConfirmPassword}
-                                edge="end"
-                                size="medium"
-                            >
-                                {showConfirmPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                            </IconButton>
-                        </InputAdornment>
-                    }
-                />
-            </Grid>
-
-
-
-
-            <Grid item xs={12}>
-                <ActionButton content="Login" variant="contained" disabled={isDisabled} />
-            </Grid>
-        </Grid>
+        </form>
 
     )
 }

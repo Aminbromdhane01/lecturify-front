@@ -4,7 +4,7 @@ import React from 'react'
 export interface ActionButtonProps {
     variant: "outlined" | "contained"
     disabled: boolean
-    content: string
+    content: string | React.ReactNode
     handleClick?: () => void;
 }
 
