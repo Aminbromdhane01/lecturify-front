@@ -1,4 +1,4 @@
-import { constants } from "@/utils/consatnts/constants";
+import { constants } from "@/utils/constants/constants";
 import { z } from "zod";
 
 export const resetPasswordValuesSchema = z.object({

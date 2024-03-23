@@ -14,17 +14,36 @@ import CardTitle from "@/components/auth-components//cardTitle/CardTitle.styles"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginValuesSchema } from "@/components/auth-components/loginCard/LoginValidation";
 import { LoginType } from "@/components/auth-components/loginCard/login.type"
+import { useLoginMutation } from "@/features/auth/api/AuthSlice";
+import { useRouter } from "next/navigation";
+import ControlledAlert from "@/components/alert/ControllerdAlert";
+import useErrorAlert from "@/hooks/useErrorAlert";
+
 const LoginCard = () => {
+
 
     const handleClickShowPassword = () => { setShowPassword(!showPassword) }
     const [showPassword, setShowPassword] = useState(false)
     const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<LoginType>(
         { resolver: zodResolver(loginValuesSchema) }
     )
+    const router = useRouter();
+
+    const [loginMutation, { data: response, isLoading, isError, isSuccess, error }] = useLoginMutation();
     const onSubmit: SubmitHandler<LoginType> = async (data) => {
-        await new Promise((resolve => { setTimeout(resolve, 2000) }))
-        console.log(data);
+        console.log(data)
+        await loginMutation(data);
     }
+    if (isSuccess) {
+        if (response?.accessToken) {
+            localStorage.setItem('accessToken', response?.accessToken);
+            router.push('/');
+        }
+
+    }
+    const { open, alertMessage, handleCloseAlert } = useErrorAlert(isError, error);
+
+
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -42,7 +61,7 @@ const LoginCard = () => {
                         type="email"
                         placeholder="Enter Your Email"
                         label="Email"
-                        register={register('login')}
+                        register={register('email')}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -73,8 +92,9 @@ const LoginCard = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <ActionButton content={isSubmitting ? <CircularProgress /> : 'Login'} variant="contained" disabled={isSubmitting} />
+                    <ActionButton content={isLoading ? <CircularProgress /> : 'Login'} variant="contained" disabled={isSubmitting} />
                 </Grid>
+                {open && <ControlledAlert open={open} handleClose={handleCloseAlert} duration={3000} content={alertMessage} severity="error" />}
 
             </Grid>
         </form>

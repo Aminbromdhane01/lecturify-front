@@ -12,6 +12,10 @@ import { SignupType } from "./signup.type";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signupValuesSchema } from "./SignupValidation";
+import { useRouter } from "next/navigation";
+import { useSignupMutation } from "@/features/auth/api/AuthSlice";
+import useErrorAlert from "@/hooks/useErrorAlert";
+import ControlledAlert from "@/components/alert/ControllerdAlert";
 
 const SingUpCard = () => {
 
@@ -20,18 +24,32 @@ const SingUpCard = () => {
 
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    const router = useRouter();
 
+    const [signUpMutation, { data: response, isLoading, isError, isSuccess, error }] = useSignupMutation();
     const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<SignupType>(
         { resolver: zodResolver(signupValuesSchema) }
     )
 
-    const onSubmit: SubmitHandler<SignupType> = (data) => {
-        console.log(data);
+    const onSubmit: SubmitHandler<SignupType> = async (data) => {
+        const { confirmPassword, ...restData } = data;
+        await signUpMutation(restData)
+        console.log(restData);
 
     }
+    if (isSuccess) {
+        if (response?.accessToken) {
+            localStorage.setItem('accessToken', response?.accessToken);
+            router.push('/');
+        }
+    }
+
+
     const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
         event.preventDefault();
     }
+    const { open, alertMessage, handleCloseAlert } = useErrorAlert(isError, error);
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={5} >
@@ -117,8 +135,9 @@ const SingUpCard = () => {
 
 
                 <Grid item xs={12}>
-                    <ActionButton content={isSubmitting ? <CircularProgress /> : 'Login'} variant="contained" disabled={isSubmitting} />
+                    <ActionButton content={isLoading ? <CircularProgress /> : 'Login'} variant="contained" disabled={isSubmitting} />
                 </Grid>
+                {open && <ControlledAlert open={open} handleClose={handleCloseAlert} duration={3000} content={alertMessage} severity="error" />}
             </Grid>
         </form>
 
