@@ -36,7 +36,7 @@ const baseQuery = fetchBaseQuery({
     },
 });
 
-export const authSlice = createApi({
+export const authSlice = createApi({ //authApi instead of slice 
     reducerPath: 'auth',
     baseQuery: baseQuery,
     endpoints: (builder) => ({

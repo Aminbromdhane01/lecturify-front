@@ -1,5 +1,10 @@
 import { styled, keyframes } from "@mui/system";
-import CardPaper from "../cardPaper/CardPaper..styles";
+import { Paper } from "@mui/material";
+
+const CardPaper = styled(Paper)(({ theme }) => ({
+  padding: '20px',
+  borderRadius: '0px'
+}));
 
 const fadeIn = keyframes`
   from {

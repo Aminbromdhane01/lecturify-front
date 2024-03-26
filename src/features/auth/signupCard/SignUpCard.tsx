@@ -15,7 +15,7 @@ import { signupValuesSchema } from "./SignupValidation";
 import { useRouter } from "next/navigation";
 import { useSignupMutation } from "@/features/auth/api/AuthSlice";
 import useErrorAlert from "@/hooks/useErrorAlert";
-import ControlledAlert from "@/components/alert/ControllerdAlert";
+import ControlledAlert from "@/components/Alert/ControllerdAlert";
 
 const SingUpCard = () => {
 

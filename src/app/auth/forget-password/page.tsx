@@ -1,4 +1,4 @@
-import ForgetPasswordCard from '@/components/auth-components/forgetPasswordCard/ForgetPasswordCard'
+import ForgetPasswordCard from '@/features/auth/forgetPasswordCard/ForgetPasswordCard'
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
 import React from 'react'
 

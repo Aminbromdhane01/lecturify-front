@@ -1,4 +1,4 @@
-import SingUpCard from '@/components/auth-components/signupCard/SignUpCard'
+import SingUpCard from '@/features/auth/signupCard/SignUpCard'
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
 import React from 'react'
 

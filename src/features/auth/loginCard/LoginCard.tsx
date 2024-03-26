@@ -6,18 +6,18 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
-import LoginOptions from "@/components/auth-components/loginOptions/LoginOptions";
-import AccountCheckMessage from "@/components/auth-components/accountCheckMessage/AccountCheckMessage";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
-import CardTitle from "@/components/auth-components//cardTitle/CardTitle.styles";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginValuesSchema } from "@/components/auth-components/loginCard/LoginValidation";
-import { LoginType } from "@/components/auth-components/loginCard/login.type"
 import { useLoginMutation } from "@/features/auth/api/AuthSlice";
 import { useRouter } from "next/navigation";
-import ControlledAlert from "@/components/alert/ControllerdAlert";
+import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import useErrorAlert from "@/hooks/useErrorAlert";
+import { palette } from "@/theme/palette";
+import LoginOptions from "@/components/auth-components/loginOptions/LoginOptions";
+import { loginValuesSchema } from "./LoginValidation";
+import { LoginType } from "./login.type";
+import AccountCheckMessage from "@/components/auth-components/accountCheckMessage/AccountCheckMessage";
 
 const LoginCard = () => {
 
@@ -43,13 +43,11 @@ const LoginCard = () => {
     }
     const { open, alertMessage, handleCloseAlert } = useErrorAlert(isError, error);
 
-
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={3} >
                 <Grid item xs={12} marginTop={2}>
-                    <CardTitle variant="h3" align="left">Login</CardTitle>
+                    <Typography variant="h3" align="left" color={palette.text3} fontWeight={'bold'} >Login</Typography>
                 </Grid>
                 <Grid item xs={12} >
                     <Link href={'signup'}> <AccountCheckMessage variant="body1" align="right" >Don't you have an account ?</AccountCheckMessage></Link>

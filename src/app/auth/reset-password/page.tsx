@@ -1,4 +1,4 @@
-import ResetPasswordCard from '@/components/auth-components/resetPasswordCard/ResetPasswordCard'
+import ResetPasswordCard from '@/features/auth/resetPasswordCard/ResetPasswordCard'
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
 import React from 'react'
 
