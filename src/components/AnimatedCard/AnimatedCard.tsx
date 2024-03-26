@@ -1,7 +1,7 @@
 'use client'
 import { Grid } from "@mui/material";
-import { AnimatedCardPaper } from "./AnimatedCardPaper.styles";
 import { useEffect, useState } from "react";
+import { AnimatedCardPaper } from "./AnimatedCard.styles";
 
 interface AnimatedCardProps {
     card: React.ReactNode

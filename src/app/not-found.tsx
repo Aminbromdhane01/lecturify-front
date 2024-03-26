@@ -1,13 +1,22 @@
+import { palette } from '@/theme/palette';
+import { Box, Typography } from '@mui/material';
 import React from 'react'
 
 function NotFound() {
     return (
-        <html>
-            <body>
-                <h1>Something went wrong</h1>
-            </body>
-        </html>
-    )
+        <Box
+            display={'flex'}
+            justifyContent={'center'}
+            alignItems={'center'}
+            minHeight={'100vh'}
+            bgcolor={palette.primaryColor}
+        >
+            <Typography variant="h1" color={palette.text1}>
+                404 Not Found
+            </Typography>
+        </Box>
+    );
 }
+
 
 export default NotFound

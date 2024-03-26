@@ -8,14 +8,13 @@ import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
 import { palette } from "@/theme/palette";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { SignupType } from "./signup.type";
-
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signupValuesSchema } from "./SignupValidation";
 import { useRouter } from "next/navigation";
-import { useSignupMutation } from "@/features/auth/api/AuthSlice";
+import { useSignupMutation } from "@/RTK/api/AuthApi";
 import useErrorAlert from "@/hooks/useErrorAlert";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
+import { signupValuesSchema } from "./SignupValidation";
+import { SignupType } from "./signup.type";
 
 const SingUpCard = () => {
 

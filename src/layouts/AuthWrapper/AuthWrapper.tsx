@@ -1,5 +1,5 @@
 'use client'
-import { AnimatedCard } from "@/components/auth-components/animatedCard/AnimatedCard"
+import { AnimatedCard } from "@/components/AnimatedCard/AnimatedCard"
 
 import { Grid } from "@mui/material"
 import React from "react"

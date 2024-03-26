@@ -7,10 +7,10 @@ import Input from "@/layouts/Input/Input";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { zodResolver } from "@hookform/resolvers/zod";
-import { resetPasswordValuesSchema } from "./ResetPasswordValidation";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ResetPassword } from "./rest-password.type";
 import { palette } from "@/theme/palette";
+import { ResetPassword } from "./rest-password.type";
+import { resetPasswordValuesSchema } from "./ResetPasswordValidation";
 
 const ForgetPasswordCard = () => {
 

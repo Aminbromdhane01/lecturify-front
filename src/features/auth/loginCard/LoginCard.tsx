@@ -9,15 +9,16 @@ import Input from "@/layouts/Input/Input";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLoginMutation } from "@/features/auth/api/AuthSlice";
+import { useLoginMutation } from "@/RTK/api/AuthApi";
 import { useRouter } from "next/navigation";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import useErrorAlert from "@/hooks/useErrorAlert";
 import { palette } from "@/theme/palette";
-import LoginOptions from "@/components/auth-components/loginOptions/LoginOptions";
+import LoginOptions from "@/components/loginOptions/LoginOptions";
+import AccountCheckMessage from "@/components/AccountCheckMessage/AccountCheckMessage";
 import { loginValuesSchema } from "./LoginValidation";
 import { LoginType } from "./login.type";
-import AccountCheckMessage from "@/components/auth-components/accountCheckMessage/AccountCheckMessage";
+import { endpoints } from "@/utils/endpoints";
 
 const LoginCard = () => {
 
@@ -50,7 +51,7 @@ const LoginCard = () => {
                     <Typography variant="h3" align="left" color={palette.text3} fontWeight={'bold'} >Login</Typography>
                 </Grid>
                 <Grid item xs={12} >
-                    <Link href={'signup'}> <AccountCheckMessage variant="body1" align="right" >Don't you have an account ?</AccountCheckMessage></Link>
+                    <Link href={endpoints.SIGNUP_VUE_URL}> <AccountCheckMessage variant="body1" align="right" >Don't you have an account ?</AccountCheckMessage></Link>
                 </Grid>
 
                 <Grid item xs={12}>
@@ -86,7 +87,7 @@ const LoginCard = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <LoginOptions href="forget-password" />
+                    <LoginOptions href={endpoints.FORGET_PASSWORD_VUE_URL} />
                 </Grid>
 
                 <Grid item xs={12}>

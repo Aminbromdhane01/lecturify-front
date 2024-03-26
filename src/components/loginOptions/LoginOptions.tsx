@@ -11,7 +11,6 @@ interface LoginOptionsProps {
 
 
 const LoginOptions = ({ href }: LoginOptionsProps) => {
-    // const t = useTranslations();
 
     const [checked, setChecked] = useState(false)
     return (

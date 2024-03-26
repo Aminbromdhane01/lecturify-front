@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import RtkProvider from "@/store/Provider";
+import RtkProvider from "@/RTK/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,15 +1,15 @@
 'use client'
-import { authSlice } from '@/features/auth/api/AuthSlice'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
+import { authApi } from './api/AuthApi'
 
 
 export const store = configureStore({
     reducer: {
-        [authSlice.reducerPath]: authSlice.reducer
+        [authApi.reducerPath]: authApi.reducer
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(authSlice.middleware)
+        getDefaultMiddleware().concat(authApi.middleware)
 })
 
 

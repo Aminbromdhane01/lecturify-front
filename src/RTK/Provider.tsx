@@ -1,6 +1,6 @@
 'use client'
 import { Provider } from "react-redux";
-import { store } from "@/store/store";
+import { store } from "@/RTK/store";
 import React from "react";
 
 export default function RtkProvider({ children }: { children: React.ReactNode }) {

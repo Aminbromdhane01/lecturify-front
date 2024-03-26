@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import { Stack, styled } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import StyledAppBarTitle from '@/components/home/top-bar/topbar.style';
-import Search from '@/components/home/search/Search';
+import Search from '@/components/home/Search/Search';
 
 
 
