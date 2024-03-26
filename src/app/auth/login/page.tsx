@@ -1,4 +1,4 @@
-import LoginCard from '@/features/auth/loginCard/LoginCard'
+import LoginCard from '@/features/auth/LoginCard/LoginCard'
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
 
 import React from 'react'
