@@ -1,5 +1,7 @@
+'use client'
 import LoginCard from '@/features/auth/LoginCard/LoginCard'
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
+import AuthRedirect from '@/utils/loginRedirect'
 
 import React from 'react'
 
@@ -9,4 +11,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default AuthRedirect(Login)

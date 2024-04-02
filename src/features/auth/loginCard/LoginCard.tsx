@@ -12,13 +12,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "@/RTK/api/AuthApi";
 import { useRouter } from "next/navigation";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
-import useErrorAlert from "@/hooks/useErrorAlert";
 import { palette } from "@/theme/palette";
 import LoginOptions from "@/components/loginOptions/LoginOptions";
 import AccountCheckMessage from "@/components/AccountCheckMessage/AccountCheckMessage";
 import { loginValuesSchema } from "./LoginValidation";
 import { LoginType } from "./login.type";
 import { endpoints } from "@/utils/endpoints";
+import useAlert from "@/hooks/useAlert";
+import { setTokens } from "@/helpers/setToken";
 
 const LoginCard = () => {
 
@@ -32,23 +33,22 @@ const LoginCard = () => {
 
     const [loginMutation, { data: response, isLoading, isError, isSuccess, error }] = useLoginMutation();
     const onSubmit: SubmitHandler<LoginType> = async (data) => {
-        console.log(data)
         await loginMutation(data);
     }
     if (isSuccess) {
         if (response?.accessToken) {
-            localStorage.setItem('accessToken', response?.accessToken);
+            setTokens({ accessToken: response?.accessToken, refreshToken: response?.refreshToken })
             router.push('/');
         }
 
     }
-    const { open, alertMessage, handleCloseAlert } = useErrorAlert(isError, error);
+    const { open, alertMessage, handleCloseAlert } = useAlert(isError, error);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={3} >
                 <Grid item xs={12} marginTop={2}>
-                    <Typography variant="h3" align="left" color={palette.text3} fontWeight={'bold'} >Login</Typography>
+                    <Typography variant="h3" align="left" color={palette.darkCharcoalText} fontWeight={'bold'} >Login</Typography>
                 </Grid>
                 <Grid item xs={12} >
                     <Link href={endpoints.SIGNUP_VUE_URL}> <AccountCheckMessage variant="body1" align="right" >Don't you have an account ?</AccountCheckMessage></Link>

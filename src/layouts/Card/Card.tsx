@@ -11,8 +11,8 @@ import Favorite from '@mui/icons-material/Favorite';
 import ControlledRating from '@/components/home/book/rating/ControlledRating';
 import { useState } from "react";
 import Image from 'next/image'
-import StyledIconButton from './card.icon.button.style';
-import CardContainer from './card.container.style';
+import { Paper } from '@mui/material';
+import { CardContainer, CardPaper, StyledIconButton } from './Card.style';
 
 interface BookCardProps {
     title: string
@@ -26,44 +26,46 @@ export default function BookCard({ title, genre, date }: BookCardProps) {
         setRatingValue(newValue || 0);
     };
     return (
-        <CardContainer variant="outlined" >
-            <CardOverflow >
-                <AspectRatio ratio={1} >
-                    <Image
-                        src={'/bookCover.png'}
-                        alt='ImAGE'
-                        width={300}
-                        height={300}
+        <CardPaper>
+            <CardContainer variant="outlined" >
+                <CardOverflow >
+                    <AspectRatio ratio={1} >
+                        <Image
+                            src={'/bookCover.png'}
+                            alt='ImAGE'
+                            width={300}
+                            height={300}
 
-                    />
-                </AspectRatio>
-                <StyledIconButton
-                    aria-label="Like minimal photography"
-                    size="md"
-                    variant="solid"
-                    color="danger"
-                >
-                    <Favorite />
-                </StyledIconButton>
-            </CardOverflow>
-            <CardContent>
-                <Typography level="title-md">
-                    <Link href="#multiple-actions" overlay underline="none">
-                        {title}
-                    </Link>
-                </Typography>
-                <Typography level="body-sm">
-                    <Link href="#multiple-actions">{genre}</Link>
-                </Typography>
-            </CardContent>
-            <CardOverflow variant="soft">
-                <Divider inset="context" />
-                <CardContent orientation="horizontal">
-                    <ControlledRating value={ratingValue} onChange={handleRatingChange} />
-                    <Divider orientation="vertical" />
-                    <Typography level="body-xs">{date}</Typography>
+                        />
+                    </AspectRatio>
+                    <StyledIconButton
+                        aria-label="Like minimal photography"
+                        size="md"
+                        variant="solid"
+                        color="danger"
+                    >
+                        <Favorite />
+                    </StyledIconButton>
+                </CardOverflow>
+                <CardContent>
+                    <Typography level="title-md">
+                        <Link href="#multiple-actions" overlay underline="none">
+                            {title}
+                        </Link>
+                    </Typography>
+                    <Typography level="body-sm">
+                        <Link href="#multiple-actions">{genre}</Link>
+                    </Typography>
                 </CardContent>
-            </CardOverflow>
-        </CardContainer>
+                <CardOverflow variant="soft">
+                    <Divider inset="context" />
+                    <CardContent orientation="horizontal">
+                        <ControlledRating value={ratingValue} onChange={handleRatingChange} />
+                        <Divider orientation="vertical" />
+                        <Typography level="body-xs">{date}</Typography>
+                    </CardContent>
+                </CardOverflow>
+            </CardContainer>
+        </CardPaper>
     );
 }

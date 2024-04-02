@@ -1,5 +1,7 @@
-import ForgetPasswordCard from '@/features/auth/forgetPasswordCard/ForgetPasswordCard'
+"use client"
+import ForgetPasswordCard from '@/features/auth/ForgetPasswordCard/ForgetPasswordCard'
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
+import AuthRedirect from '@/utils/loginRedirect'
 import React from 'react'
 
 const ForgetPassword = () => {
@@ -8,4 +10,4 @@ const ForgetPassword = () => {
     )
 }
 
-export default ForgetPassword
+export default AuthRedirect(ForgetPassword)

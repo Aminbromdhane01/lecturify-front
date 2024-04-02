@@ -9,11 +9,16 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { palette } from "@/theme/palette";
-import { ResetPassword } from "./rest-password.type";
+import { ResetPassword, ResetPasswordProps } from "./rest-password.type";
 import { resetPasswordValuesSchema } from "./ResetPasswordValidation";
+import { useResetPasswordMutation } from "@/RTK/api/AuthApi";
+import { useRouter } from "next/navigation";
+import useAlert from "@/hooks/useAlert";
+import ControlledAlert from "@/components/Alert/ControllerdAlert";
 
-const ForgetPasswordCard = () => {
+const ForgetPasswordCard = ({ token }: ResetPasswordProps) => {
 
+    const router = useRouter();
 
     const handleClickShowPassword = () => { setShowPassword(!showPassword) }
     const handleClickShowConfirmPassword = () => { setShowConfirmPassword(!showConfirmPassword) }
@@ -24,26 +29,33 @@ const ForgetPasswordCard = () => {
     const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<ResetPassword>(
         { resolver: zodResolver(resetPasswordValuesSchema) }
     )
+    const [resetPasswordMutation, { data: response, isLoading, isError, isSuccess, error }] = useResetPasswordMutation();
+    const { open, alertMessage, handleCloseAlert } = useAlert(isError, error);
 
-    const onSubmit: SubmitHandler<ResetPassword> = (data) => {
-        console.log(data);
+
+    const onSubmit: SubmitHandler<ResetPassword> = async (data) => {
+        const ResetData = { ...data, token }
+        await resetPasswordMutation(ResetData)
+    }
+    if (isSuccess) {
+        router.push('/auth/login')
     }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={5} >
                 <Grid item xs={12} marginTop={2}>
-                    <Typography variant="h3" align="left" color={palette.text3} fontWeight={'bold'} >Reset Password</Typography>
+                    <Typography variant="h3" align="left" color={palette.darkCharcoalText} fontWeight={'bold'} >Reset Password</Typography>
                 </Grid>
 
 
                 <Grid item xs={12}>
                     <Input
                         type={showPassword ? "text" : "password"}
-                        register={register('newPassword')}
+                        register={register('password')}
                         placeholder="Enter Your Password"
                         label="New Password"
-                        err={errors.newPassword ? errors.newPassword.message : ''}
+                        err={errors.password ? errors.password.message : ''}
                         endAdornment={
                             <InputAdornment position="end">
                                 <IconButton
@@ -64,7 +76,7 @@ const ForgetPasswordCard = () => {
                         register={register('confirmPassword')}
                         placeholder="Enter Your Password"
                         label="Confirm Password"
-                        err={errors.newPassword ? errors.newPassword.message : ''}
+                        err={errors.confirmPassword ? errors.confirmPassword.message : ''}
                         endAdornment={
                             <InputAdornment position="end">
                                 <IconButton
@@ -80,8 +92,10 @@ const ForgetPasswordCard = () => {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <ActionButton content={isSubmitting ? <CircularProgress /> : 'Login'} variant="contained" disabled={isSubmitting} />
+                    <ActionButton content={isSubmitting ? <CircularProgress /> : 'Reset Password'} variant="contained" disabled={isSubmitting} />
                 </Grid>
+                {open && <ControlledAlert open={open} handleClose={handleCloseAlert} duration={3000} content={alertMessage} severity="error" />}
+
             </Grid>
         </form>
 

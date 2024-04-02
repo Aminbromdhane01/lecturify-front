@@ -1,4 +1,7 @@
 export type ResetPassword = {
-    newPassword: string;
+    password: string;
     confirmPassword: string;
+}
+export type ResetPasswordProps = {
+    token: string;
 }

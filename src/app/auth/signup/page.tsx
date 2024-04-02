@@ -1,5 +1,7 @@
-import SingUpCard from '@/features/auth/signupCard/SignUpCard'
+"use client"
+import SingUpCard from '@/features/auth/SignupCard/SignUpCard'
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
+import AuthRedirect from '@/utils/loginRedirect'
 import React from 'react'
 
 const SignUp = () => {
@@ -8,4 +10,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default AuthRedirect(SignUp)

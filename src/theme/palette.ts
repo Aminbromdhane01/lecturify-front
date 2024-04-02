@@ -2,8 +2,9 @@
 
 export const palette = {
     primaryColor: '#1976D2',
-    text1: 'white',
-    text2: 'black',
-    text3: '#333'
+    whiteText: 'white',
+    blackText: 'black',
+    darkCharcoalText: '#333',
+    dodgerBlueText: '#007bff'
 };
 

@@ -11,10 +11,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useSignupMutation } from "@/RTK/api/AuthApi";
-import useErrorAlert from "@/hooks/useErrorAlert";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import { signupValuesSchema } from "./SignupValidation";
 import { SignupType } from "./signup.type";
+import { setTokens } from "@/helpers/setToken";
+import useAlert from "@/hooks/useAlert";
 
 const SingUpCard = () => {
 
@@ -37,8 +38,8 @@ const SingUpCard = () => {
 
     }
     if (isSuccess) {
-        if (response?.accessToken) {
-            localStorage.setItem('accessToken', response?.accessToken);
+        if (response?.accessToken && response?.refreshToken) {
+            setTokens({ accessToken: response?.accessToken, refreshToken: response?.refreshToken })
             router.push('/');
         }
     }
@@ -47,13 +48,13 @@ const SingUpCard = () => {
     const handlePaste = (event: React.ClipboardEvent<HTMLInputElement>) => {
         event.preventDefault();
     }
-    const { open, alertMessage, handleCloseAlert } = useErrorAlert(isError, error);
+    const { open, alertMessage, handleCloseAlert } = useAlert(isError, error);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={5} >
                 <Grid item xs={12} marginTop={2}>
-                    <Typography variant="h3" align="left" fontWeight={'bold'} color={palette.text3}>Sign Up</Typography>
+                    <Typography variant="h3" align="left" fontWeight={'bold'} color={palette.darkCharcoalText}>Sign Up</Typography>
                 </Grid>
 
                 <Grid container item xs={12} spacing={2}>

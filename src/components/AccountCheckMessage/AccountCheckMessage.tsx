@@ -1,4 +1,5 @@
-import { Paper, Typography } from "@mui/material";
+import { palette } from "@/theme/palette";
+import { Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 const AccountCheckMessage = styled(Typography)(({ theme }) => ({
@@ -6,7 +7,7 @@ const AccountCheckMessage = styled(Typography)(({ theme }) => ({
     borderRadius: '10px',
     fontFamily: 'Montserrat',
     fontWeight: 'bold',
-    color: '#007bff'
+    color: palette.dodgerBlueText
 
 
 }));

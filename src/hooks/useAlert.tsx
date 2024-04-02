@@ -1,29 +1,32 @@
 import { useState, useEffect } from "react";
 
-interface ErrorData {
+interface MessageData {
     message: string;
 }
 
-const useErrorAlert = (isError: boolean, error: ErrorData | any) => {
+const useAlert = (state: boolean, messageData: MessageData | any) => {
     const [open, setOpen] = useState<boolean>(false);
     const [alertMessage, setAlertMessage] = useState<string>('');
+
     const handleCloseAlert = () => {
         setOpen(false);
         setAlertMessage('');
     };
 
     useEffect(() => {
-        if (isError && error) {
+        if (state && messageData) {
             setOpen(true);
-            setAlertMessage(error?.data.message || 'An error occurred.');
+            if (messageData.message) { setAlertMessage(messageData.message || ''); }
+            else { setAlertMessage(messageData.data.message || ''); }
+
             const timer = setTimeout(() => {
                 handleCloseAlert();
             }, 3000);
             return () => clearTimeout(timer);
         }
-    }, [isError, error]);
+    }, [state, messageData]);
 
     return { open, alertMessage, handleCloseAlert };
 };
 
-export default useErrorAlert;
+export default useAlert;
