@@ -11,8 +11,8 @@ import Favorite from '@mui/icons-material/Favorite';
 import ControlledRating from '@/components/home/book/rating/ControlledRating';
 import { useState } from "react";
 import Image from 'next/image'
-import { Paper } from '@mui/material';
 import { CardContainer, CardPaper, StyledIconButton } from './Card.style';
+import { useRouter } from 'next/navigation';
 
 interface BookCardProps {
     title: string
@@ -21,16 +21,21 @@ interface BookCardProps {
 }
 export default function BookCard({ title, genre, date }: BookCardProps) {
     const [ratingValue, setRatingValue] = useState(2);
+    const router = useRouter()
+    const navigateToBookDetails = () => {
+        router.push('/book/1')
+    }
 
     const handleRatingChange = (event: React.ChangeEvent<{}>, newValue: number | null) => {
         setRatingValue(newValue || 0);
     };
     return (
         <CardPaper>
-            <CardContainer variant="outlined" >
+            <CardContainer variant="outlined" onClick={navigateToBookDetails}>
                 <CardOverflow >
                     <AspectRatio ratio={1} >
                         <Image
+
                             src={'/bookCover.png'}
                             alt='ImAGE'
                             width={300}

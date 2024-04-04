@@ -11,7 +11,7 @@ function NotFound() {
             minHeight={'100vh'}
             bgcolor={palette.primaryColor}
         >
-            <Typography variant="h1" color={palette.text1}>
+            <Typography variant="h1" color={palette.whiteText}>
                 404 Not Found
             </Typography>
         </Box>

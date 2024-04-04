@@ -8,6 +8,8 @@ interface LastReadBookInfoProps {
 }
 
 const LastReadBookInfo = ({ LeftContent, RightContent }: LastReadBookInfoProps) => {
+
+
     return (
         <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} margin={3}>
             <Typography variant='h4' color={palette.whiteText} margin={1}>Recently Read Book</Typography>

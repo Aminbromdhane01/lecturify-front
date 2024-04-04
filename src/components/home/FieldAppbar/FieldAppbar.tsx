@@ -1,4 +1,4 @@
-import { AppBar, Box, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React from 'react'
 import { FieldContainer, NavbarButton } from './FieldAppbar.style'
 

@@ -11,9 +11,12 @@ interface UserData {
     firstname: string;
 }
 
-interface Response {
+interface AuthResponse {
     accessToken: string;
     refreshToken: string;
+    userId: string;
+    fullName: string;
+    email: string;
 }
 interface ResetPasswordData {
     token: string;
@@ -32,7 +35,7 @@ export const authApi = createApi({ //authApi instead of slice
     reducerPath: 'auth',
     baseQuery: baseQueryWithAuth,
     endpoints: (builder) => ({
-        login: builder.mutation<Response, LoginType>({
+        login: builder.mutation<AuthResponse, LoginType>({
             query: (credentials) => ({
                 url: endpoints.SIGNIN_URL,
                 method: endpoints.POST_METHOD,
@@ -41,7 +44,7 @@ export const authApi = createApi({ //authApi instead of slice
 
 
         }),
-        signup: builder.mutation<Response, UserData>({
+        signup: builder.mutation<AuthResponse, UserData>({
             query: (userData) => ({
                 url: endpoints.SIGNUP_URL,
                 method: endpoints.POST_METHOD,

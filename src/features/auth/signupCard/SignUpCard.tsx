@@ -16,6 +16,9 @@ import { signupValuesSchema } from "./SignupValidation";
 import { SignupType } from "./signup.type";
 import { setTokens } from "@/helpers/setToken";
 import useAlert from "@/hooks/useAlert";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/RTK/slices/UserSlice";
+
 
 const SingUpCard = () => {
 
@@ -25,11 +28,18 @@ const SingUpCard = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const router = useRouter();
+    const [userData, setUserData] = useState({
+        userId: '123',
+        email: 'example@example.com',
+        fullName: 'John Doe'
+    });
 
     const [signUpMutation, { data: response, isLoading, isError, isSuccess, error }] = useSignupMutation();
     const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<SignupType>(
         { resolver: zodResolver(signupValuesSchema) }
     )
+    const dispatch = useDispatch();
+
 
     const onSubmit: SubmitHandler<SignupType> = async (data) => {
         const { confirmPassword, ...restData } = data;
@@ -38,9 +48,13 @@ const SingUpCard = () => {
 
     }
     if (isSuccess) {
+
+
         if (response?.accessToken && response?.refreshToken) {
+            dispatch(setUser({ userId: response.userId, email: response.email, fullName: response.fullName }))
             setTokens({ accessToken: response?.accessToken, refreshToken: response?.refreshToken })
-            router.push('/');
+            console.log(response);
+            router.push('/home');
         }
     }
 
@@ -49,7 +63,6 @@ const SingUpCard = () => {
         event.preventDefault();
     }
     const { open, alertMessage, handleCloseAlert } = useAlert(isError, error);
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={5} >

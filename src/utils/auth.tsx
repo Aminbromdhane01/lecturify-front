@@ -3,11 +3,15 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { endpoints } from './endpoints';
 import { getAccessToken } from '@/helpers/getAccessToekn';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/RTK/store';
 
 const withAuth = <T extends Record<string, unknown>>(WrappedComponent: React.ComponentType<T>) => {
   const Wrapper = (props: T) => {
     const router = useRouter();
     const [authChecked, setAuthChecked] = useState(false); // New state variable
+
+
 
     useEffect(() => {
       const accessToken = getAccessToken()
