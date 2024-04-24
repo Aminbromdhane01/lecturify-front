@@ -1,6 +1,6 @@
 'use client'
 
-import { CircularProgress, Grid, IconButton, InputAdornment, Typography } from "@mui/material"
+import { CircularProgress, Grid, IconButton, InputAdornment, Stack, Typography } from "@mui/material"
 import { useState } from "react"
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -18,6 +18,7 @@ import { setTokens } from "@/helpers/setToken";
 import useAlert from "@/hooks/useAlert";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/RTK/slices/UserSlice";
+import Image from "next/image";
 
 
 const SingUpCard = () => {
@@ -28,11 +29,6 @@ const SingUpCard = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
     const router = useRouter();
-    const [userData, setUserData] = useState({
-        userId: '123',
-        email: 'example@example.com',
-        fullName: 'John Doe'
-    });
 
     const [signUpMutation, { data: response, isLoading, isError, isSuccess, error }] = useSignupMutation();
     const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<SignupType>(
@@ -67,7 +63,10 @@ const SingUpCard = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={5} >
                 <Grid item xs={12} marginTop={2}>
-                    <Typography variant="h3" align="left" fontWeight={'bold'} color={palette.darkCharcoalText}>Sign Up</Typography>
+                    <Stack direction={'row'} alignItems={'center'}>
+                        <Image src={'/signup.svg'} alt='Book Form Image' height={70} width={100} />
+                        <Typography variant="h5" color={palette.darkCharcoalText} fontWeight={'bold'} >Signup</Typography>
+                    </Stack>
                 </Grid>
 
                 <Grid container item xs={12} spacing={2}>

@@ -1,6 +1,6 @@
 'use client'
 
-import { CircularProgress, Grid, IconButton, InputAdornment, OutlinedInput, Typography } from "@mui/material"
+import { CircularProgress, Grid, IconButton, InputAdornment, OutlinedInput, Stack, Typography } from "@mui/material"
 import { useState } from "react"
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -20,6 +20,7 @@ import { LoginType } from "./login.type";
 import { endpoints } from "@/utils/endpoints";
 import useAlert from "@/hooks/useAlert";
 import { setTokens } from "@/helpers/setToken";
+import Image from "next/image";
 
 const LoginCard = () => {
 
@@ -47,8 +48,11 @@ const LoginCard = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={3} >
-                <Grid item xs={12} marginTop={2}>
-                    <Typography variant="h3" align="left" color={palette.darkCharcoalText} fontWeight={'bold'} >Login</Typography>
+                <Grid item xs={12}>
+                    <Stack direction={'row'} alignItems={'center'}>
+                        <Image src={'/login.svg'} alt='Book Form Image' height={70} width={100} />
+                        <Typography variant="h5" color={palette.darkCharcoalText} fontWeight={'bold'} >Login</Typography>
+                    </Stack>
                 </Grid>
                 <Grid item xs={12} >
                     <Link href={endpoints.SIGNUP_VUE_URL}> <AccountCheckMessage variant="body1" align="right" >Don't you have an account ?</AccountCheckMessage></Link>

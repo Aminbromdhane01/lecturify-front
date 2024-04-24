@@ -5,7 +5,7 @@ export interface ActionButtonProps {
     variant: "outlined" | "contained"
     disabled: boolean
     content: string | React.ReactNode
-    handleClick?: () => void;
+    handleClick?: any;
 }
 
 const ActionButton = ({ variant, disabled, content, handleClick }: ActionButtonProps) => {

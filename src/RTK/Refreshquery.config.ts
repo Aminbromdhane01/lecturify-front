@@ -1,4 +1,3 @@
-import { getAccessToken } from "@/helpers/getAccessToekn";
 import { getRefreshToken } from "@/helpers/getRefreshToken";
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 

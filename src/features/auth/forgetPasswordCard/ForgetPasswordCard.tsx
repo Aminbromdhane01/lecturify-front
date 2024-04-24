@@ -1,5 +1,5 @@
 'use client'
-import { CircularProgress, Grid, Typography } from "@mui/material"
+import { CircularProgress, Grid, Stack, Typography } from "@mui/material"
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
 import { ForgetPassword } from "./forget-password.type";
@@ -10,6 +10,7 @@ import { useForgetPasswordMutation } from "@/RTK/api/AuthApi";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import useAlert from "@/hooks/useAlert";
 import { palette } from "@/theme/palette";
+import Image from "next/image";
 const ForgetPasswordCard = () => {
     const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<ForgetPassword>(
         { resolver: zodResolver(ForgetPasswordValuesSchema) }
@@ -27,7 +28,10 @@ const ForgetPasswordCard = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={5} >
                 <Grid item xs={12} marginTop={2}>
-                    <Typography variant="h3" align="left" fontWeight={'bold'} color={palette.darkCharcoalText}>Forget Password</Typography>
+                    <Stack direction={'row'} alignItems={'center'}>
+                        <Image src={'/forget-password.svg'} alt='Book Form Image' height={70} width={100} />
+                        <Typography variant="h5" color={palette.darkCharcoalText} fontWeight={'bold'} >Forget Password</Typography>
+                    </Stack>
                 </Grid>
                 <Grid item xs={12}>
                     <Input

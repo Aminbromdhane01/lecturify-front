@@ -1,6 +1,6 @@
 'use client'
 
-import { CircularProgress, Grid, IconButton, InputAdornment, Typography } from "@mui/material"
+import { CircularProgress, Grid, IconButton, InputAdornment, Stack, Typography } from "@mui/material"
 import { useState } from "react"
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
@@ -15,6 +15,7 @@ import { useResetPasswordMutation } from "@/RTK/api/AuthApi";
 import { useRouter } from "next/navigation";
 import useAlert from "@/hooks/useAlert";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
+import Image from "next/image";
 
 const ForgetPasswordCard = ({ token }: ResetPasswordProps) => {
 
@@ -45,7 +46,10 @@ const ForgetPasswordCard = ({ token }: ResetPasswordProps) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <Grid container spacing={5} >
                 <Grid item xs={12} marginTop={2}>
-                    <Typography variant="h3" align="left" color={palette.darkCharcoalText} fontWeight={'bold'} >Reset Password</Typography>
+                    <Stack direction={'row'} alignItems={'center'}>
+                        <Image src={'/change-password.svg'} alt='Book Form Image' height={70} width={100} />
+                        <Typography variant="h5" color={palette.darkCharcoalText} fontWeight={'bold'} >Reset Password</Typography>
+                    </Stack>
                 </Grid>
 
 
