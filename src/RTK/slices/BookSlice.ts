@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface BookState {
-    title?: string | null,
-    genre?: string | null,
-    pages?: number | null,
-    authorId?: number | null,
-    description?: string | null,
-    cover?: File | null,
-    content?: File | null
+export interface BookState {
+    title?: string | null |undefined,
+    userId? : number |null |undefined
+
+    genre?: string | null | undefined,
+    pages?: number | null | undefined,
+    authorId?: number | null |undefined,
+    description?: string | null |undefined,
+    files?: File | null |undefined,
+    content?: File | null | undefined
 }
 
 export const initialState: BookState = {
@@ -16,7 +18,7 @@ export const initialState: BookState = {
     pages: null,
     authorId: null,
     description: null,
-    cover: null,
+    files: null,
     content: null,
 };
 
@@ -34,7 +36,7 @@ const bookSlice = createSlice({
                 state.pages = null,
                 state.authorId = null,
                 state.description = null,
-                state.cover = null,
+                state.files = null,
                 state.content = null
         },
     },

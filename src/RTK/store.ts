@@ -8,6 +8,7 @@ import bookReducer from './slices/BookSlice'
 
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { bookApi } from './api/BookApi'
 
 
 const persistConfig = {
@@ -20,6 +21,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [refreshApi.reducerPath]: refreshApi.reducer,
+    [bookApi.reducerPath] : bookApi.reducer,
     user: userReducer,
     book: bookReducer
 
@@ -30,7 +32,7 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false
-        }).concat(authApi.middleware, refreshApi.middleware)
+        }).concat(authApi.middleware, refreshApi.middleware , bookApi.middleware)
 })
 
 

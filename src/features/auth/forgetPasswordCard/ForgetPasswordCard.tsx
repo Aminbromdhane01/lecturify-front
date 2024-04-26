@@ -44,7 +44,7 @@ const ForgetPasswordCard = () => {
                 <Grid item xs={12}>
                     <ActionButton content={isLoading ? <CircularProgress /> : 'Send'} variant="contained" disabled={isSubmitting} />
                 </Grid>
-                {open && <ControlledAlert open={open} handleClose={handleCloseAlert} duration={3000} content={alertMessage} severity="success" />}
+                {open && <ControlledAlert open={open} handleClose={handleCloseAlert} duration={6000} content={alertMessage} severity="success" />}
                 {isOpen && <ControlledAlert open={isOpen} handleClose={handleCloseEroorAlert} duration={3000} content={errorMessage} severity="error" />}
 
             </Grid>
