@@ -5,6 +5,7 @@ import { authApi } from './api/AuthApi'
 import { refreshApi } from './api/RefreshTokenApi'
 import userReducer from './slices/UserSlice'
 import bookReducer from './slices/BookSlice'
+import serachReducer from './slices/SearchBookSlice'
 
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
@@ -14,7 +15,7 @@ import { bookApi } from './api/BookApi'
 const persistConfig = {
     key: "user",
     storage,
-    blacklist: ["setUser"]
+    blacklist: ["setUser" , "search"]
 
 }
 
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
     [refreshApi.reducerPath]: refreshApi.reducer,
     [bookApi.reducerPath] : bookApi.reducer,
     user: userReducer,
-    book: bookReducer
+    book: bookReducer ,
+    search : serachReducer
 
 })
 const persistedReducer = persistReducer(persistConfig, rootReducer)

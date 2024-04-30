@@ -1,5 +1,5 @@
 'use client'
-import { Grid, InputLabel, TextField, Typography } from '@mui/material'
+import { CircularProgress, Grid, InputLabel, TextField, Typography } from '@mui/material'
 import React, { useRef } from 'react'
 import Input from '@/layouts/Input/Input';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -13,6 +13,10 @@ import { bookValidationFormTwoSchema } from '@/features/book/AddBookFrom/book.fo
 import { BookFormTwoType } from './book.form.type';
 import { useCreateBookMutation } from '@/RTK/api/BookApi';
 import { redirect } from 'next/navigation'
+import useAlert from '@/hooks/useAlert';
+import ControlledAlert from '@/components/Alert/ControllerdAlert';
+import { decodeToken } from '@/helpers/decodeToken';
+import { decodeAccesToken } from '@/helpers/decodedAceesToken';
 
 interface FormBookTwoProps {
     previousStep?: () => void
@@ -32,17 +36,20 @@ const BookFormTwo = ({ previousStep }: FormBookTwoProps) => {
         dispatch(setBook({ description: data.description, files : data.content, content: data.content }))
         
         
-       await createBook({description : data.description ,pages :bookSlice.pages , files : data.content[0] , userId : 30 , genre :bookSlice.genre , title : bookSlice.title , filestwo : data.cover[0] })
+       await createBook({description : data.description ,pages :bookSlice.pages , files : data.content[0] , userId : decodeAccesToken().sub , genre :bookSlice.genre , title : bookSlice.title , filestwo : data.cover[0] })
      
 
     }
    
+    console.log(decodeAccesToken().sub);
+    
     
     isError && console.log(error);
     if (isSuccess){
         redirect('/home')
     }
-    
+    const { open, alertMessage, handleCloseAlert } = useAlert(isError, error);
+
     
 
 
@@ -73,8 +80,9 @@ const BookFormTwo = ({ previousStep }: FormBookTwoProps) => {
                     <MultiStepController forwadButtonIsDisabled={true} backButtonIsDisabled={false} backButtonOnClick={previousStep} />
                 </Grid>
                 <Grid item xs={12}>
-                    <ActionButton content={'Add Book'} variant="contained" disabled={isSubmitting} />
+                    <ActionButton content={isLoading ? <CircularProgress /> : 'Add Book'} variant="contained" disabled={isSubmitting} />
                 </Grid>
+                {open && <ControlledAlert open={open} handleClose={handleCloseAlert} duration={3000} content={alertMessage} severity="error" />}
 
             </Grid>
         </form>

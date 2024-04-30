@@ -147,7 +147,7 @@ const SingUpCard = () => {
 
 
                 <Grid item xs={12}>
-                    <ActionButton content={isLoading ? <CircularProgress /> : 'Login'} variant="contained" disabled={isSubmitting} />
+                    <ActionButton content={isLoading ? <CircularProgress /> : 'SignUp'} variant="contained" disabled={isSubmitting} />
                 </Grid>
                 {open && <ControlledAlert open={open} handleClose={handleCloseAlert} duration={3000} content={alertMessage} severity="error" />}
             </Grid>

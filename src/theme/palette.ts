@@ -7,6 +7,7 @@ export const palette = {
     darkCharcoalText: '#333',
     dodgerBlueText: '#007bff',
     greyText: '#B4B4B4',
-    skyBlueText: '#00B4D8'
+    skyBlueText: '#00B4D8',
+    lightGrey: '#EEEEEE'
 };
 
