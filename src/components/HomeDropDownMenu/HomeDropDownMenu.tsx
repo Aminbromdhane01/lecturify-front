@@ -12,7 +12,7 @@ import LogoutMenuItem from '../LogoutMenuItem/LogoutMenuItem';
 const menuItems = [
     { icon: <PersonIcon />, content: 'Profile', href: "#" },
     { icon: <ListIcon />, content: 'Wishlist', href: "#" },
-    { icon: <BookIcon />, content: 'Add New Book', href: "#" },
+    { icon: <BookIcon />, content: 'Add New Book', href: "/book/add" },
     { icon: <Settings />, content: 'Settings', href: "#" },
 
 ];
