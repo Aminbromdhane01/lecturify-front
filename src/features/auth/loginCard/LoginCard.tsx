@@ -10,7 +10,7 @@ import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "@/RTK/api/AuthApi";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import { palette } from "@/theme/palette";
 import LoginOptions from "@/components/loginOptions/LoginOptions";
@@ -21,6 +21,8 @@ import { endpoints } from "@/utils/endpoints";
 import useAlert from "@/hooks/useAlert";
 import { setTokens } from "@/helpers/setToken";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/RTK/slices/UserSlice";
 
 const LoginCard = () => {
 
@@ -31,6 +33,8 @@ const LoginCard = () => {
         { resolver: zodResolver(loginValuesSchema) }
     )
     const router = useRouter();
+    const dispatch = useDispatch();
+
 
     const [loginMutation, { data: response, isLoading, isError, isSuccess, error }] = useLoginMutation();
     const onSubmit: SubmitHandler<LoginType> = async (data) => {
@@ -38,8 +42,12 @@ const LoginCard = () => {
     }
     if (isSuccess) {
         if (response?.accessToken) {
+            console.log(response);
+            
+            dispatch(setUser({ userId: response.userId, email: response.email, fullName: response.fullName }))
+
             setTokens({ accessToken: response?.accessToken, refreshToken: response?.refreshToken })
-            router.push('/');
+            redirect('/home')
         }
 
     }
