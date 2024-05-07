@@ -13,7 +13,6 @@ const HomeLayout = (
 ) => {
     return (
         <main className={styles.content}>
-            <TopBar />
             {children}
             <BookPage />
         </main>
