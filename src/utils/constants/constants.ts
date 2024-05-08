@@ -25,9 +25,20 @@ export const constants = {
         PDF_TYPE: ['application/pdf'],
         BOOK_PDF_SIZE_MESSAGE: 'File size must be less than 3MB',
         IMAGE_TYPE_MESSAGE: 'File must be a PNG/JPEG/JPG',
-        PDF_TYPE_MESSAGE: 'File must be a PDF'
+        PDF_TYPE_MESSAGE: 'File must be a PDF',
+        NO_BOOKS_FOUND_EN : 'No books found',
+        NO_BOOKS_FOUND_MESSAGE_ONE : "We couldn't find any matches for",
+        NO_BOOKS_FOUND_MESSAGE_TWO : "among our available titles. You might want to explore other categories or refine your search terms to discover relevant books"
 
-
+    },
+    AuthForm : {
+        FORGET_PASSWORD_EN : 'Forget Password'
+    },
+    MenuItems : {
+        PROFILE_EN : 'Profile',
+        WISHLIST_EN : 'Wishlist',
+        ADD_BOOK_EN : 'Add New Book',
+        SETTINGS_EN : 'Settings'
     }
 
 

@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import RtkProvider from "@/RTK/Provider";
 import CopyRightFooter from "@/components/CopyRightFooter/CopyRightFooter";
+import TopBar from "@/components/home/top-bar/TopBar";
+import { Background } from "@/pages/BookDeatails/BookDetails.style";
+import ControlledAlert from "@/components/Alert/ControllerdAlert";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +24,13 @@ export default function RootLayout({
 
             <body >
                 <RtkProvider>
+                    <Background>
+                    <TopBar />
                     {children}
                     <CopyRightFooter />
+                    </Background>
                 </RtkProvider>
+               
             </body>
         </html>
     );

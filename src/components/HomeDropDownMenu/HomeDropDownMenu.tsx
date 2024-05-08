@@ -9,11 +9,13 @@ import Menu from '@mui/material/Menu';
 import { NonDecoratedLink } from '../IconicButton/IconButton.style';
 import { Divider } from '@mui/material';
 import LogoutMenuItem from '../LogoutMenuItem/LogoutMenuItem';
+import { endpoints } from '@/utils/endpoints';
+import { constants } from '@/utils/constants/constants';
 const menuItems = [
-    { icon: <PersonIcon />, content: 'Profile', href: "#" },
-    { icon: <ListIcon />, content: 'Wishlist', href: "#" },
-    { icon: <BookIcon />, content: 'Add New Book', href: "#" },
-    { icon: <Settings />, content: 'Settings', href: "#" },
+    { icon: <PersonIcon />, content: constants.MenuItems.PROFILE_EN, href: endpoints.PROFILE_VUE_URL },
+    { icon: <ListIcon />, content: constants.MenuItems.WISHLIST_EN, href: endpoints.WISH_LIST_VUE_URL },
+    { icon: <BookIcon />, content: constants.MenuItems.ADD_BOOK_EN, href: endpoints.ADD_BOOK_VUE_URL },
+    { icon: <Settings />, content: constants.MenuItems.SETTINGS_EN, href: "#" },
 
 ];
 interface HomeDropDownMenuProps {

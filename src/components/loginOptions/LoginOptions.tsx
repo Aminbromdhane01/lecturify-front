@@ -3,6 +3,8 @@ import { Checkbox, FormControlLabel, Grid, Stack, Typography } from "@mui/materi
 import Link from "next/link"
 import { useState } from "react"
 import { useTranslations } from "next-intl";
+import { StyledLink } from "./LoginOption.style";
+import { constants } from "@/utils/constants/constants";
 
 
 interface LoginOptionsProps {
@@ -16,21 +18,9 @@ const LoginOptions = ({ href }: LoginOptionsProps) => {
     return (
         <Grid item xs={12} >
             <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
-                <FormControlLabel
-                    control={
-                        <Checkbox
-                            checked={checked}
-                            onChange={(event) => setChecked(event.target.checked)}
-                            name="checked"
-                            color="primary"
-                            size="small"
-                        />
-                    }
-                    label={<Typography variant="body1">Keep me sign in</Typography>}
-                />
-                <Link href={href} color="text.primary" style={{ fontFamily: 'Montserrat', fontWeight: 'bold', color: '#007bff', textDecoration: 'none' }}>
-                    Forgot Password?
-                </Link>
+                <StyledLink href={href} color="text.primary" >
+                    {constants.AuthForm.FORGET_PASSWORD_EN}
+                </StyledLink>
             </Stack>
         </Grid>
     )

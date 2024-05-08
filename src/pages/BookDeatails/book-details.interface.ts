@@ -1,7 +1,7 @@
 export interface BookDetailsProps {
     author: string;
     title: string;
-    publicationDate: Date;
+    publicationDate: string;
     rating: string;
     numberofVotes: number;
     description: string;

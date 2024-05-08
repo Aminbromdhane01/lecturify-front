@@ -4,7 +4,7 @@ interface MessageData {
     message: string;
 }
 
-const useAlert = (state: boolean, messageData: MessageData | any) => {
+const useAlert = (state: boolean, messageData?: MessageData | any) => {
     const [open, setOpen] = useState<boolean>(false);
     const [alertMessage, setAlertMessage] = useState<string>('');
 
@@ -16,7 +16,7 @@ const useAlert = (state: boolean, messageData: MessageData | any) => {
     useEffect(() => {
         if (state && messageData) {
             setOpen(true);
-            if (messageData.message) { setAlertMessage(messageData.message || ''); }
+            if (messageData.message) { setAlertMessage(messageData.message || '' ); }
             else { setAlertMessage(messageData.data.message || ''); }
 
             const timer = setTimeout(() => {
@@ -24,6 +24,15 @@ const useAlert = (state: boolean, messageData: MessageData | any) => {
             }, 3000);
             return () => clearTimeout(timer);
         }
+        if (state && !messageData)
+            {
+                  setOpen(true)
+                  const timer = setTimeout(() => {
+                    handleCloseAlert();
+                }, 3000);
+                return () => clearTimeout(timer);
+                  
+            }
     }, [state, messageData]);
 
     return { open, alertMessage, handleCloseAlert };
