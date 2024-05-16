@@ -6,7 +6,7 @@ import React from 'react'
 
 const SignUp = () => {
     return (
-        <AuthWrapper card={<SingUpCard />} />
+        <AuthWrapper card={'signup'} />
     )
 }
 

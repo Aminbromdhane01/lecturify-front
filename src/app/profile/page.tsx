@@ -13,14 +13,12 @@ const Profile = () => {
   return (
     <>
     <InfoCard
-            LeftContent={<ProfileImage/>}
-            RightContent={<ProfileInfo/>}
-            title='User Infos' />
+      type='profile_info' 
+      title='User Infos' />
     
     <InfoCard
-            LeftContent={<BookImage />}
-            RightContent={<BookInfo />}
-            insideCardTitle='Last Published Book'
+      type='book_info'
+      insideCardTitle='Last Published Book'
            />
     <MyBooksData/>
     

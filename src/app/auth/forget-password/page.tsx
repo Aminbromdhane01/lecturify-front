@@ -6,7 +6,7 @@ import React from 'react'
 
 const ForgetPassword = () => {
     return (
-        <AuthWrapper card={<ForgetPasswordCard />} />
+        <AuthWrapper card={'forget-password'} />
     )
 }
 

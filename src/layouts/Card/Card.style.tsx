@@ -11,10 +11,10 @@ const animateAppear = keyframes`
     }
 `;
 
-export const CardContainer = styled(Card)`
-    margin: 18px;
-   
-`;
+
+export const CardContainer = styled(Card)(({ theme }) => ({
+    margin: '18px'
+}))
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({
 
     position: 'absolute',

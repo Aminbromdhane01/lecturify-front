@@ -10,8 +10,7 @@ const page = () => {
 
     return (
         <LastReadBookInfo
-            LeftContent={<BookImage />}
-            RightContent={<BookInfo />} />
+           type='book_info' />
     )
 }
 

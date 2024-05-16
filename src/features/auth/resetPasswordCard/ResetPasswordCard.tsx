@@ -17,7 +17,7 @@ import useAlert from "@/hooks/useAlert";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import Image from "next/image";
 
-const ForgetPasswordCard = ({ token }: ResetPasswordProps) => {
+const ResetPasswordCard = ({ token }: ResetPasswordProps) => {
 
     const router = useRouter();
 
@@ -106,4 +106,4 @@ const ForgetPasswordCard = ({ token }: ResetPasswordProps) => {
     )
 }
 
-export default ForgetPasswordCard
+export default ResetPasswordCard

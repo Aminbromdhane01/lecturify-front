@@ -1,3 +1,5 @@
+import { mock } from "node:test";
+
 export const constants = {
     ValidationMessages: {
         PASSWORD_VALIDATION_MESSAGE: 'Password must contain at least 8 characters including uppercase, lowercase, numbers, and special characters',
@@ -28,7 +30,8 @@ export const constants = {
         PDF_TYPE_MESSAGE: 'File must be a PDF',
         NO_BOOKS_FOUND_EN : 'No books found',
         NO_BOOKS_FOUND_MESSAGE_ONE : "We couldn't find any matches for",
-        NO_BOOKS_FOUND_MESSAGE_TWO : "among our available titles. You might want to explore other categories or refine your search terms to discover relevant books"
+        NO_BOOKS_FOUND_MESSAGE_TWO : "among our available titles. You might want to explore other categories or refine your search terms to discover relevant books",
+        MOCK_DESCRIPTION : `Discover a hidden bookstore in the heart of New York City. Step inside to find rows of books, each containing tales of love, courage, and mystery. Lose yourself in forgotten classics and hidden gems, and join lively discussions with fellow readers. Immerse yourself in the magic of literature and embark on an unforgettable adventure through the pages of its books.`
 
     },
     AuthForm : {
@@ -39,6 +42,20 @@ export const constants = {
         WISHLIST_EN : 'Wishlist',
         ADD_BOOK_EN : 'Add New Book',
         SETTINGS_EN : 'Settings'
+    },
+    TopBar : {
+       BACK: 'Back',
+       HOME: 'Home',
+       COMPLETE_YOUR_PROFILE : 'Complete Your Profile'
+    },
+    Alert : {
+     ALERT_POP_UP_TIMER : 3000
+    },
+    Profile : {
+     MOCK_ADRESS : 'Adress',
+     MOCK_PUBLISHED_BOOKS : 'Published Books Total : 20' ,
+     MOCK_PUBLISHED_WORKS : 'Published Work Total : 20' ,
+     AVERAGE_BOOK_RATING : 'Average Book Rating'
     }
 
 

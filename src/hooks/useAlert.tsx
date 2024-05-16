@@ -1,3 +1,4 @@
+import { constants } from "@/utils/constants/constants";
 import { useState, useEffect } from "react";
 
 interface MessageData {
@@ -21,7 +22,7 @@ const useAlert = (state: boolean, messageData?: MessageData | any) => {
 
             const timer = setTimeout(() => {
                 handleCloseAlert();
-            }, 3000);
+            }, constants.Alert.ALERT_POP_UP_TIMER);
             return () => clearTimeout(timer);
         }
         if (state && !messageData)
@@ -29,7 +30,7 @@ const useAlert = (state: boolean, messageData?: MessageData | any) => {
                   setOpen(true)
                   const timer = setTimeout(() => {
                     handleCloseAlert();
-                }, 3000);
+                }, constants.Alert.ALERT_POP_UP_TIMER);
                 return () => clearTimeout(timer);
                   
             }

@@ -9,11 +9,11 @@ import { AuthElementsGrid, Container, CardGrid, LogoGrid } from "./AuthWrapper.s
 interface AuthWrapperChildren {
     background?: React.ReactNode
     logo?: React.ReactNode
-    card?: React.ReactNode
-    footer?: React.ReactNode
+    card?: string
+    token?: string
 }
 
-const AuthWrapper = ({ background, logo, card, footer }: AuthWrapperChildren) => {
+const AuthWrapper = ({ background, logo, card, token }: AuthWrapperChildren) => {
     return (
         <Container >
             {background}
@@ -33,11 +33,10 @@ const AuthWrapper = ({ background, logo, card, footer }: AuthWrapperChildren) =>
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <AnimatedCard card={card} delay="0" />
+                        <AnimatedCard card={card as string} resetPasswordToken={token} delay="0" />
                     </CardGrid>
                 </Grid>
                 <Grid item xs={12} p={3}>
-                    {footer}
                 </Grid>
             </AuthElementsGrid>
         </Container>

@@ -18,53 +18,72 @@ import { endpoints } from '@/utils/endpoints';
 import StarIcon from '@mui/icons-material/Star';
 import { AppBarContainer, StyledAppBarTitle } from './topbar.style';
 import EditIcon from '@mui/icons-material/Edit';
+import { constants } from '@/utils/constants/constants';
 
 
 
 const TopBar = () => {
     const user = useSelector((state: RootState) => state.user)
-    const [icon , setIcon] = useState<React.ReactElement | null>(null)
+    const [icon , setIcon] = useState<string>('')
     const router = useRouter()
     const pathname = usePathname()
 
     const setIconBasedOnPage = () => {
         
         if (pathname === endpoints.HOME_VUE_URL) {
-            setIcon(<HomeIcon fontSize='large' />);      
+            setIcon('home');      
         } else if (pathname === endpoints.PROFILE_VUE_URL) {            
-            setIcon(<AccountBoxIcon fontSize='large'/>);
+            setIcon('accountBox');
         } else if (pathname === endpoints.ADD_BOOK_VUE_URL) {
-            setIcon(<AddCircleOutlineIcon fontSize='large'/>);
+            setIcon('addCircleOutline');
         } else if (pathname?.startsWith(endpoints.BOOK_DETAILS_VUE_URL_START_WITH)) {
-            setIcon(<BookIcon fontSize='large'/>);
+            setIcon('book');
         } else if (pathname === endpoints.WISH_LIST_VUE_URL) {
-            setIcon(<StarIcon fontSize='large'/>);
+            setIcon('star');
         } else if (pathname === endpoints.EDIT_PROFILE_VUE_URL) {
-            setIcon(<EditIcon fontSize='large'/>);
+            setIcon('edit');
         }
         };
+        const renderIcon = () => {
+            switch (icon) {
+                case 'home':
+                    return <HomeIcon fontSize='large' />;
+                case 'accountBox':
+                    return <AccountBoxIcon fontSize='large' />;
+                case 'addCircleOutline':
+                    return <AddCircleOutlineIcon fontSize='large' />;
+                case 'book':
+                    return <BookIcon fontSize='large' />;
+                case 'star':
+                    return <StarIcon fontSize='large' />;
+                case 'edit':
+                    return <EditIcon fontSize='large' />;
+                default:
+                    return null;
+            }
+        };    
     
     useEffect(() => {
-        setIconBasedOnPage();
+        setIconBasedOnPage();  
       }, [pathname]);
     return (
         <AppBarContainer>
             <AppBar position="static">
                 <Toolbar>
                     <StyledAppBarTitle variant="h6" noWrap >
-                        {icon}
+                        {renderIcon()}
                     </StyledAppBarTitle>
                     { pathname !== endpoints.HOME_VUE_URL &&
                     <Stack direction={'row'} alignSelf={'left'}>
                     <NavbarButton borderRadius={'50px'} onClick={()=> {router.back()}}>
-                            <Typography variant='body1' fontWeight={'bold'} >Back</Typography>
+                            <Typography variant='body1' fontWeight={'bold'} >{constants.TopBar.BACK}</Typography>
                     </NavbarButton>
                     <NavbarButton borderRadius={'50px'} onClick={()=>{router.push(endpoints.HOME_VUE_URL)}}>
-                            <Typography variant='body1' fontWeight={'bold'}>Home</Typography>
+                            <Typography variant='body1' fontWeight={'bold'}>{constants.TopBar.HOME}</Typography>
                     </NavbarButton>
                     {pathname == endpoints.PROFILE_VUE_URL && 
                     <NavbarButton borderRadius={'50px'} onClick={()=>{router.push(endpoints.EDIT_PROFILE_VUE_URL)}}>
-                            <Typography variant='body1' fontWeight={'bold'}>Complete Your Profile</Typography>
+                            <Typography variant='body1' fontWeight={'bold'}>{constants.TopBar.COMPLETE_YOUR_PROFILE}</Typography>
                     </NavbarButton>
                     }
                    

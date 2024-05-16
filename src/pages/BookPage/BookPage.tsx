@@ -30,7 +30,7 @@ const BookPage = () => {
             <BookPagePaper elevation={2}  >
                 <Stack alignItems={'center'}>
              
-                    <Grid container justifyContent={'space-betwwen'} spacing={2} paddingLeft={3} alignItems={'center'}>
+                    {<Grid container justifyContent={'space-betwwen'} spacing={2} paddingLeft={3} alignItems={'center'}>
                         {books?.count == 0 && <NoBooksFound/>}
                         { isSuccess && books?.data.map((book)=> (
                         <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -42,7 +42,7 @@ const BookPage = () => {
                        
                         
                         
-                    </Grid>
+                        </Grid>}
 
                     <Pagination count={books?.count && Math.ceil(books?.count/8)} variant="outlined" color="primary" sx={{ margin: 2 }} onChange={handleChange} />
                     
