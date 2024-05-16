@@ -26,6 +26,8 @@ const TopBar = () => {
     const [icon , setIcon] = useState<React.ReactElement | null>(null)
     const router = useRouter()
     const pathname = usePathname()
+    console.log(pathname);
+    
 
     const setIconBasedOnPage = () => {
         
@@ -41,6 +43,8 @@ const TopBar = () => {
             setIcon(<StarIcon fontSize='large'/>);
         } else if (pathname === endpoints.EDIT_PROFILE_VUE_URL) {
             setIcon(<EditIcon fontSize='large'/>);
+        } else if (pathname === '/admin-dashboard/stats') {
+            setIcon(<><EditIcon fontSize='large'/> Admin Dashboard</>);
         }
         };
     

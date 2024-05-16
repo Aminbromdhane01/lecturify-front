@@ -17,7 +17,7 @@ export default function MainDrawer({ DrawerList }: MainDrawerProps) {
 
   return (
     <Box>
-      <Button onClick={toggleDrawer(true)}><MenuRoundedIcon sx={{ color: 'white', fontSize: '30px' }} /></Button>
+      <Button onClick={toggleDrawer(true)}><MenuRoundedIcon sx={{ color: '#212631', fontSize: '30px' }} /></Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
