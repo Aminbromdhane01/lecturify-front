@@ -7,6 +7,7 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import ListIcon from '@mui/icons-material/List';
 import PersonIcon from '@mui/icons-material/Person';
+import IconType from './menu-item.enum';
 interface DropDownMenuItemProps {
     handleClose: () => void;
     icon?: string
@@ -17,15 +18,15 @@ interface DropDownMenuItemProps {
 const DropDownMenuItem = ({ handleClose, icon, content }: DropDownMenuItemProps) => {
     const renderIcon = () => {
         switch (icon) {
-            case 'person':
+            case IconType.Person:
                 return <PersonIcon />;
-            case 'list':
+            case IconType.List:
                 return <ListIcon />;
-            case 'book':
+            case IconType.Book:
                 return <BookIcon />;
-            case 'settings':
+            case IconType.Settings:
                 return <Settings />;
-            case 'logout':
+            case IconType.Logout:
                 return <Logout />;
             default:
                 return null;

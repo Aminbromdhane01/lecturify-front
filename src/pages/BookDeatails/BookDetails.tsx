@@ -10,6 +10,7 @@ import { useState } from "react";
 import TransitionsModal from "@/layouts/Modal/Modal";
 import CommentSection from "@/features/comment/CommentSection";
 import { extractUTCDate } from "@/helpers/dateToUTCDateString";
+import { constants } from "@/utils/constants/constants";
 
 const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description }: BookDetailsProps) => {
     const [open, setOpen] = useState(false);
@@ -19,7 +20,7 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
         <>
             <Box p={1}>
                 
-                <Title variant="h6" align="center"> About Book</Title></Box>
+                <Title variant="h6" align="center">{constants.BookDetails.ABOUT_BOOK_EN}</Title></Box>
             <BookDetailsContainer  >
                 <BookDetailsPaper elevation={2}>
                     <Grid container direction={'column'}>
@@ -39,9 +40,9 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
                                     <Typography variant="body2">{rating} ({numberofVotes})</Typography>
                                 </Stack>
                                 <Stack direction={'row'} gap={3}>
-                                    <IconicButton icon={<StyledDownloadForOfflineIcon />} text="Download" />
-                                    <IconicButton icon={<StyledLibraryAddIcon />} text="Add to wishlist" />
-                                    <IconicButton onClick={handleOpen} icon={<StyledReviewsIcon />} text="See Reviews" />
+                                    <IconicButton icon={<StyledDownloadForOfflineIcon />} text={constants.BookDetails.DOWNLOAD_EN} />
+                                    <IconicButton icon={<StyledLibraryAddIcon />} text={constants.BookDetails.ADD_TO_WISHLIST} />
+                                    <IconicButton onClick={handleOpen} icon={<StyledReviewsIcon />} text={constants.BookDetails.SEE_REVIEWS} />
                                 </Stack>
                                 <AboutBookContainer >
 

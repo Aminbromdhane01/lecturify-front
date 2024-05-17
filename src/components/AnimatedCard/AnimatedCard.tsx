@@ -2,11 +2,12 @@
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { AnimatedCardPaper } from "./AnimatedCard.styles";
-import ForgetPasswordCard from "@/features/auth/ForgetPasswordCard/ForgetPasswordCard";
+import EditProfileForm from "@/features/profile/edit-profile/EditProfileForm";
+import { AuthCardType } from "@/layouts/AuthWrapper/auth-wrapper.enum";
 import LoginCard from "@/features/auth/LoginCard/LoginCard";
 import SingUpCard from "@/features/auth/SignupCard/SignUpCard";
-import EditProfileForm from "@/features/profile/edit-profile/EditProfileForm";
 import ResetPasswordCard from "@/features/auth/ResetPasswordCard/ResetPasswordCard";
+import ForgetPasswordCard from "@/features/auth/forgetPasswordCard/ForgetPasswordCard";
 
 interface AnimatedCardProps {
     card: string
@@ -25,15 +26,15 @@ export const AnimatedCard = ({ card, delay , resetPasswordToken }: AnimatedCardP
     }, []);
     const renderCardComponent = (card: string) => {
         switch (card) {
-            case 'login':
+            case AuthCardType.Login:
                 return <LoginCard />;
-            case 'signup':
+            case AuthCardType.Signup:
                 return <SingUpCard />;
-            case 'reset-password':
+            case AuthCardType.ResetPassword:
                 return < ResetPasswordCard token={resetPasswordToken as string}/>;
-            case 'forget-password':
+            case AuthCardType.ForgetPassword:
                 return <ForgetPasswordCard/>;
-            case 'edit-profile':
+            case AuthCardType.EditProfile:
                 return <EditProfileForm />;
             default:
                 return null; // Handle the default case or invalid card values

@@ -19,6 +19,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { AppBarContainer, StyledAppBarTitle } from './topbar.style';
 import EditIcon from '@mui/icons-material/Edit';
 import { constants } from '@/utils/constants/constants';
+import IconType from './top-bar.enum';
 
 
 
@@ -46,17 +47,17 @@ const TopBar = () => {
         };
         const renderIcon = () => {
             switch (icon) {
-                case 'home':
+                case IconType.Home:
                     return <HomeIcon fontSize='large' />;
-                case 'accountBox':
+                case IconType.AccountBox:
                     return <AccountBoxIcon fontSize='large' />;
-                case 'addCircleOutline':
+                case IconType.AddCircleOutline:
                     return <AddCircleOutlineIcon fontSize='large' />;
-                case 'book':
+                case IconType.Book:
                     return <BookIcon fontSize='large' />;
-                case 'star':
+                case IconType.Star:
                     return <StarIcon fontSize='large' />;
-                case 'edit':
+                case IconType.Edit:
                     return <EditIcon fontSize='large' />;
                 default:
                     return null;

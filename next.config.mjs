@@ -1,6 +1,6 @@
 const nextConfig = {
     images : {
-        domains : ["www.w3schools.com"]
+        domains : [process.env.NEXT_PUBLIC_DEFAULT_PROFILE_IMAGE_DOMAIN]
     }
 };
 

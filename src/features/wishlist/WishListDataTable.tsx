@@ -3,6 +3,7 @@ import { GridColDef } from "@mui/x-data-grid";
 import { isValidElement, useState } from "react";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { Rating } from "@mui/material";
+import { mockBooks } from "@/mocks/mockData";
 
 
 const WishListDataTable: React.FC = () => {
@@ -14,11 +15,6 @@ const WishListDataTable: React.FC = () => {
     };
   
     const VISIBLE_FIELDS: string[] = ['name', 'genre', 'image', 'author' ];
-  
-    const rows = [
-      { id: 1, name: 'John Doe',  genre: 'Horror', image: '2022-04-30', author: 'author 1' , rating : 2 },
-      { id: 2, name: 'Jane Smith',  genre: 'Horror', image: '2022-04-30', author: 'author 1' , rating : 2 },
-    ];
   
     const columns: GridColDef[] = VISIBLE_FIELDS.map(field => ({
       field,
@@ -66,7 +62,7 @@ const WishListDataTable: React.FC = () => {
       <DataGrid
         image={'/favourite.svg'}
         title="WishList"
-        rows={rows}
+        rows={mockBooks}
         columns={columns}
         page={page}
         rowsPerPage={rowsPerPage}

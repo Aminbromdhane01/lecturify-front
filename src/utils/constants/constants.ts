@@ -31,7 +31,8 @@ export const constants = {
         NO_BOOKS_FOUND_EN : 'No books found',
         NO_BOOKS_FOUND_MESSAGE_ONE : "We couldn't find any matches for",
         NO_BOOKS_FOUND_MESSAGE_TWO : "among our available titles. You might want to explore other categories or refine your search terms to discover relevant books",
-        MOCK_DESCRIPTION : `Discover a hidden bookstore in the heart of New York City. Step inside to find rows of books, each containing tales of love, courage, and mystery. Lose yourself in forgotten classics and hidden gems, and join lively discussions with fellow readers. Immerse yourself in the magic of literature and embark on an unforgettable adventure through the pages of its books.`
+        MOCK_DESCRIPTION : `Discover a hidden bookstore in the heart of New York City. Step inside to find rows of books, each containing tales of love, courage, and mystery. Lose yourself in forgotten classics and hidden gems, and join lively discussions with fellow readers. Immerse yourself in the magic of literature and embark on an unforgettable adventure through the pages of its books.`,
+        MOCK_AUTHOR : 'Author'
 
     },
     AuthForm : {
@@ -55,7 +56,23 @@ export const constants = {
      MOCK_ADRESS : 'Adress',
      MOCK_PUBLISHED_BOOKS : 'Published Books Total : 20' ,
      MOCK_PUBLISHED_WORKS : 'Published Work Total : 20' ,
-     AVERAGE_BOOK_RATING : 'Average Book Rating'
+     AVERAGE_BOOK_RATING : 'Average Book Rating',
+     PROFILE_INFO_CARD_TITLE : 'User Infos' ,
+     BOOK_INFO_CARD_TITLE :'Last Published Book'
+    },
+    ProfileImage : {
+        PROFILE_IMAGE_ALT : 'Profile Image',
+        DEFAULT_PROFILE_IMAGE_URL : 'https://www.w3schools.com/w3images/avatar2.png'
+    },
+    BookDetails : {
+       ABOUT_BOOK_EN : 'About Book',
+       DOWNLOAD_EN : 'Download',
+       ADD_TO_WISHLIST : 'Add to wishlist',
+       SEE_REVIEWS : 'See Reviews',
+    },
+    GenderRadioButton : {
+       MALE : 'Male',
+       FEMALE : 'Female',
     }
 
 
