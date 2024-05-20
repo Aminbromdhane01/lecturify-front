@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 
 const ResetPassword = ({ params }: { params: { token: string } }) => {
     return (
-        <AuthWrapper card={<ResetPasswordCard token={params.token} />} />
+        <AuthWrapper token={params.token} card={'reset-password'} />
     )
 }
 

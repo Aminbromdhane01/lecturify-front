@@ -6,13 +6,14 @@ import { NonDecoratedLink } from './IconButton.style'
 interface IconicButtonProps {
     icon: React.ReactNode
     text: string
+    onClick?: () => void
 }
 
-const IconicButton = ({ icon, text }: IconicButtonProps) => {
+const IconicButton = ({ icon, text , onClick }: IconicButtonProps) => {
     return (
         <>
             {icon}
-            <NonDecoratedLink href={"#"}><Typography>{text}</Typography></NonDecoratedLink>
+            <NonDecoratedLink onClick={onClick} href={"#"}><Typography>{text}</Typography></NonDecoratedLink>
         </>
     )
 }

@@ -1,3 +1,4 @@
+'use client'
 import BookImage from "@/components/BookImage/BookImage"
 import CardButton from "@/components/CardButton/CardButton"
 import { Box, Grid, Rating, Stack, Typography } from "@mui/material"
@@ -5,13 +6,21 @@ import IconicButton from "@/components/IconicButton/IconicButton";
 import { AboutBookContainer, AuthorName, Background, BookDetailsContainer, BookDetailsPaper, BookInfoContainer, ButtonGrid, HomeLink, IconContainer, PublicationDate, StyledDownloadForOfflineIcon, StyledLibraryAddIcon, StyledReviewsIcon, Title } from "./BookDetails.style";
 import IconTextTag from "@/components/IconTextTag/IconTextTag";
 import { BookDetailsProps } from "./book-details.interface";
+import { useState } from "react";
+import TransitionsModal from "@/layouts/Modal/Modal";
+import CommentSection from "@/features/comment/CommentSection";
+import { extractUTCDate } from "@/helpers/dateToUTCDateString";
+import { constants } from "@/utils/constants/constants";
 
 const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description }: BookDetailsProps) => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     return (
-        <Background>
+        <>
             <Box p={1}>
-                <HomeLink href={'/home'}>  <IconContainer><IconTextTag /></IconContainer></HomeLink>
-                <Title variant="h6" align="center"> About Book</Title></Box>
+                
+                <Title variant="h6" align="center">{constants.BookDetails.ABOUT_BOOK_EN}</Title></Box>
             <BookDetailsContainer  >
                 <BookDetailsPaper elevation={2}>
                     <Grid container direction={'column'}>
@@ -24,16 +33,16 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
                                 <Typography variant="h4" fontWeight={'bold'}>{title}</Typography>
                                 <Stack direction={'row'} gap={2}>
                                     <AuthorName variant="body1">{author}</AuthorName>
-                                    <PublicationDate variant="body1">{publicationDate?.toDateString()}</PublicationDate>
+                                    <PublicationDate variant="body1">{extractUTCDate(publicationDate)}</PublicationDate>
                                 </Stack>
                                 <Stack direction={'row'} gap={2}>
-                                    <Rating readOnly value={2}></Rating>
+                                    <Rating readOnly value={rating as unknown as number}></Rating>
                                     <Typography variant="body2">{rating} ({numberofVotes})</Typography>
                                 </Stack>
                                 <Stack direction={'row'} gap={3}>
-                                    <IconicButton icon={<StyledDownloadForOfflineIcon />} text="Download" />
-                                    <IconicButton icon={<StyledLibraryAddIcon />} text="Add to wishlist" />
-                                    <IconicButton icon={<StyledReviewsIcon />} text="See Reviews" />
+                                    <IconicButton icon={<StyledDownloadForOfflineIcon />} text={constants.BookDetails.DOWNLOAD_EN} />
+                                    <IconicButton icon={<StyledLibraryAddIcon />} text={constants.BookDetails.ADD_TO_WISHLIST} />
+                                    <IconicButton onClick={handleOpen} icon={<StyledReviewsIcon />} text={constants.BookDetails.SEE_REVIEWS} />
                                 </Stack>
                                 <AboutBookContainer >
 
@@ -52,8 +61,10 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
 
 
                 </BookDetailsPaper>
+                <TransitionsModal open={open} handleOpen={handleOpen} handleClose={handleClose} content={<CommentSection/>}/>
+
             </BookDetailsContainer>
-        </Background>
+            </>
     )
 }
 

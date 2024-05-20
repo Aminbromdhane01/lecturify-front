@@ -8,10 +8,9 @@ import { Button } from "@mui/material";
 
 const AddBook = () => {
     return (
-        <Background>
-            <HomeLink href={'/home'}>  <IconContainer><IconTextTag /></IconContainer></HomeLink>
+        
             <HorizontalStepper steps={constants.BookForm.ADD_BOOK_FORM_STEPS} />
-        </Background>
+       
     );
 }
 export default withAuth(AddBook);

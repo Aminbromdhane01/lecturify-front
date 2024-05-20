@@ -21,15 +21,10 @@ interface Book {
 export const bookApi = createApi({
     reducerPath: 'books',
     baseQuery: baseQueryWithAuth, 
-    tagTypes: ['Book'],
+    tagTypes: ['Book' , 'BookById' , 'Wishlist' , 'GetBookByUserId'],
     endpoints: (builder) => ({
-        getBooks: builder.query<{data :Book[] , count : number}, { page?: number; itemPerPage?: number; keyword?: string }>({
-          query: ({ page = 0, itemPerPage = 3, keyword = '' }) =>
-            endpoints.ITEM_PER_PAGE_FILTER+itemPerPage+endpoints.PAGE_FILTER+page+endpoints.KEY_WORD_FILTER+keyword,
-          providesTags: ['Book'],
-        }),
         searchByTitle: builder.query<{data :Book[] , count : number}, { itemPerPage?: number; page?: number; keyword: string }>({
-          query: ({ page = 0, itemPerPage = 5, keyword }) =>
+          query: ({ page, itemPerPage, keyword }) =>
             `${endpoints.BOOK_SEARCH_TITLE}?itemPerPage=${itemPerPage}&page=${page}&keyword=${keyword}`,
           providesTags: ['Book'],
         }),
@@ -54,7 +49,29 @@ export const bookApi = createApi({
             },
             invalidatesTags: ['Book'],
         }),
+        getBookById: builder.query<Book, number>({
+          query: (id) => `${endpoints.BOOK_URL}/${id}`,
+          providesTags : ['BookById']
+         
+      }),
+      addToWishlist: builder.mutation<any, { userId: number; bookId: number }>({
+        query: ({ userId, bookId }) => ({
+            url: 'books/wishlist',
+            method: endpoints.POST_METHOD,
+            body: { userId, bookId },
+           
+            
+        } 
+      ), invalidatesTags : ['Wishlist']
+    }),
+    getBooksByUserId: builder.query<{data : Book[] , count : number}, {userId : number}>({
+      query: ({userId}) => ({
+        url: endpoints.GET_BOOK_BY_USERID_URL + userId,
+        method: endpoints.GET_METHOD, 
+      }),
+      providesTags: ['GetBookByUserId'], 
+    }),
     }),
 });
 
-export const { useGetBooksQuery, useCreateBookMutation , useSearchByTitleQuery } = bookApi;
+export const { useCreateBookMutation , useSearchByTitleQuery , useGetBookByIdQuery , useAddToWishlistMutation , useGetBooksByUserIdQuery } = bookApi;
