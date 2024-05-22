@@ -66,8 +66,8 @@ export const bookApi = createApi({
     }),
     getBooksByUserId: builder.query<{data : Book[] , count : number}, {userId : number}>({
       query: ({userId}) => ({
-        url: 'books/get/userId?userId=' + userId,
-        method: 'GET', 
+        url: endpoints.GET_BOOK_BY_USERID_URL + userId,
+        method: endpoints.GET_METHOD, 
       }),
       providesTags: ['GetBookByUserId'], 
     }),

@@ -1,3 +1,4 @@
+import { constants } from '@/utils/constants/constants'
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Stack } from '@mui/material'
 import React from 'react'
 
@@ -11,8 +12,8 @@ const GenderRadioButton = () => {
       name="radio-buttons-group"
     >
       <Stack direction={'row'} marginTop={2}>
-      <FormControlLabel value="female" control={<Radio />} label="Female" />
-      <FormControlLabel value="male" control={<Radio />} label="Male" />
+      <FormControlLabel value={constants.GenderRadioButton.FEMALE} control={<Radio />} label="Female" />
+      <FormControlLabel value={constants.GenderRadioButton.MALE} control={<Radio />} label="Male" />
       </Stack>
     </RadioGroup>
   </FormControl>

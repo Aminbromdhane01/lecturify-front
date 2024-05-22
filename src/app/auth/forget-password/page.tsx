@@ -1,12 +1,12 @@
 "use client"
-import ForgetPasswordCard from '@/features/auth/ForgetPasswordCard/ForgetPasswordCard'
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
+import { AuthCardType } from '@/layouts/AuthWrapper/auth-wrapper.enum'
 import AuthRedirect from '@/utils/loginRedirect'
 import React from 'react'
 
 const ForgetPassword = () => {
     return (
-        <AuthWrapper card={<ForgetPasswordCard />} />
+        <AuthWrapper card={AuthCardType.ForgetPassword} />
     )
 }
 

@@ -6,6 +6,7 @@ export const endpoints = {
     REFRESH_TOKEN_URL: '/auth/refresh',
     POST_METHOD: 'POST',
     PUT_METHOD: 'PUT',
+    GET_METHOD : 'GET',
     SIGNUP_VUE_URL: '/auth/signup',
     SIGNIN_VUE_URL: '/auth/login',
     HOME_VUE_URL : '/home',
@@ -20,7 +21,8 @@ export const endpoints = {
     ITEM_PER_PAGE_FILTER : '/books?itemPerPage=',
     PAGE_FILTER : '&page=',
     KEY_WORD_FILTER: '&keyword=',
-    BOOK_SEARCH_TITLE: '/books/search/title'
+    BOOK_SEARCH_TITLE: '/books/search/title',
+    GET_BOOK_BY_USERID_URL : 'books/get/userId?userId='
 
 
 }
