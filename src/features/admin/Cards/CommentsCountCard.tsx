@@ -1,6 +1,7 @@
 'use client'
 import { useLazyGetCommentsCountQuery } from '@/RTK/api/AdminApi';
 import AdminDashboardCard from '@/components/AdminDashboardCard/AdminDashboardCard'
+import { palette } from '@/theme/palette';
 import React, { useEffect } from 'react'
 
 const CommentsCountCard = () => {
@@ -10,7 +11,7 @@ const CommentsCountCard = () => {
     },[])
 
   return (
-    <AdminDashboardCard bgColor='#f9b115' value={data as number} title={'Total Comments'}/>
+    <AdminDashboardCard bgColor={palette.yellow} value={data as number} title={'Total Comments'}/>
   )
 }
 

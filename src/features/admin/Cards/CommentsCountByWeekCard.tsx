@@ -1,6 +1,7 @@
 'use client'
 import { useLazyGetCommentsAddedThisWeekCountQuery } from '@/RTK/api/AdminApi';
 import AdminDashboardCard from '@/components/AdminDashboardCard/AdminDashboardCard'
+import { palette } from '@/theme/palette';
 import React, { useEffect } from 'react'
 
 const CommentsCountByWeekCard = () => {
@@ -10,7 +11,7 @@ const CommentsCountByWeekCard = () => {
     },[])
 
   return (
-    <AdminDashboardCard bgColor='#e55353' value={data as number} title={'Total Comments This Week'}/>
+    <AdminDashboardCard bgColor={palette.lightRed} value={data as number} title={'Total Comments This Week'}/>
   )
 }
 

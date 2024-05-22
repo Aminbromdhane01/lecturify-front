@@ -76,7 +76,9 @@ export const constants = {
     },
     AdminDashboard :{
       COMMENT_PIE_CHART_TITLE : 'Distribution of Comment Sentiments',
-      BOOK_GENRE_CHART_TITLE : 'Distribution of Book Genres'
+      BOOK_GENRE_CHART_TITLE : 'Distribution of Book Genres',
+      LOADING_MESSAGE : 'Loading ...',
+      ERROR_DATA_MESSAGE : 'Error loading data'
 
     }
 
