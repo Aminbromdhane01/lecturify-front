@@ -73,6 +73,11 @@ export const constants = {
     GenderRadioButton : {
        MALE : 'Male',
        FEMALE : 'Female',
+    },
+    AdminDashboard :{
+      COMMENT_PIE_CHART_TITLE : 'Distribution of Comment Sentiments',
+      BOOK_GENRE_CHART_TITLE : 'Distribution of Book Genres'
+
     }
 
 

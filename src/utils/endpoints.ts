@@ -22,7 +22,12 @@ export const endpoints = {
     PAGE_FILTER : '&page=',
     KEY_WORD_FILTER: '&keyword=',
     BOOK_SEARCH_TITLE: '/books/search/title',
-    GET_BOOK_BY_USERID_URL : 'books/get/userId?userId='
-
-
+    GET_BOOK_BY_USERID_URL : 'books/get/userId?userId=',
+    ADMIN_TOTAL_BOOK_COUNT_URL : 'admin-statistics/get-total-books-count',
+    ADMIN_BOOKS_ADDED_THIS_WEEK_URL : 'admin-statistics/get-books-added-this-week',
+    ADMIN_COMMENTS_COUNT_URL : 'admin-statistics/get-comments-count',
+    ADMIN_COMMENTS_ADDED_THIS_WEEK_COUNT_URL : 'admin-statistics/get-comments-added-this-week-count',
+    ADMIN_BOOK_COUNT_BY_MONTH_URL : 'admin-statistics/get-books-count-by-month',
+    ADMIN_COMMENTS_COUNTS_BY_SENTIMENTS_URL : 'admin-statistics/get-comments-counts-by-sentiments',
+    ADMIN_BOOKS_GROUPED_BY_GENRE_URL : 'admin-statistics/get-books-grouped-by-genre'
 }

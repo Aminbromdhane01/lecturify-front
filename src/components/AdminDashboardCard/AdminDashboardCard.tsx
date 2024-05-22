@@ -6,16 +6,18 @@ import useCounter from '@/hooks/useCounter'
 
 interface AdminDashboardCardProps {
     bgColor : string
+    value : number 
+    title : string
 }
 
-const AdminDashboardCard = ({bgColor} : AdminDashboardCardProps) => {
-  const counter = useCounter(20 , 50)
+const AdminDashboardCard = ({bgColor , value , title  } : AdminDashboardCardProps) => {
+  const counter = useCounter(value , 50)
 
   return (
     <AdminPaper  elevation={1} color={bgColor}>
         <Stack>
         <AdminTypography variant='h4' fontSize={'bold'}>{counter}</AdminTypography>
-        <AdminTypography variant='body2' fontSize={'20px'} >title</AdminTypography>
+        <AdminTypography variant='body2' fontSize={'20px'} >{title}</AdminTypography>
         </Stack>
     </AdminPaper>
   )
