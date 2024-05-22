@@ -2,7 +2,7 @@ import { getAccessToken } from "@/helpers/getAccessToekn";
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseQuery = fetchBaseQuery({
-    baseUrl: "http://localhost:3000",
+    baseUrl: process.env.BASE_URL,
     prepareHeaders: (headers) => {
         const token = getAccessToken();
         if (token) {
