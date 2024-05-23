@@ -30,10 +30,10 @@ export default function RootLayout({
             <ThemeProvider theme={theme}>
 
                 <RtkProvider>
-                    <Background>
-                    <TopBar />
+              
+                   <Background>
                     {children}
-                    <CopyRightFooter />
+                   {/*<CopyRightFooter /> */} 
                     </Background>
                 </RtkProvider>
                 </ThemeProvider>
