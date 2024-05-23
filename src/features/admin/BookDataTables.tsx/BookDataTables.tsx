@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import DataGrid from "@/layouts/DataGrid/DataGrid";
 import { GridColDef } from '@mui/x-data-grid';
+import { constants } from '@/utils/constants/constants';
 
 const BookDataTables = () => {
     const [page, setPage] = useState<number>(0);
@@ -58,8 +59,8 @@ const BookDataTables = () => {
   
     return (
       <DataGrid
-        image={'/book-admin.svg'}
-        title="Books"
+        image={constants.AdminDashboard.BOOK_TABLE_IMAGE_URL}
+        title={constants.AdminDashboard.BOOK_TABLE_IMAGE_TITLE}
         rows={booksData}
         columns={columns}
         page={page}

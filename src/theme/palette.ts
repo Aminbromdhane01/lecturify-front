@@ -12,6 +12,8 @@ export const palette = {
     blueMagneta:'#5856d6',
     azure :'#3399ff',
     lightRed : '#e55353',
-    yellow :  '#f9b115'
+    yellow :  '#f9b115',
+    adminIconsColor :'#f3f4f7',
+    sidebarContainerColor :'#212631'
 };
 

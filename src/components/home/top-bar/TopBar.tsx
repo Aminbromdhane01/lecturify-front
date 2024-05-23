@@ -28,7 +28,6 @@ const TopBar = () => {
     const [icon , setIcon] = useState<string>('')
     const router = useRouter()
     const pathname = usePathname()
-    console.log(pathname);
     
 
     const setIconBasedOnPage = () => {

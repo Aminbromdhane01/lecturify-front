@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { getMonthName } from '@/helpers/getMonthName';
 import { useLazyGetBookCountByMonthQuery } from '@/RTK/api/AdminApi';
+import { constants } from '@/utils/constants/constants';
 
 
 const BookChart = () => {
@@ -20,7 +21,7 @@ const BookChart = () => {
    <Paper sx={{display : 'flex' , minHeight  : '400px'}}>
     <Stack direction={'row'}>
     <Box borderRadius={'50px'} position={'relative'} height={'50px'} width={'50px'}>
-     <Image src={'/stats_two.svg'}  alt='Stats Image' fill/>
+     <Image src={constants.AdminDashboard.BOOK_CHART_IMAGE_URL}  alt={constants.AdminDashboard.BOOK_CHART_IMAGE_ALT} fill/>
     </Box>
     <Typography variant='body1'fontWeight={'bold'} align='center' margin={1}>Title</Typography>
     </Stack>

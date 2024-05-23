@@ -7,26 +7,28 @@ import ListElement from '../ListItem/ListElement';
 import DatasetIcon from '@mui/icons-material/Dataset';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import AdminPanelSettingsRoundedIcon from '@mui/icons-material/AdminPanelSettingsRounded';
+import { SidebarContainer } from './Sidebar.style';
+import { IconType } from '../ListItem/list-elemnt-enum';
 
 const Sidebar = () => {
   return (
-    <Box sx={{ width: '100%' , height : '100%', backgroundColor : '#212631', color :'#f3f4f7' , display : 'flex' , flexDirection : 'column' , justifyContent :'space-between'}} role="presentation">
+    <SidebarContainer  role="presentation">
         <Box>
-      <ListElement text='Admin Dashboard' icon = {<AdminPanelSettingsRoundedIcon sx={{color : '#f3f4f7'}}/>} href='/admin-dashboard'></ListElement>
+      <ListElement text='Admin Dashboard' icon = {IconType.AdminPanelSettings} href='/admin-dashboard'></ListElement>
         <Divider sx={{color : 'white'}}/>
       <List>
-        <ListElement text='Data' icon = {<DatasetIcon sx={{color : '#f3f4f7'}}/>}  href='/admin-dashboard/data-tables/users-data-table'/>
-        <ListElement text='Charts' icon = {<QueryStatsIcon sx={{color : '#f3f4f7'}}/>} href='/admin-dashboard/stats'/>
+        <ListElement text='Data' icon = {IconType.Dataset}  href='/admin-dashboard/data-tables/users-data-table'/>
+        <ListElement text='Charts' icon = {IconType.QueryStats} href='/admin-dashboard/stats'/>
      </List>
      </Box>
      <Box>
       <List>
-        <ListElement text='Home' icon = {<HomeIcon sx={{color : '#f3f4f7'}}/>}  href='/admin-dashboard/data-tables/'/>
-        <ListElement text='Disconnect' icon = {<PowerSettingsNewIcon sx={{color : '#f3f4f7'}}/>} href='/admin-dashboard/stats'/>
+        <ListElement text='Home' icon = {IconType.HomeIcon}  href='/admin-dashboard/data-tables/'/>
+        <ListElement text='Disconnect' icon = {IconType.PowerSettingsNewIcon} href='/admin-dashboard/stats'/>
      </List>
      </Box>
       
-    </Box>
+    </SidebarContainer>
   )
 }
 

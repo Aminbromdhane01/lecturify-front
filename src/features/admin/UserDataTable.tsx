@@ -4,6 +4,7 @@ import { GridColDef } from "@mui/x-data-grid";
 import { isValidElement, useState } from "react";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { Rating, useMediaQuery } from "@mui/material";
+import { mockUsers } from "@/mocks/mockData";
 
 
 const UserDataTable: React.FC = () => {
@@ -20,44 +21,25 @@ const UserDataTable: React.FC = () => {
   
     let width = '100%'; 
   
-    if (isSmallScreen) {
-      width = '50%'; 
-    } else if (isMediumScreen) {
-      width = '70%'; 
-    } else if (isLargeScreen) {
-      width = '80%';
-    } else if (isExtraLargeScreen) {
-      width = '100%'; 
+    switch (true) {
+      case isSmallScreen:
+        width = '50%';
+        break;
+      case isMediumScreen:
+        width = '70%';
+        break;
+      case isLargeScreen:
+        width = '80%';
+        break;
+      case isExtraLargeScreen:
+        width = '100%';
+        break;
+      default:
+        width = '100%';
+        break;
     }
-  
     const USER_FIELDS: string[] = ['Image','LastName', 'FirstName', 'Role','Address', 'IsBanned', ];  
-    const usersData = [
-        {   id : 0 ,
-            Image: 'user1.jpg',
-            LastName: 'Doe',
-            FirstName: 'John',
-            Role: 'Admin',
-            Address: '123 Main St, Anytown',
-            IsBanned: false
-        },
-        {   id : 1,
-            Image: 'user2.jpg',
-            LastName: 'Smith',
-            FirstName: 'Alice',
-            Role: 'Moderator',
-            Address: '456 Elm St, Othertown',
-            IsBanned: true
-        },
-        {   id : 2 ,
-            Image: 'user3.jpg',
-            LastName: 'Johnson',
-            FirstName: 'Bob',
-            Role: 'User',
-            Address: '789 Oak St, Another Town',
-            IsBanned: false
-        },
-    ];
-  
+ 
     const columns: GridColDef[] = USER_FIELDS.map(field => ({
       field,
       headerName: field.charAt(0).toUpperCase() + field.slice(1),
@@ -78,7 +60,7 @@ const UserDataTable: React.FC = () => {
         
         image={'/user.svg'}
         title="Users"
-        rows={usersData}
+        rows={mockUsers}
         columns={columns}
         page={page}
         rowsPerPage={rowsPerPage}

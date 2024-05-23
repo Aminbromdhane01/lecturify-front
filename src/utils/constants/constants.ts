@@ -78,7 +78,13 @@ export const constants = {
       COMMENT_PIE_CHART_TITLE : 'Distribution of Comment Sentiments',
       BOOK_GENRE_CHART_TITLE : 'Distribution of Book Genres',
       LOADING_MESSAGE : 'Loading ...',
-      ERROR_DATA_MESSAGE : 'Error loading data'
+      ERROR_DATA_MESSAGE : 'Error loading data',
+      BOOK_CHART_IMAGE_URL : '/stats_two.svg',
+      BOOK_CHART_IMAGE_ALT : 'Stats Image',
+      BOOK_TABLE_IMAGE_URL : '/book-admin.svg',
+      BOOK_TABLE_IMAGE_TITLE : 'Books'
+      
+
 
     }
 
