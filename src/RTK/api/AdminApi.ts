@@ -1,18 +1,8 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { endpoints } from "@/utils/endpoints";
 import { baseQueryWithAuth } from "../BasequerywithAuth";
-interface BookCountByMonth {
-    month: string;
-    count: number;
-  }
-  interface CommentCountBySentiment {
-    sentiment: string;
-    count: number;
-  }
-  interface BookGroupedByGenre {
-    genre: string;
-    count: number;
-}  
+import { BookCountByMonth, BookGroupedByGenre, CommentCountBySentiment } from "./types/admin.api.types";
+  
 export const adminApi = createApi({
     reducerPath: 'admin',
     baseQuery: baseQueryWithAuth,

@@ -4,8 +4,8 @@ import { Grid, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import StyledSpan from './NoBooksFound.style'
 import { constants } from '@/utils/constants/constants'
+import { StyledSpan } from './NoBooksFound.style'
 
 const NoBooksFound = () => {
     const keyword = useSelector((state: RootState) => state.search.keyword); 

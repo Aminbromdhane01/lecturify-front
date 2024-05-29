@@ -76,7 +76,7 @@ export default function BookCard({ title, genre, date , id}: BookCardProps) {
                 </CardOverflow>
                 <CardContent>
                     <Typography level="title-md">
-                        <NonDecoratedLink href={'/book/'+id} >
+                        <NonDecoratedLink href={'/book/'+id}  >
                             {title}
                         </NonDecoratedLink>
                     </Typography>

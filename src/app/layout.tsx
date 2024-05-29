@@ -32,6 +32,7 @@ export default function RootLayout({
                 <RtkProvider>
               
                    <Background>
+                    <TopBar/>
                     {children}
                    {/*<CopyRightFooter /> */} 
                     </Background>

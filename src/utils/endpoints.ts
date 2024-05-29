@@ -29,5 +29,12 @@ export const endpoints = {
     ADMIN_COMMENTS_ADDED_THIS_WEEK_COUNT_URL : 'admin-statistics/get-comments-added-this-week-count',
     ADMIN_BOOK_COUNT_BY_MONTH_URL : 'admin-statistics/get-books-count-by-month',
     ADMIN_COMMENTS_COUNTS_BY_SENTIMENTS_URL : 'admin-statistics/get-comments-counts-by-sentiments',
-    ADMIN_BOOKS_GROUPED_BY_GENRE_URL : 'admin-statistics/get-books-grouped-by-genre'
+    ADMIN_BOOKS_GROUPED_BY_GENRE_URL : 'admin-statistics/get-books-grouped-by-genre',
+    RECOMMENDATION_URL : 'recommendation',
+    DELETE_METHOD : 'DELETE',
+    PATCH_METHOD : 'PATCH',
+    ESSAY_URL : 'essay',
+    GET_UNREVIEWED_ESSAY_URL : 'essay/unreviewed-essays',
+    GET_USER_ESSAY_URL : 'essay/user-essay'
+
 }

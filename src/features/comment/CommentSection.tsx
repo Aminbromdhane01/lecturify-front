@@ -1,11 +1,27 @@
+import { useGetCommentsByBookIdQuery } from '@/RTK/api/CommentApi';
 import Comment from '@/components/Comment/Comment'
 import { mockComment } from '@/mocks/mockData'
+import Loading from '@/pages/Laoding/Loading';
+import { constants } from '@/utils/constants/constants';
+import { Box, CircularProgress } from '@mui/material';
 import React from 'react'
+interface CommentSectionProps {
+  bookId : number
+}
 
-const CommentSection = () => {
+
+
+const CommentSection = ({bookId} : CommentSectionProps) => {
+  const { data: comments, isLoading, isError } = useGetCommentsByBookIdQuery(bookId);
+  console.log(comments);
+  
   return (
     <>
-    <Comment comment={mockComment}/>
+    {comments?.length == 0 && <Box>{constants.CommentsModule.NO_COMMENTS_MESSAGE}</Box>}
+    {isLoading && <CircularProgress/>}
+     {comments && comments.map(comment => (
+        <Comment key={comment.id} comment={comment.text} date={comment.createdAt as unknown as string} />
+      ))}
     </>
   )
 }

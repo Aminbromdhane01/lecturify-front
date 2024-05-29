@@ -12,7 +12,7 @@ import CommentSection from "@/features/comment/CommentSection";
 import { extractUTCDate } from "@/helpers/dateToUTCDateString";
 import { constants } from "@/utils/constants/constants";
 
-const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description }: BookDetailsProps) => {
+const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description , id}: BookDetailsProps) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -61,7 +61,7 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
 
 
                 </BookDetailsPaper>
-                <TransitionsModal open={open} handleOpen={handleOpen} handleClose={handleClose} content={<CommentSection/>}/>
+                <TransitionsModal open={open} handleOpen={handleOpen} handleClose={handleClose} content={"comment"} id={id}/>
 
             </BookDetailsContainer>
             </>

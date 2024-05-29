@@ -13,6 +13,8 @@ import SkeletonGrid from "@/layouts/SkeletonGrid/SkeletonGrid";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import { clearMessage, setMessage } from "@/RTK/slices/AlertSlice";
 import useAlert from "@/hooks/useAlert";
+import NoDataFound from "@/components/NoBooksFound/NoDataFound";
+import MainCard from "@/components/MainCard/MainCard";
 
 
 const BookPage = () => {
@@ -34,12 +36,14 @@ const BookPage = () => {
                         {books?.count == 0 && <NoBooksFound/>}
                         { isSuccess && books?.data.map((book)=> (
                         <Grid item xs={12} sm={6} md={4} lg={3}>
-                        <BookCard title={book.title as string} genre={book.genre as string} date={calculateTimeElapsed(book.date)} id={book.id as unknown as number} />
+                        <MainCard title={book.title as string} author={book.genre as string} time={calculateTimeElapsed(book.date)} id={book.id as unknown as number} />
                            </Grid>
                         ))}
                         {isLoading && 
                         <SkeletonGrid/>}
-                       
+                        {
+                            !books && !isLoading && <Box width={'100%'} display={'flex'} justifyContent={'center'}><NoDataFound/></Box>
+                        }
                         
                         
                         </Grid>}
