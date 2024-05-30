@@ -1,16 +1,16 @@
 'use client'
-import { CircularProgress, Grid, Stack, Typography } from "@mui/material"
+import { useForgetPasswordMutation } from "@/RTK/api/AuthApi";
+import ControlledAlert from "@/components/alert/ControllerdAlert";
+import useAlert from "@/hooks/useAlert";
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForgetPasswordMutation } from "@/RTK/api/AuthApi";
-import ControlledAlert from "@/components/Alert/ControllerdAlert";
-import useAlert from "@/hooks/useAlert";
 import { palette } from "@/theme/palette";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CircularProgress, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
-import { ForgetPassword } from "./forget-password.type";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { ForgetPasswordValuesSchema } from "./ForgetPasswordValidation";
+import { ForgetPassword } from "./forget-password.type";
 const ForgetPasswordCard = () => {
     const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<ForgetPassword>(
         { resolver: zodResolver(ForgetPasswordValuesSchema) }

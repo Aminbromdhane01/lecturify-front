@@ -1,7 +1,7 @@
 'use client'
-import React from 'react'
-import styles from './home.module.css'
 import BookPage from '@/components/BookPage/BookPage';
+import React from 'react';
+import styles from './home.module.css';
 const HomeLayout = (
     {
         children,

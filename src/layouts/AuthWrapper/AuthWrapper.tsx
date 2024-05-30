@@ -3,7 +3,7 @@ import { AnimatedCard } from "@/components/AnimatedCard/AnimatedCard"
 
 import { Grid } from "@mui/material"
 import React from "react"
-import { AuthElementsGrid, Container, CardGrid, LogoGrid } from "./AuthWrapper.styles"
+import { AuthElementsGrid, CardGrid, Container, LogoGrid } from "./AuthWrapper.styles"
 
 
 interface AuthWrapperChildren {
