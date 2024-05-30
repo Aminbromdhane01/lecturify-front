@@ -6,8 +6,8 @@ import React from 'react'
 
 const ForgetPassword = () => {
     return (
-        <AuthWrapper card={AuthCardType.ForgetPassword} />
+        <AuthWrapper card={"forget-password"} />
     )
 }
 
-export default AuthRedirect(ForgetPassword)
+export default ForgetPassword

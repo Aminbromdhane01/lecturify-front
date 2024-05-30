@@ -12,9 +12,10 @@ interface Book {
     pages: number |null | undefined;
     authorId?: number |null | undefined;
     description: string |null | undefined;
-    files: File | null | undefined;
+    files: File | null | undefined 
     filestwo : File | null | undefined;
-    date : Date | string | null | undefined;
+    date? : Date | string | null | undefined;
+    rating? : string |null | undefined;
     
 }
 

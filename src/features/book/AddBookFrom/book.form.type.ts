@@ -6,6 +6,6 @@ export type BookFormOneType = {
 }
 export type BookFormTwoType = {
     description: string
-    cover: File
-    content: File
+    cover: File[]
+    content: File[]
 }

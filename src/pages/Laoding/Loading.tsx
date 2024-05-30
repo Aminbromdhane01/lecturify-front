@@ -1,12 +1,11 @@
 import React from 'react';
-import { CircularProgress, } from '@mui/material';
-import { Container } from './Loading.style';
+import { Box, CircularProgress, } from '@mui/material';
 
 const Loading = () => {
   return (
-    <Container>
+    <Box display={'flex'} justifyContent={'center'} alignItems={'center'} height={'100vh'}>
       <CircularProgress size={100} thickness={4} />
-    </Container>
+    </Box>
   );
 };
 

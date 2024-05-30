@@ -4,10 +4,10 @@ import "./globals.css";
 import RtkProvider from "@/RTK/Provider";
 import CopyRightFooter from "@/components/CopyRightFooter/CopyRightFooter";
 import TopBar from "@/components/home/top-bar/TopBar";
-import { Background } from "@/pages/BookDeatails/BookDetails.style";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "@/theme/muiTheme";
 import { ThemeProvider as JoyProvider } from "@mui/joy";
+import { Background } from "@/components/Book/Book.style";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,8 +30,9 @@ export default function RootLayout({
             <ThemeProvider theme={theme}>
 
                 <RtkProvider>
-              
+                   
                    <Background>
+                    <TopBar/>
                     {children}
                    {/*<CopyRightFooter /> */} 
                     </Background>
