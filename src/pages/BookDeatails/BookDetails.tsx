@@ -18,6 +18,7 @@ export interface BookDetailsProps {
     rating: string;
     numberofVotes: number;
     description: string;
+    id? : number
 }
 
 const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description , id}: BookDetailsProps) => {

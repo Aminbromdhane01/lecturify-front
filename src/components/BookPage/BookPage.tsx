@@ -14,6 +14,7 @@ import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import { clearMessage, setMessage } from "@/RTK/slices/AlertSlice";
 import useAlert from "@/hooks/useAlert";
 import { BookPagePaper } from "@/components/Book/Book.style";
+import MainCard from "../MainCard/MainCard";
 
 
 const BookPage = () => {
@@ -35,7 +36,7 @@ const BookPage = () => {
                         {books?.count == 0 && <NoBooksFound/>}
                         { isSuccess && books?.data.map((book)=> (
                         <Grid item xs={12} sm={6} md={4} lg={3}>
-                        <BookCard title={book.title as string} genre={book.genre as string} date={calculateTimeElapsed(book.date)} id={book.id as unknown as number} />
+                        <MainCard title={book.title as string} author={book.genre as string} time={calculateTimeElapsed(book.date)} id={book.id as unknown as number} description={book.description as string} />
                            </Grid>
                         ))}
                         {isLoading && 
