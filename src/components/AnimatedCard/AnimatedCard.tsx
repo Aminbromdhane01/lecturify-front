@@ -7,7 +7,7 @@ import { AuthCardType } from "@/layouts/AuthWrapper/auth-wrapper.enum";
 import LoginCard from "@/features/auth/LoginCard/LoginCard";
 import SingUpCard from "@/features/auth/SignupCard/SignUpCard";
 import ResetPasswordCard from "@/features/auth/ResetPasswordCard/ResetPasswordCard";
-import ForgetPasswordCard from "@/features/auth/forgetPasswordCard/ForgetPasswordCard";
+import ForgetPasswordCard from "@/features/auth/ForgetPasswordCard/ForgetPasswordCard";
 
 interface AnimatedCardProps {
     card: string

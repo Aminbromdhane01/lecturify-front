@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface SearchState {
-    keyword: string | null;
+    keyword: string
 }
 
 export const initialSearchState: SearchState = {
@@ -16,7 +16,7 @@ const searchSlice = createSlice({
             state.keyword = action.payload;
         },
         clearSearchKeyword(state) {
-            state.keyword = null;
+            state.keyword = '';
         },
     },
 });

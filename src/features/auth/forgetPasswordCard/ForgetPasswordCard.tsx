@@ -2,15 +2,15 @@
 import { CircularProgress, Grid, Stack, Typography } from "@mui/material"
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
-import { ForgetPassword } from "./forget-password.type";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ForgetPasswordValuesSchema } from "./ForgetPasswordValidation";
 import { useForgetPasswordMutation } from "@/RTK/api/AuthApi";
 import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import useAlert from "@/hooks/useAlert";
 import { palette } from "@/theme/palette";
 import Image from "next/image";
+import { ForgetPassword } from "./forget-password.type";
+import { ForgetPasswordValuesSchema } from "./ForgetPasswordValidation";
 const ForgetPasswordCard = () => {
     const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<ForgetPassword>(
         { resolver: zodResolver(ForgetPasswordValuesSchema) }

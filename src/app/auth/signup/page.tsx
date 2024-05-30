@@ -7,8 +7,8 @@ import React from 'react'
 
 const SignUp = () => {
     return (
-        <AuthWrapper card={AuthCardType.Signup} />
+        <AuthWrapper card={'signup'} />
     )
 }
 
-export default AuthRedirect(SignUp)
+export default SignUp

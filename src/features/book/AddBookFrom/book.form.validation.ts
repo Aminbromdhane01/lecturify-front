@@ -13,7 +13,7 @@ export const bookValidationSchema = z.object({
 });
 export const bookValidationFormTwoSchema = z.object({
     description: z.string().min(1, { message: constants.BookForm.DESCRIPTION_IS_REQUIRED_MESSAGE }),
-    cover: z
+    /*cover: z
         .instanceof(FileList || null)
         .optional()
         .refine((file) => {
@@ -31,5 +31,5 @@ export const bookValidationFormTwoSchema = z.object({
         .refine((file) => {
             if (file)
                 return constants.BookForm.PDF_TYPE.includes(file[0].type);
-        }, constants.BookForm.PDF_TYPE_MESSAGE),
+        }, constants.BookForm.PDF_TYPE_MESSAGE),*/
 });

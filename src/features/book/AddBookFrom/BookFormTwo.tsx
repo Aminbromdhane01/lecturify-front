@@ -33,11 +33,11 @@ const BookFormTwo = ({ previousStep }: FormBookTwoProps) => {
     const dispatch = useDispatch();
     const bookSlice = useSelector((state: RootState) => state.book);
     const onSubmit: SubmitHandler<BookFormTwoType> = async (data) => {
-        dispatch(setBook({ description: data.description, files : data.content, content: data.content }))
+        dispatch(setBook({ description: data.description, files : data.content[0], content: data.content[0] }))
         
-        
-       await createBook({description : data.description ,pages :bookSlice.pages , files : data.content[0] , userId : decodeAccesToken().sub , genre :bookSlice.genre , title : bookSlice.title , filestwo : data.cover[0] })
-     
+       
+       await createBook({description : data.description ,pages :bookSlice.pages , files : data.content[0]  , userId : decodeAccesToken().sub , genre :bookSlice.genre , title : bookSlice.title , filestwo : data.cover[0] })//
+       
 
     }
    
