@@ -1,9 +1,33 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { endpoints } from "@/utils/endpoints";
 import { baseQueryWithAuth } from "../BasequerywithAuth";
-import { LoginType } from "@/features/auth/loginCard/login.type";
-import { AuthResponse, PasswordUpdateResponse, ResetPasswordData, UserData, forgetPasswordData } from "./types/auth-api.types";
+import { LoginType } from "@/features/auth/LoginCard/login.type";
 
+interface UserData {
+    email: string;
+    password: string;
+    lastname: string;
+    firstname: string;
+}
+
+interface AuthResponse {
+    accessToken: string;
+    refreshToken: string;
+    userId: string;
+    fullName: string;
+    email: string;
+}
+interface ResetPasswordData {
+    token: string;
+    password: string;
+    confirmPassword: string;
+}
+interface forgetPasswordData {
+    email: string;
+}
+interface PasswordUpdateResponse {
+    message: string;
+}
 
 
 export const authApi = createApi({ //authApi instead of slice 

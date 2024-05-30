@@ -104,4 +104,8 @@ export const HomeLink = styled(Link)(({ theme }) => ({
 
 
 }))
-
+export const BookPagePaper = styled(Paper)(({ theme }) => ({
+    width : '90%',
+    padding : '10px',
+    backgroundColor : palette.lightGrey
+}));

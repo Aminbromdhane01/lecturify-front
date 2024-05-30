@@ -3,14 +3,22 @@ import BookImage from "@/components/BookImage/BookImage"
 import CardButton from "@/components/CardButton/CardButton"
 import { Box, Grid, Rating, Stack, Typography } from "@mui/material"
 import IconicButton from "@/components/IconicButton/IconicButton";
-import { AboutBookContainer, AuthorName, Background, BookDetailsContainer, BookDetailsPaper, BookInfoContainer, ButtonGrid, HomeLink, IconContainer, PublicationDate, StyledDownloadForOfflineIcon, StyledLibraryAddIcon, StyledReviewsIcon, Title } from "./BookDetails.style";
 import IconTextTag from "@/components/IconTextTag/IconTextTag";
-import { BookDetailsProps } from "./book-details.interface";
 import { useState } from "react";
 import TransitionsModal from "@/layouts/Modal/Modal";
 import CommentSection from "@/features/comment/CommentSection";
 import { extractUTCDate } from "@/helpers/dateToUTCDateString";
 import { constants } from "@/utils/constants/constants";
+import { AboutBookContainer, AuthorName, BookDetailsContainer, BookDetailsPaper, BookInfoContainer, ButtonGrid, StyledDownloadForOfflineIcon, StyledLibraryAddIcon, StyledReviewsIcon, Title } from "@/components/Book/Book.style";
+import { PublicationDate } from "@/components/BookInfo/BookInfo.style";
+export interface BookDetailsProps {
+    author: string;
+    title: string;
+    publicationDate: string;
+    rating: string;
+    numberofVotes: number;
+    description: string;
+}
 
 const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description , id}: BookDetailsProps) => {
     const [open, setOpen] = useState(false);
