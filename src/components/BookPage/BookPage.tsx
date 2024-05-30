@@ -1,20 +1,16 @@
 'use client'
-import BookCard from "@/layouts/Card/Card";
-import { Box, Button, Grid, Paper, Typography } from "@mui/material";
-import Stack from '@mui/material/Stack';
-import Pagination from '@mui/material/Pagination';
 import { useSearchByTitleQuery } from "@/RTK/api/BookApi";
-import { useEffect, useState } from "react";
-import { calculateTimeElapsed } from "@/helpers/calculateDate";
-import { useSelector } from 'react-redux'
 import { RootState } from "@/RTK/store";
-import NoBooksFound from "@/components/NoBooksFound/NoBooksFound";
-import SkeletonGrid from "@/layouts/SkeletonGrid/SkeletonGrid";
-import ControlledAlert from "@/components/Alert/ControllerdAlert";
-import { clearMessage, setMessage } from "@/RTK/slices/AlertSlice";
-import useAlert from "@/hooks/useAlert";
 import { BookPagePaper } from "@/components/Book/Book.style";
-import MainCard from "../MainCard/MainCard";
+import NoBooksFound from "@/components/NoBooksFound/NoBooksFound";
+import { calculateTimeElapsed } from "@/helpers/calculateDate";
+import BookCard from "@/layouts/Card/Card";
+import SkeletonGrid from "@/layouts/SkeletonGrid/SkeletonGrid";
+import { Box, Grid } from "@mui/material";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import { useState } from "react";
+import { useSelector } from 'react-redux';
 
 
 const BookPage = () => {
@@ -36,7 +32,7 @@ const BookPage = () => {
                         {books?.count == 0 && <NoBooksFound/>}
                         { isSuccess && books?.data.map((book)=> (
                         <Grid item xs={12} sm={6} md={4} lg={3}>
-                        <MainCard title={book.title as string} author={book.genre as string} time={calculateTimeElapsed(book.date)} id={book.id as unknown as number} description={book.description as string} />
+                        <BookCard title={book.title as string} genre={book.genre as string} date={calculateTimeElapsed(book.date)} id={book.id as unknown as number} />
                            </Grid>
                         ))}
                         {isLoading && 
