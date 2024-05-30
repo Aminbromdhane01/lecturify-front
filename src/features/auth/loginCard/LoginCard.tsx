@@ -1,28 +1,28 @@
 'use client'
 
-import { CircularProgress, Grid, IconButton, InputAdornment, OutlinedInput, Stack, Typography } from "@mui/material"
-import { useState } from "react"
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useLoginMutation } from "@/RTK/api/AuthApi";
+import { setUser } from "@/RTK/slices/UserSlice";
+import AccountCheckMessage from "@/components/AccountCheckMessage/AccountCheckMessage";
+import ControlledAlert from "@/components/alert/ControllerdAlert";
+import LoginOptions from "@/components/loginOptions/LoginOptions";
+import { setTokens } from "@/helpers/setToken";
+import useAlert from "@/hooks/useAlert";
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
-import Link from "next/link";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useLoginMutation } from "@/RTK/api/AuthApi";
-import { redirect, useRouter } from "next/navigation";
-import ControlledAlert from "@/components/Alert/ControllerdAlert";
 import { palette } from "@/theme/palette";
-import LoginOptions from "@/components/loginOptions/LoginOptions";
-import AccountCheckMessage from "@/components/AccountCheckMessage/AccountCheckMessage";
+import { endpoints } from "@/utils/endpoints";
+import { zodResolver } from "@hookform/resolvers/zod";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { CircularProgress, Grid, IconButton, InputAdornment, Stack, Typography } from "@mui/material";
+import Image from "next/image";
+import Link from "next/link";
+import { redirect, useRouter } from "next/navigation";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { loginValuesSchema } from "./LoginValidation";
 import { LoginType } from "./login.type";
-import { endpoints } from "@/utils/endpoints";
-import useAlert from "@/hooks/useAlert";
-import { setTokens } from "@/helpers/setToken";
-import Image from "next/image";
-import { useDispatch } from "react-redux";
-import { setUser } from "@/RTK/slices/UserSlice";
 
 const LoginCard = () => {
 

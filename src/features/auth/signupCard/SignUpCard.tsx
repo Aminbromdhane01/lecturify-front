@@ -1,24 +1,24 @@
 'use client'
 
-import { CircularProgress, Grid, IconButton, InputAdornment, Stack, Typography } from "@mui/material"
-import { useState } from "react"
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useSignupMutation } from "@/RTK/api/AuthApi";
+import { setUser } from "@/RTK/slices/UserSlice";
+import ControlledAlert from "@/components/alert/ControllerdAlert";
+import { setTokens } from "@/helpers/setToken";
+import useAlert from "@/hooks/useAlert";
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";
 import { palette } from "@/theme/palette";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { CircularProgress, Grid, IconButton, InputAdornment, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useSignupMutation } from "@/RTK/api/AuthApi";
-import ControlledAlert from "@/components/Alert/ControllerdAlert";
+import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { signupValuesSchema } from "./SignupValidation";
 import { SignupType } from "./signup.type";
-import { setTokens } from "@/helpers/setToken";
-import useAlert from "@/hooks/useAlert";
-import { useDispatch } from "react-redux";
-import { setUser } from "@/RTK/slices/UserSlice";
-import Image from "next/image";
 
 
 const SingUpCard = () => {

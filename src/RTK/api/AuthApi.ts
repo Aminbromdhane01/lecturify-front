@@ -1,7 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { LoginType } from "@/features/auth/loginCard/login.type";
 import { endpoints } from "@/utils/endpoints";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithAuth } from "../BasequerywithAuth";
-import { LoginType } from "@/features/auth/LoginCard/login.type";
 
 interface UserData {
     email: string;
