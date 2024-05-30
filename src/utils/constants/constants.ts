@@ -86,7 +86,21 @@ export const constants = {
       
 
 
-    }
+    },
+    RecommandationModule : {
+        MEN_VOICE_IMAAGE_URL : 'https://static.vecteezy.com/system/resources/previews/024/183/502/original/male-avatar-portrait-of-a-young-man-with-a-beard-illustration-of-male-character-in-modern-color-style-vector.jpg',
+        WOMEN_VOICE_IMAGE_URL : 'https://static.vecteezy.com/system/resources/previews/002/002/297/non_2x/beautiful-woman-avatar-character-icon-free-vector.jpg',
+        RECOMMANDATION_CARD_URL : 'https://thumbs.dreamstime.com/b/old-book-flying-letters-magic-light-background-bookshelf-library-ancient-books-as-symbol-knowledge-history-218640948.jpg'
+    },
+    EssayModule : {
+        FAILED_TO_COMMUNICATE_WITH_AZURE_MESSAGE:'Failed to communicate with the Azure OpenAI API',
+        WELCOME_MESSAGE : 'Welcome to Lecturify',
+        TITLE_IS_REQUIRED : 'Title is required',
+        TITLE_LENGTH_MESSAGE : 'Title must be less than 100 characters'
 
+    },
+    CommentsModule : {
+        NO_COMMENTS_MESSAGE : 'Be the first to comment! There are currently no comments.'
+    }
 
 }

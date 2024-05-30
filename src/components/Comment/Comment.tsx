@@ -1,3 +1,4 @@
+import { extractUTCDate } from '@/helpers/dateToUTCDateString';
 import { palette } from '@/theme/palette'
 import { Box, Button, Grid, Typography } from '@mui/material'
 import Image from 'next/image'
@@ -23,7 +24,7 @@ const Comment = ({comment , image , username , date} : commentProps) => {
         <Grid container pr={1} justifyContent={'center'} alignItems={'center'}>
           <Grid item xs ={1}><Image src={image as string} height={40} width={40} alt='photo comment' style={{borderRadius : '50px'}} /></Grid>
           <Grid item xs={9}><Typography variant='body1' fontWeight={'bold'} color={palette.skyBlueText}>{username}</Typography></Grid>
-          <Grid item xs={2}><Typography align='right' variant='body2' fontWeight={'bold'} color={palette.greyText}>{date}</Typography></Grid>
+          <Grid item xs={2}><Typography align='right' variant='body2' fontWeight={'bold'} color={palette.greyText}>{extractUTCDate(date as string)}</Typography></Grid>
         </Grid>
         <Grid container >
            <Grid item xs={1}></Grid>

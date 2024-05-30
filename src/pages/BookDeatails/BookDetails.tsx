@@ -18,9 +18,10 @@ export interface BookDetailsProps {
     rating: string;
     numberofVotes: number;
     description: string;
+    id? : number
 }
 
-const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description }: BookDetailsProps) => {
+const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description , id}: BookDetailsProps) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -69,7 +70,7 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
 
 
                 </BookDetailsPaper>
-                <TransitionsModal open={open} handleOpen={handleOpen} handleClose={handleClose} content={<CommentSection/>}/>
+                <TransitionsModal open={open} handleOpen={handleOpen} handleClose={handleClose} content={"comment"} id={id}/>
 
             </BookDetailsContainer>
             </>

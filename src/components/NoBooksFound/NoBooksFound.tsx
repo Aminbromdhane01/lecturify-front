@@ -5,7 +5,7 @@ import Image from 'next/image'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { constants } from '@/utils/constants/constants'
-import StyledSpan from './NoBooksFound.style'
+import { StyledSpan } from './NoBooksFound.style'
 
 const NoBooksFound = () => {
     
