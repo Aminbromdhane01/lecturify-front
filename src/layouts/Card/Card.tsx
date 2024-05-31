@@ -1,7 +1,7 @@
 'use client'
 import { useAddToWishlistMutation } from '@/RTK/api/BookApi';
 import { NonDecoratedLink } from '@/components/IconicButton/IconButton.style';
-import ControlledAlert from '@/components/alert/ControllerdAlert';
+import ControlledAlert from '@/components/ControlledAlert/ControllerdAlert';
 import ControlledRating from '@/components/home/book/rating/ControlledRating';
 import { decodeAccesToken } from '@/helpers/decodedAceesToken';
 import useAlert from '@/hooks/useAlert';

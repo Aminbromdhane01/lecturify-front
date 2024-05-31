@@ -1,6 +1,6 @@
 "use client"
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
-import AuthRedirect from '@/utils/loginRedirect'
+import AuthRedirect from '@/utils/AuthRedirect'
 
 
 const ResetPassword = ({ params }: { params: { token: string } }) => {

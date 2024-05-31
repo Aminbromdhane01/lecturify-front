@@ -1,5 +1,6 @@
 'use client'
 import WishListDataTable from '@/features/wishlist/WishListDataTable'
+import WithAuth from '@/utils/WithAuth'
 import { Box } from '@mui/material'
 import React from 'react'
 
@@ -11,4 +12,4 @@ const WishList = () => {
   )
 }
 
-export default WishList
+export default WithAuth(WishList)

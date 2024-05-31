@@ -1,9 +1,11 @@
+'use client'
+import WithAuth from '@/utils/WithAuth'
 import React from 'react'
 
-const page = () => {
+const Home = () => {
     return (
         <></>
     )
 }
 
-export default page
+export default WithAuth(Home)

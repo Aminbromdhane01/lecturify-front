@@ -42,7 +42,9 @@ export const constants = {
         PROFILE_EN : 'Profile',
         WISHLIST_EN : 'Wishlist',
         ADD_BOOK_EN : 'Add New Book',
-        SETTINGS_EN : 'Settings'
+        SETTINGS_EN : 'Settings',
+        ESSAY_EN : 'Write Your essay',
+        RECOMMANDATION_EN : 'AI Recommandation'
     },
     TopBar : {
        BACK: 'Back',

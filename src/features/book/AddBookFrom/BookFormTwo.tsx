@@ -3,7 +3,7 @@ import { useCreateBookMutation } from '@/RTK/api/BookApi';
 import { setBook } from '@/RTK/slices/BookSlice';
 import { RootState } from '@/RTK/store';
 import MultiStepController from '@/components/MultiStepController/MultiStepController';
-import ControlledAlert from '@/components/alert/ControllerdAlert';
+import ControlledAlert from '@/components/ControlledAlert/ControllerdAlert';
 import { bookValidationFormTwoSchema } from '@/features/book/AddBookFrom/book.form.validation';
 import { decodeAccesToken } from '@/helpers/decodedAceesToken';
 import useAlert from '@/hooks/useAlert';

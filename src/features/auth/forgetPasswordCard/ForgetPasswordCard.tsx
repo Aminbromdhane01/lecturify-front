@@ -1,6 +1,6 @@
 'use client'
 import { useForgetPasswordMutation } from "@/RTK/api/AuthApi";
-import ControlledAlert from "@/components/alert/ControllerdAlert";
+import ControlledAlert from "@/components/ControlledAlert/ControllerdAlert";
 import useAlert from "@/hooks/useAlert";
 import ActionButton from "@/layouts/Button/ActionButton";
 import Input from "@/layouts/Input/Input";

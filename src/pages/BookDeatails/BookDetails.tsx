@@ -11,6 +11,8 @@ import { extractUTCDate } from "@/helpers/dateToUTCDateString";
 import { constants } from "@/utils/constants/constants";
 import { AboutBookContainer, AuthorName, BookDetailsContainer, BookDetailsPaper, BookInfoContainer, ButtonGrid, StyledDownloadForOfflineIcon, StyledLibraryAddIcon, StyledReviewsIcon, Title } from "@/components/Book/Book.style";
 import { PublicationDate } from "@/components/BookInfo/BookInfo.style";
+import { EssaysListContainer } from "@/components/Essays/Essays.style";
+import { BookInformationsContainer } from "@/components/BookPage/BookPage.style";
 export interface BookDetailsProps {
     author: string;
     title: string;
@@ -26,7 +28,7 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     return (
-        <>
+        <BookInformationsContainer>
             <Box p={1}>
                 
                 <Title variant="h6" align="center">{constants.BookDetails.ABOUT_BOOK_EN}</Title></Box>
@@ -73,7 +75,7 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
                 <TransitionsModal open={open} handleOpen={handleOpen} handleClose={handleClose} content={"comment"} id={id}/>
 
             </BookDetailsContainer>
-            </>
+            </BookInformationsContainer>
     )
 }
 

@@ -2,10 +2,11 @@
 import AdminTopBar from '@/components/AdminTopbar/AdminTopBar'
 import CommentSentimentPieChart from '@/components/CommentSentimentPieChart/CommentSentimentPieChart'
 import BookGenreChart from '@/components/booksGenreChart/BookGenreChart'
+import WithAdminAuth from '@/utils/WithAdminAuth'
 import { Grid } from '@mui/material'
 import React from 'react'
 
-const page = () => {
+const AdminStats = () => {
   return (
     <Grid container spacing={2} justifyContent={'center'}  >
      <Grid item xs ={12}><AdminTopBar/></Grid>
@@ -15,5 +16,5 @@ const page = () => {
   )
 }
 
-export default page
+export default WithAdminAuth(AdminStats)
    

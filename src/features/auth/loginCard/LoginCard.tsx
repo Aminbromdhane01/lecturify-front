@@ -3,7 +3,6 @@
 import { useLoginMutation } from "@/RTK/api/AuthApi";
 import { setUser } from "@/RTK/slices/UserSlice";
 import AccountCheckMessage from "@/components/AccountCheckMessage/AccountCheckMessage";
-import ControlledAlert from "@/components/alert/ControllerdAlert";
 import LoginOptions from "@/components/loginOptions/LoginOptions";
 import { setTokens } from "@/helpers/setToken";
 import useAlert from "@/hooks/useAlert";
@@ -22,14 +21,15 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { loginValuesSchema } from "./LoginValidation";
-import { LoginType } from "./login.type";
+import ControlledAlert from "@/components/ControlledAlert/ControllerdAlert";
+import { Login } from "@/features/auth/LoginCard/login.type";
 
 const LoginCard = () => {
 
 
     const handleClickShowPassword = () => { setShowPassword(!showPassword) }
     const [showPassword, setShowPassword] = useState(false)
-    const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<LoginType>(
+    const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<Login>(
         { resolver: zodResolver(loginValuesSchema) }
     )
     const router = useRouter();
@@ -37,7 +37,7 @@ const LoginCard = () => {
 
 
     const [loginMutation, { data: response, isLoading, isError, isSuccess, error }] = useLoginMutation();
-    const onSubmit: SubmitHandler<LoginType> = async (data) => {
+    const onSubmit: SubmitHandler<Login> = async (data) => {
         await loginMutation(data);
     }
     if (isSuccess) {
@@ -47,7 +47,11 @@ const LoginCard = () => {
             dispatch(setUser({ userId: response.userId, email: response.email, fullName: response.fullName }))
 
             setTokens({ accessToken: response?.accessToken, refreshToken: response?.refreshToken })
-            redirect('/home')
+            if (response.role === 'ADMIN') {
+                redirect('/admin-dashboard');
+            } else {
+                redirect('/home');
+            }
         }
 
     }

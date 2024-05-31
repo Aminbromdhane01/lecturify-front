@@ -59,6 +59,8 @@ const MyBooksData: React.FC = () => {
         onRowsPerPageChange={handleChangeRowsPerPage}
         handleDeleteClick={handleDeleteClick}
         loading={isLoading}
+        width="100%"
+        
       />
     );
   };

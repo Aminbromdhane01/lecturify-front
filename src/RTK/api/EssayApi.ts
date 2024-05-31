@@ -2,12 +2,13 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithAuth } from "../BasequerywithAuth";
 import { endpoints } from "@/utils/endpoints";
 import { CreateEssayDto, Essay, UpdateEssayDto } from "./types/essay-api.types";
+import { number } from "zod";
 
 
 export const essayApi = createApi({
     reducerPath: 'essays',
     baseQuery: baseQueryWithAuth,
-    tagTypes: ['Essay', 'UnreviewedEssays', 'UserEssay' , 'DeleteEssay' , 'UpdateEssay'],
+    tagTypes: ['Essay', 'UnreviewedEssays', 'UserEssay' , 'DeleteEssay' , 'UpdateEssay' , 'GetEssay'],
     endpoints: (builder) => ({
         createEssay: builder.mutation<Essay, CreateEssayDto>({
             query: (createEssayDto) => ({
@@ -32,14 +33,19 @@ export const essayApi = createApi({
             }),
             invalidatesTags: ['UpdateEssay'],
         }),
-        getUnreviewedEssays: builder.query<Essay[], void>({
-            query: () => endpoints.GET_UNREVIEWED_ESSAY_URL,
+        getUnreviewedEssays: builder.query<{essays :Essay[] , total : number}, { itemPerPage?: number; page?: number}>({
+            query: ({ page, itemPerPage }) => `${endpoints.GET_UNREVIEWED_ESSAY_URL}?page=${page}&itemPerPage=${itemPerPage}`,
             providesTags: ['UnreviewedEssays'],
         }),
         getUserEssay: builder.query<Essay[], number>({
             query: (userId) => `${endpoints.GET_USER_ESSAY_URL}/${userId}`,
             providesTags: ['UserEssay']
         }),
+        getEssayById: builder.query<Essay, number>({
+            query: (essayId) => `${endpoints.GET_ESSAY_URL}/${essayId}`,
+            providesTags: ['GetEssay']
+        }),
+        
     }),
 });
 
@@ -47,6 +53,7 @@ export const {
     useCreateEssayMutation,
     useDeleteEssayMutation,
     useUpdateEssayMutation,
-    useGetUnreviewedEssaysQuery,
+    useLazyGetUnreviewedEssaysQuery,
     useGetUserEssayQuery,
+    useLazyGetEssayByIdQuery,
 } = essayApi;

@@ -11,7 +11,7 @@ export const endpoints = {
     SIGNIN_VUE_URL: '/auth/login',
     HOME_VUE_URL : '/home',
     PROFILE_VUE_URL : '/profile',
-    ADD_BOOK_VUE_URL : 'book/add',
+    ADD_BOOK_VUE_URL : '/book/add',
     WISH_LIST_VUE_URL : '/wishlist',
     EDIT_PROFILE_VUE_URL : '/profile/edit',
     BOOK_DETAILS_VUE_URL_START_WITH : '/book/',
@@ -35,6 +35,14 @@ export const endpoints = {
     PATCH_METHOD : 'PATCH',
     ESSAY_URL : 'essay',
     GET_UNREVIEWED_ESSAY_URL : 'essay/unreviewed-essays',
-    GET_USER_ESSAY_URL : 'essay/user-essay'
+    GET_USER_ESSAY_URL : 'essay/user-essay',
+    GET_ESSAY_URL : 'essay/get-essay',
+    ESSAY_VUE_URL : '/essay',
+    ESSAY_LIST_URL : '/essay/list',
+    ESSAY_DETAILS_STARTS_WITH :'/essay/one',
+    ESSAY_DETAILS_REGEX : /\/essay\/one\/./,
+    BOOK_DETAILS_REGEX : /\/book\/./,
+    RECOMMANDATION_VUE_URL : '/recommandation',
+    REVIEW_URL : '/review'
 
 }

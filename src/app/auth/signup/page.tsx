@@ -1,5 +1,6 @@
 "use client"
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
+import AuthRedirect from '@/utils/AuthRedirect'
 
 const SignUp = () => {
     return (
@@ -7,4 +8,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default AuthRedirect(SignUp)
