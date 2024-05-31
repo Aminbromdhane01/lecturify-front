@@ -1,14 +1,15 @@
-import AdminDashboardCard from '@/components/AdminDashboardCard/AdminDashboardCard'
+'use client'
 import AdminTopBar from '@/components/AdminTopbar/AdminTopBar'
 import BookChart from '@/components/BookChart/BookChart'
 import BookCountByWeekCard from '@/features/admin/Cards/BookCountByWeekCard'
 import BooksCountCard from '@/features/admin/Cards/BooksCountCard'
 import CommentsCountByWeekCard from '@/features/admin/Cards/CommentsCountByWeekCard'
 import CommentsCountCard from '@/features/admin/Cards/CommentsCountCard'
+import WithAdminAuth from '@/utils/WithAdminAuth'
 import { Grid } from '@mui/material'
 import React from 'react'
 
-const page = () => {
+const AdminDashboard = () => {
   return (
     <Grid container spacing={1}>
         <Grid item xs ={12}><AdminTopBar/></Grid>
@@ -21,4 +22,4 @@ const page = () => {
   )
 }
 
-export default page
+export default WithAdminAuth(AdminDashboard)

@@ -20,7 +20,10 @@ import { AppBarContainer, StyledAppBarTitle } from './topbar.style';
 import EditIcon from '@mui/icons-material/Edit';
 import { constants } from '@/utils/constants/constants';
 import IconType from './top-bar.enum';
-
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import ListIcon from '@mui/icons-material/List';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
 
 
 const TopBar = () => {
@@ -28,6 +31,21 @@ const TopBar = () => {
     const [icon , setIcon] = useState<string>('')
     const router = useRouter()
     const pathname = usePathname()
+    const showTopBarPaths = [
+        endpoints.HOME_VUE_URL,
+        endpoints.PROFILE_VUE_URL,
+        endpoints.ADD_BOOK_VUE_URL,
+        endpoints.BOOK_DETAILS_VUE_URL_START_WITH,
+        endpoints.WISH_LIST_VUE_URL,
+        endpoints.EDIT_PROFILE_VUE_URL,
+        endpoints.ESSAY_VUE_URL,
+        endpoints.ESSAY_LIST_URL,
+        endpoints.ESSAY_DETAILS_REGEX,
+        endpoints.BOOK_DETAILS_REGEX,
+        endpoints.RECOMMANDATION_VUE_URL,
+    ];
+     
+    
     
 
     const setIconBasedOnPage = () => {
@@ -44,6 +62,14 @@ const TopBar = () => {
             setIcon('star');
         } else if (pathname === endpoints.EDIT_PROFILE_VUE_URL) {
             setIcon('edit');
+        }  else if (pathname === endpoints.ESSAY_VUE_URL) {
+            setIcon('essay')
+        }  else if (pathname === endpoints.ESSAY_LIST_URL) {
+            setIcon('essayList');
+        }  else if (pathname?.startsWith(endpoints.ESSAY_DETAILS_STARTS_WITH)) {
+            setIcon('essayDetails')
+        } else if (pathname === endpoints.RECOMMANDATION_VUE_URL) {
+            setIcon('recommendation');
         }
         };
         const renderIcon = () => {
@@ -60,6 +86,14 @@ const TopBar = () => {
                     return <StarIcon fontSize='large' />;
                 case IconType.Edit:
                     return <EditIcon fontSize='large' />;
+                case IconType.Essay:
+                    return <MenuBookIcon fontSize='large' />; 
+                case IconType.EssayList:
+                    return <ListIcon fontSize='large'/>  
+                case IconType.EssayDetails:
+                    return <RemoveRedEyeIcon fontSize='large'/>  
+                case IconType.Recommandation :
+                    return  <SmartToyIcon fontSize='large'/>        
                 default:
                     return null;
             }
@@ -68,6 +102,11 @@ const TopBar = () => {
     useEffect(() => {
         setIconBasedOnPage();  
       }, [pathname]);
+    
+      if (!showTopBarPaths.some(path => typeof path === 'string' ? path === pathname : path.test(pathname as string))) {
+        return null;
+    }
+    
     return (
         <AppBarContainer>
             <AppBar position="static">

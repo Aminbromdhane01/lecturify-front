@@ -7,7 +7,7 @@ import { IconType } from '../ListItem/list-elemnt-enum';
 interface ListItemProps {
   text : string
   icon : string
-  href : string
+  href? : string
 }
 const getIconComponent = (icon: string): React.ReactElement => {
   switch (icon) {
@@ -29,8 +29,8 @@ const getIconComponent = (icon: string): React.ReactElement => {
 const ListElement = ({text , icon , href}: ListItemProps) => {
   const router = useRouter()
   return (
-    <ListItem disablePadding>
-      <ListItemButton onClick={()=> {router.push(href)}}>
+    <ListItem disablePadding >
+      <ListItemButton onClick={()=> {router.push(href as string)}}>
           <ListItemIcon>
             {getIconComponent(icon)}
           </ListItemIcon>

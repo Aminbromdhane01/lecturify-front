@@ -7,6 +7,7 @@ import { FormStepper, StepperContainer, StepperContentContainer, StepperPaper } 
 import Image from 'next/image';
 import BookFormOne from '@/features/book/AddBookFrom/BookFormOne';
 import BookFormTwo from '@/features/book/AddBookFrom/BookFormTwo';
+import { Background } from '@/components/Book/Book.style';
 
 interface HorizontalStepperProps {
     steps: string[],
@@ -68,11 +69,11 @@ export default function HorizontalStepper({ steps }: HorizontalStepperProps) {
     };
 
     return (
-
+        
         <StepperContainer >
+         
             <StepperPaper elevation={2}  >
                 <Image src={'/Book.svg'} alt='Book Form Image' height={70} width={100} priority />
-
                 <StepperContentContainer >
                     <FormStepper nonLinear activeStep={activeStep}>
                         {steps && steps.map((label, index) => (
@@ -89,6 +90,8 @@ export default function HorizontalStepper({ steps }: HorizontalStepperProps) {
                 </StepperContentContainer>
             </StepperPaper>
         </StepperContainer>
+     
+
 
     );
 }

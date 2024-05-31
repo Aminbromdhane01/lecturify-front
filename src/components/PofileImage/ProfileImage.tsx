@@ -13,7 +13,7 @@ const ProfileImage = ({image} : ProfileImageProps) => {
       {image ? (
         <Image src={image} fill={true} alt={constants.ProfileImage.PROFILE_IMAGE_ALT}/>
       ) : (
-        <Image src={constants.ProfileImage.DEFAULT_PROFILE_IMAGE_URL} fill={true} alt={constants.ProfileImage.PROFILE_IMAGE_ALT}/>
+        <Image src={image as string} fill={true} alt={constants.ProfileImage.PROFILE_IMAGE_ALT}/>
       )}
     </ProfileImageContainer>
   )

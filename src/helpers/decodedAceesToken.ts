@@ -4,5 +4,8 @@ import { getAccessToken } from "./getAccessToekn"
 export const decodeAccesToken =  () => {
 
     const token =  getAccessToken()
-    return decodeToken(token as string)
+    if (token) {
+        return decodeToken(token as string)
+    }
+    return null
 }

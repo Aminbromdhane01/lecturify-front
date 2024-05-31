@@ -6,9 +6,9 @@ import StarsIcon from '@mui/icons-material/Stars';
 import useAlert from '@/hooks/useAlert';
 import { decodeAccesToken } from '@/helpers/decodedAceesToken';
 import { NonDecoratedLink } from '../IconicButton/IconButton.style';
-import ControlledAlert from '../Alert/ControllerdAlert';
 import { useAddToWishlistMutation } from '@/RTK/api/BookApi';
 import { CardContainer, CardImage, CardPaper, DescriptionGrid, InformationsGridContainer } from './MainCard.style';
+import ControlledAlert from '../ControlledAlert/ControllerdAlert';
 interface MainCardProps {
     title : string;
     author : string;

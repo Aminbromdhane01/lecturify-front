@@ -1,12 +1,14 @@
-import Recommandation from '@/pages/Recommandation/Recommandation'
+'use client'
+import RecommandationPage from '@/components/RecommandationPage/RecommandationPage'
 import { palette } from '@/theme/palette'
+import WithAuth from '@/utils/WithAuth'
 import { Box, Grid } from '@mui/material'
 import React from 'react'
 
-const page = () => {
+const Recommandation = () => {
   return (
-  <Recommandation/>
+  <RecommandationPage/>
  )
 }
 
-export default page
+export default WithAuth(Recommandation)

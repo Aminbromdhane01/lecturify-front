@@ -28,14 +28,11 @@ export default function RootLayout({
 
             <body >
             <ThemeProvider theme={theme}>
-
                 <RtkProvider>
-                   
-                   <Background>
-                    <TopBar/>
+                <TopBar/>
+
                     {children}
                    {/*<CopyRightFooter /> */} 
-                    </Background>
                 </RtkProvider>
                 </ThemeProvider>
 

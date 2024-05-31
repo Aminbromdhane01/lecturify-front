@@ -1,6 +1,7 @@
 'use client'
+import EssayPage from '@/components/EssayPage/EssayPage'
+import WithAuth from '@/utils/WithAuth'
 import React from 'react'
-import EssayPage from '@/pages/EssayPage/EssayPage';
 
 const Essay = () => {
     return (
@@ -8,4 +9,4 @@ const Essay = () => {
   )
 }
 
-export default Essay
+export default WithAuth(Essay)

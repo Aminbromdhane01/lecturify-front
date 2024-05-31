@@ -3,8 +3,8 @@ import { getAccessToken } from '@/helpers/getAccessToekn';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-const AuthRedirect = <T extends Record<string, unknown>>(WrappedComponent: React.ComponentType<T>) => {
-    const Wrapper = (props: T) => {
+const AuthRedirect = (WrappedComponent: any) => {
+    const Wrapper = (props: any) => {
         const router = useRouter();
         useEffect(() => {
             const accessToken = getAccessToken()

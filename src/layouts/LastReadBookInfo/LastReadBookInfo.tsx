@@ -37,7 +37,7 @@ const InfoCard = ({ title , insideCardTitle , type }: InfoCardProps) => {
 
 
     return (
-        <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} margin={3} >
+        <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} margin={3} width={'100%'} >
             <Typography variant='h4'fontWeight={'bold'} color={palette.whiteText} margin={1}>{title}</Typography>
             <LastInfoPaper elevation={2} >
                 <Box m={1} bgcolor={'white'} borderRadius={'10px'}>

@@ -2,11 +2,11 @@
 import BookImage from '@/components/BookImage/BookImage'
 import BookInfo from '@/components/BookInfo/BookInfo'
 import LastReadBookInfo from '@/layouts/LastReadBookInfo/LastReadBookInfo'
-import withAuth from '@/utils/auth'
+import WithAuth from '@/utils/WithAuth'
 
 import React from 'react'
 
-const page = () => {
+const Home = () => {
 
     return (
         <LastReadBookInfo
@@ -14,4 +14,4 @@ const page = () => {
     )
 }
 
-export default page
+export default WithAuth(Home)

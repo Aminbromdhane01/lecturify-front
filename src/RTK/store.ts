@@ -1,5 +1,4 @@
 'use client'
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { authApi } from './api/AuthApi'
 import { refreshApi } from './api/RefreshTokenApi'
@@ -17,6 +16,8 @@ import { recommendationApi } from './api/RecommandationApi'
 import { textToSpeechApi } from './api/TextToSpeechApi'
 import { essayApi } from './api/EssayApi'
 import { commentApi } from './api/CommentApi'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { reviewApi } from './api/ReviewApi'
 
 
 const persistConfig = {
@@ -32,9 +33,9 @@ const rootReducer = combineReducers({
     [bookApi.reducerPath] : bookApi.reducer,
     [adminApi.reducerPath] : adminApi.reducer,
     [recommendationApi.reducerPath] : recommendationApi.reducer,
-    [textToSpeechApi.reducerPath] : textToSpeechApi.reducer,
     [essayApi.reducerPath] : essayApi.reducer,
     [commentApi.reducerPath] : commentApi.reducer,
+    [reviewApi.reducerPath] : reviewApi.reducer,
     user: userReducer,
     book: bookReducer ,
     search : serachReducer,
@@ -48,7 +49,7 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false
-        }).concat(authApi.middleware, refreshApi.middleware , bookApi.middleware , adminApi.middleware , recommendationApi.middleware , textToSpeechApi.middleware , essayApi.middleware , commentApi.middleware)
+        }).concat(authApi.middleware ,refreshApi.middleware , bookApi.middleware ,adminApi.middleware ,recommendationApi.middleware , essayApi.middleware , commentApi.middleware , reviewApi.middleware)
 })
 
 

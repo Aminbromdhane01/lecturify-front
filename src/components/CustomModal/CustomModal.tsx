@@ -8,6 +8,7 @@ import { RootState } from '@/RTK/store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { formDataSchema } from './custom-modal.validation';
 import { useCreateEssayMutation } from '@/RTK/api/EssayApi';
+import { decodeAccesToken } from '@/helpers/decodedAceesToken';
 
 interface FormData {
     title: string;
@@ -22,10 +23,9 @@ const CustomModal = () => {
     );
     const content = useSelector((state: RootState) => state.essay.content);
     const [createEssay, { isLoading, isError, isSuccess, error }] = useCreateEssayMutation();
-
-
+    
     const onSubmit:SubmitHandler<FormData>= async (data) => {
-        await createEssay({title :data.title , content :content as string , userId : 30})        
+        await createEssay({title :data.title , content :content as string , userId : decodeAccesToken().sub})        
         handleClose();
       };
   

@@ -4,6 +4,7 @@ import { isValidElement, useState } from "react";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { Rating } from "@mui/material";
 import { mockBooks } from "@/mocks/mockData";
+import { BookInformationsContainer } from "@/components/BookPage/BookPage.style";
 
 
 const WishListDataTable: React.FC = () => {
@@ -59,6 +60,7 @@ const WishListDataTable: React.FC = () => {
     };
   
     return (
+      <BookInformationsContainer>
       <DataGrid
         image={'/favourite.svg'}
         title="WishList"
@@ -70,9 +72,10 @@ const WishListDataTable: React.FC = () => {
         onRowsPerPageChange={handleChangeRowsPerPage}
         handleDeleteClick={handleDeleteClick}
         loading={false}
-        width="60%"
+        width="100%"
         marginTop="50px"
       />
+      </BookInformationsContainer>
     );
   };
   

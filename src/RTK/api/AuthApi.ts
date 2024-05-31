@@ -1,7 +1,7 @@
-import { LoginType } from "@/features/auth/loginCard/login.type";
 import { endpoints } from "@/utils/endpoints";
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQueryWithAuth } from "../BasequerywithAuth";
+import { Login } from "@/features/auth/LoginCard/login.type";
 
 interface UserData {
     email: string;
@@ -16,6 +16,7 @@ interface AuthResponse {
     userId: string;
     fullName: string;
     email: string;
+    role? : string
 }
 interface ResetPasswordData {
     token: string;
@@ -34,7 +35,7 @@ export const authApi = createApi({ //authApi instead of slice
     reducerPath: 'auth',
     baseQuery: baseQueryWithAuth,
     endpoints: (builder) => ({
-        login: builder.mutation<AuthResponse, LoginType>({
+        login: builder.mutation<AuthResponse, Login>({
             query: (credentials) => ({
                 url: endpoints.SIGNIN_URL,
                 method: endpoints.POST_METHOD,

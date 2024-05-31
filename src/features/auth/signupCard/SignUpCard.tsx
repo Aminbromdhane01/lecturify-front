@@ -2,7 +2,7 @@
 
 import { useSignupMutation } from "@/RTK/api/AuthApi";
 import { setUser } from "@/RTK/slices/UserSlice";
-import ControlledAlert from "@/components/alert/ControllerdAlert";
+import ControlledAlert from "@/components/ControlledAlert/ControllerdAlert";
 import { setTokens } from "@/helpers/setToken";
 import useAlert from "@/hooks/useAlert";
 import ActionButton from "@/layouts/Button/ActionButton";

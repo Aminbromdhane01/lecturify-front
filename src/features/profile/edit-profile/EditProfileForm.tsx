@@ -1,3 +1,5 @@
+import { BookDetailsContainer } from '@/components/Book/Book.style'
+import { BookInformationsContainer } from '@/components/BookPage/BookPage.style'
 import GenderRadioButton from '@/components/GenderRadioButton/GenderRadioButton'
 import PhoneNumberInput from '@/components/PhoneNumberInput/PhoneNumberInput'
 import ActionButton from '@/layouts/Button/ActionButton'
@@ -9,6 +11,7 @@ import React from 'react'
 
 const EditProfileForm = () => {
   return (
+    <BookInformationsContainer>
     <Grid container spacing={5} >
     <Grid item xs={12} marginTop={2}>
         <Stack direction={'row'} alignItems={'center'}>
@@ -60,6 +63,7 @@ const EditProfileForm = () => {
     
 
 </Grid>
+</BookInformationsContainer>
   )
 }
 

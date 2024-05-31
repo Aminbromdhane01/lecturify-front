@@ -1,6 +1,7 @@
 "use client"
 import { useGetBookByIdQuery } from '@/RTK/api/BookApi';
 import BookDetails from '@/pages/BookDeatails/BookDetails'
+import WithAuth from '@/utils/WithAuth';
 import { constants } from '@/utils/constants/constants';
 import React from 'react'
 
@@ -13,4 +14,4 @@ const Book = ({ params } : {params : {bookId : number}}) => {
     )
 }
 
-export default Book
+export default WithAuth(Book)

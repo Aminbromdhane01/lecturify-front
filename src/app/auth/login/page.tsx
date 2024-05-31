@@ -1,7 +1,7 @@
 'use client'
 import AuthWrapper from '@/layouts/AuthWrapper/AuthWrapper'
 import { AuthCardType } from '@/layouts/AuthWrapper/auth-wrapper.enum'
-import AuthRedirect from '@/utils/loginRedirect'
+import AuthRedirect from '@/utils/AuthRedirect'
 
 import React from 'react'
 
@@ -11,4 +11,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default AuthRedirect(Login)
