@@ -3,7 +3,9 @@
 import { useLoginMutation } from "@/RTK/api/AuthApi";
 import { setUser } from "@/RTK/slices/UserSlice";
 import AccountCheckMessage from "@/components/AccountCheckMessage/AccountCheckMessage";
+import ControlledAlert from "@/components/ControlledAlert/ControllerdAlert";
 import LoginOptions from "@/components/loginOptions/LoginOptions";
+import { Login } from "@/features/auth/loginCard/login.type";
 import { setTokens } from "@/helpers/setToken";
 import useAlert from "@/hooks/useAlert";
 import ActionButton from "@/layouts/Button/ActionButton";
@@ -21,8 +23,6 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { loginValuesSchema } from "./LoginValidation";
-import ControlledAlert from "@/components/ControlledAlert/ControllerdAlert";
-import { Login } from "@/features/auth/LoginCard/login.type";
 
 const LoginCard = () => {
 

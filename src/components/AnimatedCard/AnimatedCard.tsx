@@ -1,13 +1,13 @@
 'use client'
+import ForgetPasswordCard from "@/features/auth/forgetPasswordCard/ForgetPasswordCard";
+import LoginCard from "@/features/auth/loginCard/LoginCard";
+import ResetPasswordCard from "@/features/auth/resetPasswordCard/ResetPasswordCard";
+import SingUpCard from "@/features/auth/signupCard/SignUpCard";
 import EditProfileForm from "@/features/profile/edit-profile/EditProfileForm";
 import { AuthCardType } from "@/layouts/AuthWrapper/auth-wrapper.enum";
 import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { AnimatedCardPaper } from "./AnimatedCard.styles";
-import LoginCard from "@/features/auth/LoginCard/LoginCard";
-import SingUpCard from "@/features/auth/SignupCard/SignUpCard";
-import ResetPasswordCard from "@/features/auth/ResetPasswordCard/ResetPasswordCard";
-import ForgetPasswordCard from "@/features/auth/ForgetPasswordCard/ForgetPasswordCard";
 
 interface AnimatedCardProps {
     card: string
