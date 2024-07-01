@@ -9,18 +9,19 @@ import { palette } from "@/theme/palette";
 import { zodResolver } from "@hookform/resolvers/zod";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { CircularProgress, Grid, IconButton, InputAdornment, Stack, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, IconButton, InputAdornment, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { resetPasswordValuesSchema } from "./ResetPasswordValidation";
 import { ResetPassword, ResetPasswordProps } from "./rest-password.type";
+import { isTokenExpired } from "@/helpers/isTokenExpired";
 
 const ResetPasswordCard = ({ token }: ResetPasswordProps) => {
 
     const router = useRouter();
-
+    
     const handleClickShowPassword = () => { setShowPassword(!showPassword) }
     const handleClickShowConfirmPassword = () => { setShowConfirmPassword(!showConfirmPassword) }
 
@@ -41,6 +42,7 @@ const ResetPasswordCard = ({ token }: ResetPasswordProps) => {
     if (isSuccess) {
         router.push('/auth/login')
     }
+    if (isTokenExpired(token)) return  <Typography variant="h3">Your token is invalid or has expired. </Typography>
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>

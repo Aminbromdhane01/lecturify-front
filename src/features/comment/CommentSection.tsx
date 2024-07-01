@@ -1,19 +1,21 @@
-import { useGetCommentsByBookIdQuery } from '@/RTK/api/CommentApi';
+import {  useLazyGetCommentsByBookIdQuery } from '@/RTK/api/CommentApi';
 import Comment from '@/components/Comment/Comment'
 import { mockComment } from '@/mocks/mockData'
 import Loading from '@/pages/Laoding/Loading';
 import { constants } from '@/utils/constants/constants';
 import { Box, CircularProgress } from '@mui/material';
-import React from 'react'
+import React, { useEffect } from 'react'
 interface CommentSectionProps {
   bookId : number
 }
 
 
 
-const CommentSection = ({bookId} : CommentSectionProps) => {
-  const { data: comments, isLoading, isError } = useGetCommentsByBookIdQuery(bookId);
-  console.log(comments);
+const CommentSection = ({bookId } : CommentSectionProps) => {
+  const [fetch,{ data : comments, error, isLoading }] = useLazyGetCommentsByBookIdQuery();
+    useEffect(()=>{
+        fetch(bookId)
+    },[])
   
   return (
     <>

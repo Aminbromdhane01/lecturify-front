@@ -16,6 +16,8 @@ interface Book {
     filestwo : File | null | undefined;
     date? : Date | string | null | undefined;
     rating? : string |null | undefined;
+    content? : string |null | undefined;
+    image? : string |null | undefined;
     
 }
 

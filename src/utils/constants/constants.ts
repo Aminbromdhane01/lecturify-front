@@ -60,7 +60,8 @@ export const constants = {
      MOCK_PUBLISHED_WORKS : 'Published Work Total : 20' ,
      AVERAGE_BOOK_RATING : 'Average Book Rating',
      PROFILE_INFO_CARD_TITLE : 'User Infos' ,
-     BOOK_INFO_CARD_TITLE :'Last Published Book'
+     BOOK_INFO_CARD_TITLE :'Last Published Book',
+     PROFILE_UPDATED_MESSAGE : 'Your profile is updated'
     },
     ProfileImage : {
         PROFILE_IMAGE_ALT : 'Profile Image',

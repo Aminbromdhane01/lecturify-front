@@ -15,9 +15,10 @@ interface MainCardProps {
     time : string;
     id : number;
     description : string
+    image : string
 }
 
-const MainCard = ({title , author , time , id , description} :MainCardProps) => {
+const MainCard = ({title , author , time , id , description , image} :MainCardProps) => {
     const [AddToWishlistMutation, { data: response, isLoading, isError, isSuccess, error }] = useAddToWishlistMutation();
     const { open: isOpen, alertMessage: errorMessage, handleCloseAlert: handleCloseEroorAlert } = useAlert(isError, error);
     const { open, alertMessage, handleCloseAlert } = useAlert(isSuccess);
@@ -40,7 +41,7 @@ const MainCard = ({title , author , time , id , description} :MainCardProps) => 
         <Box position={'relative'}    >
             <Box position={'relative'} height={'400px'}>
                 <CardImage
-                src={'/bookCover.png'}
+                src={image}
                 alt='hhh'
                 fill={true}
                 />
@@ -58,7 +59,7 @@ const MainCard = ({title , author , time , id , description} :MainCardProps) => 
                 <Typography variant='body2' color={'white'}>{author}</Typography>
                 </Stack>
                 </Grid>
-                <Grid item xs={2} >
+                <Grid item xs={2}  >
                     <StarsIcon fontSize='large' sx={{color :'red'}}/>
                 </Grid>
             </Grid>
@@ -68,7 +69,6 @@ const MainCard = ({title , author , time , id , description} :MainCardProps) => 
              onMouseLeave={handleMouseLeave}
              height={isHovered ? '400px' : 'auto'}
             >
-                <Grid item xs ={4}><Rating onClick={onClick} readOnly value={2}/></Grid>
                 <Grid item xs ={8}><Typography align='right' color={'whitesmoke'}>{time}</Typography></Grid>
                 {isHovered && (
                 <DescriptionGrid item xs={12}>

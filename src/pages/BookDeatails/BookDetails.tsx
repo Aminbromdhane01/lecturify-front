@@ -13,6 +13,11 @@ import { AboutBookContainer, AuthorName, BookDetailsContainer, BookDetailsPaper,
 import { PublicationDate } from "@/components/BookInfo/BookInfo.style";
 import { EssaysListContainer } from "@/components/Essays/Essays.style";
 import { BookInformationsContainer } from "@/components/BookPage/BookPage.style";
+import Link from "next/link";
+import { useAddToWishlistMutation } from "@/RTK/api/BookApi";
+import { decodeAccesToken } from "@/helpers/decodedAceesToken";
+import useAlert from "@/hooks/useAlert";
+import ControlledAlert from "@/components/ControlledAlert/ControllerdAlert";
 export interface BookDetailsProps {
     author: string;
     title: string;
@@ -20,23 +25,35 @@ export interface BookDetailsProps {
     rating: string;
     numberofVotes: number;
     description: string;
-    id? : number
+    id : number
+    content : string
+    image : string
 }
 
-const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description , id}: BookDetailsProps) => {
+const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description , id , content , image}: BookDetailsProps) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const [AddToWishlistMutation, { data: response, isLoading, isError, isSuccess, error }] = useAddToWishlistMutation();
+    const onClick = async () => {
+        
+        await AddToWishlistMutation({userId : decodeAccesToken().sub , bookId : id}) 
+             
+    }
+    const { open: isOpen, alertMessage: errorMessage, handleCloseAlert: handleCloseEroorAlert } = useAlert(isError, error);
+    const { open : opened, alertMessage, handleCloseAlert } = useAlert(isSuccess);
     return (
         <BookInformationsContainer>
             <Box p={1}>
-                
+            {opened && <ControlledAlert open={opened} handleClose={handleCloseAlert} duration={6000} content={'The Book is Added Succusfully to your wishlist'} severity="success" />}
+            {isOpen && <ControlledAlert open={isOpen} handleClose={handleCloseEroorAlert} duration={3000} content={errorMessage} severity="error" />}
                 <Title variant="h6" align="center">{constants.BookDetails.ABOUT_BOOK_EN}</Title></Box>
             <BookDetailsContainer  >
                 <BookDetailsPaper elevation={2}>
                     <Grid container direction={'column'}>
                         <Grid item xs={3}>
-                            <BookImage />
+                            <BookImage url={image} />
                         </Grid>
 
                         <Grid item xs={8}>
@@ -51,8 +68,13 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
                                     <Typography variant="body2">{rating} ({numberofVotes})</Typography>
                                 </Stack>
                                 <Stack direction={'row'} gap={3}>
-                                    <IconicButton icon={<StyledDownloadForOfflineIcon />} text={constants.BookDetails.DOWNLOAD_EN} />
-                                    <IconicButton icon={<StyledLibraryAddIcon />} text={constants.BookDetails.ADD_TO_WISHLIST} />
+                                    <Link style={{
+                                         textDecoration :'none',
+                                         color :'inherit',
+                                         display: 'inline-flex',// or any other styles to match the buttons
+                                         alignItems: 'center'
+                                    }} target='_blank' href={content}><IconicButton icon={<StyledDownloadForOfflineIcon />} text={constants.BookDetails.DOWNLOAD_EN} /></Link>
+                                    <IconicButton onClick={onClick} icon={<StyledLibraryAddIcon />} text={constants.BookDetails.ADD_TO_WISHLIST} />
                                     <IconicButton onClick={handleOpen} icon={<StyledReviewsIcon />} text={constants.BookDetails.SEE_REVIEWS} />
                                 </Stack>
                                 <AboutBookContainer >
@@ -70,9 +92,9 @@ const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, de
 
                     </Grid>
 
-
+                   
                 </BookDetailsPaper>
-                <TransitionsModal open={open} handleOpen={handleOpen} handleClose={handleClose} content={"comment"} id={id}/>
+                <TransitionsModal bookId={id} open={open} handleOpen={handleOpen} handleClose={handleClose} content={"comment"} id={id}/>
 
             </BookDetailsContainer>
             </BookInformationsContainer>

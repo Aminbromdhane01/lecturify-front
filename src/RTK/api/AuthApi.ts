@@ -64,7 +64,7 @@ export const authApi = createApi({ //authApi instead of slice
                 method: endpoints.POST_METHOD,
                 body: forgetPasswordData
             })
-        })
+        }),
     })
 })
 

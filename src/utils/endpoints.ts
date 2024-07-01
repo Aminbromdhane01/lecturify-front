@@ -43,6 +43,7 @@ export const endpoints = {
     ESSAY_DETAILS_REGEX : /\/essay\/one\/./,
     BOOK_DETAILS_REGEX : /\/book\/./,
     RECOMMANDATION_VUE_URL : '/recommandation',
-    REVIEW_URL : '/review'
+    REVIEW_URL : '/review',
+    USER_URL : '/user'
 
 }

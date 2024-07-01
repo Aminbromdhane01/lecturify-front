@@ -1,6 +1,6 @@
 const nextConfig = {
     images : {
-        domains : ['thumbs.dreamstime.com']
+        domains : ['res.cloudinary.com']
     }
 };
 

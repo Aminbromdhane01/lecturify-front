@@ -1,5 +1,4 @@
 'use client'
-import { useSearchByTitleQuery } from "@/RTK/api/BookApi";
 import { RootState } from "@/RTK/store";
 import { BookPagePaper } from "@/components/Book/Book.style";
 import NoBooksFound from "@/components/NoBooksFound/NoBooksFound";
@@ -13,6 +12,7 @@ import { useState } from "react";
 import { useSelector } from 'react-redux';
 import MainCard from "../MainCard/MainCard";
 import { decodeAccesToken } from "@/helpers/decodedAceesToken";
+import { useSearchByTitleQuery } from "@/RTK/api/BookApi";
 
 
 const BookPage = () => {
@@ -23,7 +23,8 @@ const BookPage = () => {
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(--value);
      };  
- 
+    console.log(books);
+    
      
           
     return (
@@ -32,11 +33,18 @@ const BookPage = () => {
                 <Stack alignItems={'center'}>
                     {<Grid container justifyContent={'space-betwwen'} spacing={2} paddingLeft={3} alignItems={'center'}>
                         {books?.count == 0 && <NoBooksFound/>}
-                        { isSuccess && books?.data.map((book)=> (
-                        <Grid item xs={12} sm={6} md={4} lg={3}>
-                        <MainCard title={book.title as string} author={book.genre as string} time={calculateTimeElapsed(book.date)} id={book.id as unknown as number} description={book.description as string}/>
-                           </Grid>
-                        ))}
+                        {isSuccess && books?.data.map((book) => (
+                     <Grid item xs={12} sm={6} md={4} lg={3} key={book.id}>
+                      <MainCard
+                       title={book.title as string}
+                       author={book.genre as string}
+                       time={calculateTimeElapsed(book.date)}
+                       id={book.id as unknown as number}
+                       description={book.description as string}
+                       image={book.image as string}
+                    />
+                   </Grid>
+))}
                         {isLoading && 
                         <SkeletonGrid/>}
                        

@@ -26,12 +26,13 @@ const BookFormTwo = ({ previousStep }: FormBookTwoProps) => {
   
 
     const { register, handleSubmit, watch, formState: { errors, isSubmitting } } = useForm<BookFormTwoType>({
-        resolver: zodResolver(bookValidationFormTwoSchema)
     })
     const [createBook, { isLoading, isError , isSuccess , error }] = useCreateBookMutation();
     const dispatch = useDispatch();
     const bookSlice = useSelector((state: RootState) => state.book);
     const onSubmit: SubmitHandler<BookFormTwoType> = async (data) => {
+        console.log(data);
+        
         dispatch(setBook({ description: data.description, files : data.content[0], content: data.content[0] }))
         
        
