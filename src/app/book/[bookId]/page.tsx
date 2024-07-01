@@ -1,6 +1,6 @@
 "use client"
 import { useGetBookByIdQuery } from '@/RTK/api/BookApi';
-import BookDetails from '@/pages/BookDeatails/BookDetails'
+import BookDetails from '@/layouts/BookDetails/BookDetails';
 import WithAuth from '@/utils/WithAuth';
 import { constants } from '@/utils/constants/constants';
 import React from 'react'

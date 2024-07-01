@@ -31,73 +31,9 @@ export interface BookDetailsProps {
 }
 
 const BookDetails = ({ author, title, publicationDate, rating, numberofVotes, description , id , content , image}: BookDetailsProps) => {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    const [AddToWishlistMutation, { data: response, isLoading, isError, isSuccess, error }] = useAddToWishlistMutation();
-    const onClick = async () => {
-        
-        await AddToWishlistMutation({userId : decodeAccesToken().sub , bookId : id}) 
-             
-    }
-    const { open: isOpen, alertMessage: errorMessage, handleCloseAlert: handleCloseEroorAlert } = useAlert(isError, error);
-    const { open : opened, alertMessage, handleCloseAlert } = useAlert(isSuccess);
+   
     return (
-        <BookInformationsContainer>
-            <Box p={1}>
-            {opened && <ControlledAlert open={opened} handleClose={handleCloseAlert} duration={6000} content={'The Book is Added Succusfully to your wishlist'} severity="success" />}
-            {isOpen && <ControlledAlert open={isOpen} handleClose={handleCloseEroorAlert} duration={3000} content={errorMessage} severity="error" />}
-                <Title variant="h6" align="center">{constants.BookDetails.ABOUT_BOOK_EN}</Title></Box>
-            <BookDetailsContainer  >
-                <BookDetailsPaper elevation={2}>
-                    <Grid container direction={'column'}>
-                        <Grid item xs={3}>
-                            <BookImage url={image} />
-                        </Grid>
-
-                        <Grid item xs={8}>
-                            <BookInfoContainer>
-                                <Typography variant="h4" fontWeight={'bold'}>{title}</Typography>
-                                <Stack direction={'row'} gap={2}>
-                                    <AuthorName variant="body1">{author}</AuthorName>
-                                    <PublicationDate variant="body1">{extractUTCDate(publicationDate)}</PublicationDate>
-                                </Stack>
-                                <Stack direction={'row'} gap={2}>
-                                    <Rating readOnly value={rating as unknown as number}></Rating>
-                                    <Typography variant="body2">{rating} ({numberofVotes})</Typography>
-                                </Stack>
-                                <Stack direction={'row'} gap={3}>
-                                    <Link style={{
-                                         textDecoration :'none',
-                                         color :'inherit',
-                                         display: 'inline-flex',// or any other styles to match the buttons
-                                         alignItems: 'center'
-                                    }} target='_blank' href={content}><IconicButton icon={<StyledDownloadForOfflineIcon />} text={constants.BookDetails.DOWNLOAD_EN} /></Link>
-                                    <IconicButton onClick={onClick} icon={<StyledLibraryAddIcon />} text={constants.BookDetails.ADD_TO_WISHLIST} />
-                                    <IconicButton onClick={handleOpen} icon={<StyledReviewsIcon />} text={constants.BookDetails.SEE_REVIEWS} />
-                                </Stack>
-                                <AboutBookContainer >
-
-                                    <Typography variant="h5">About Book</Typography>
-                                    <Typography> {description}</Typography>
-
-                                </AboutBookContainer>
-
-                            </BookInfoContainer>
-                        </Grid>
-                        <ButtonGrid item xs={1}>
-                            <CardButton />
-                        </ButtonGrid>
-
-                    </Grid>
-
-                   
-                </BookDetailsPaper>
-                <TransitionsModal bookId={id} open={open} handleOpen={handleOpen} handleClose={handleClose} content={"comment"} id={id}/>
-
-            </BookDetailsContainer>
-            </BookInformationsContainer>
+        <></>
     )
 }
 

@@ -5,7 +5,7 @@ import { setUser } from "@/RTK/slices/UserSlice";
 import AccountCheckMessage from "@/components/AccountCheckMessage/AccountCheckMessage";
 import ControlledAlert from "@/components/ControlledAlert/ControllerdAlert";
 import LoginOptions from "@/components/loginOptions/LoginOptions";
-import { Login } from "@/features/auth/loginCard/login.type";
+import { Login } from "@/features/auth/LoginCard/login.type";
 import { setTokens } from "@/helpers/setToken";
 import useAlert from "@/hooks/useAlert";
 import ActionButton from "@/layouts/Button/ActionButton";

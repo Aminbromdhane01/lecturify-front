@@ -21,7 +21,6 @@ export const profileApi = createApi({
             query: ({ userId, editProfileData }) => {
                 const formData = new FormData();
                 if (editProfileData.picture) formData.append('file', editProfileData.picture);
-                if (editProfileData.gender !== undefined) formData.append('gender', editProfileData.gender);
                 if (editProfileData.adress) formData.append('adress', editProfileData.adress);
                 if (editProfileData.phonenumber) formData.append('phonenumber', editProfileData.phonenumber);
                 
