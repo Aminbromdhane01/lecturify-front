@@ -24,7 +24,7 @@ interface Book {
 export const bookApi = createApi({
     reducerPath: 'books',
     baseQuery: baseQueryWithAuth, 
-    tagTypes: ['Book' , 'BookById' , 'Wishlist' , 'GetBookByUserId'],
+    tagTypes: ['Book' , 'BookById' , 'Wishlist' , 'GetBookByUserId','RecommendedBooks'],
     endpoints: (builder) => ({
         searchByTitle: builder.query<{data :Book[] , count : number}, { itemPerPage?: number; page?: number; keyword: string }>({
           query: ({ page, itemPerPage, keyword }) =>
@@ -74,7 +74,11 @@ export const bookApi = createApi({
       }),
       providesTags: ['GetBookByUserId'], 
     }),
+    getRecommendedBooks: builder.query<Book[], void>({
+      query: () => endpoints.RECOMANDED_BOOKS_URL,
+      providesTags: ['RecommendedBooks'],
+  }),
     }),
 });
 
-export const { useCreateBookMutation , useSearchByTitleQuery , useGetBookByIdQuery , useAddToWishlistMutation , useGetBooksByUserIdQuery } = bookApi;
+export const { useCreateBookMutation , useSearchByTitleQuery , useGetBookByIdQuery , useAddToWishlistMutation , useGetBooksByUserIdQuery , useLazyGetRecommendedBooksQuery } = bookApi;

@@ -44,6 +44,7 @@ export const endpoints = {
     BOOK_DETAILS_REGEX : /\/book\/./,
     RECOMMANDATION_VUE_URL : '/recommandation',
     REVIEW_URL : '/review',
-    USER_URL : '/user'
+    USER_URL : '/user',
+    RECOMANDED_BOOKS_URL : 'books/get/recommanded-books'
 
 }
