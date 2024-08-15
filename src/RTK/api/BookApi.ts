@@ -24,7 +24,7 @@ interface Book {
 export const bookApi = createApi({
     reducerPath: 'books',
     baseQuery: baseQueryWithAuth, 
-    tagTypes: ['Book' , 'BookById' , 'Wishlist' , 'GetBookByUserId','RecommendedBooks'],
+    tagTypes: ['Book' , 'BookById' , 'Wishlist' , 'GetBookByUserId','RecommendedBooks' , 'UserWishlist', 'DeleteBook'],
     endpoints: (builder) => ({
         searchByTitle: builder.query<{data :Book[] , count : number}, { itemPerPage?: number; page?: number; keyword: string }>({
           query: ({ page, itemPerPage, keyword }) =>
@@ -42,6 +42,8 @@ export const bookApi = createApi({
               formData.append('userId', book.userId as unknown as string)
               formData.append('genre' , book.genre as string)
               formData.append('page', book.pages as unknown as string)
+              formData.append('authorId', book.authorId as unknown as string)
+
               return {
                 url: endpoints.BOOK_URL,
                 method: endpoints.POST_METHOD,
@@ -78,7 +80,22 @@ export const bookApi = createApi({
       query: () => endpoints.RECOMANDED_BOOKS_URL,
       providesTags: ['RecommendedBooks'],
   }),
+  getUserWishlist: builder.query<Book[], {userId : number}>({
+    query: ({userId}) => ({
+      url: 'books/get/wishlist/' + userId,
+      method: endpoints.GET_METHOD, 
     }),
+    providesTags: ['UserWishlist'], 
+  }),
+  deleteBook: builder.mutation<void, number>({
+    query: (id) => ({
+        url: `${endpoints.BOOK_URL}/${id}`,
+        method: 'DELETE',
+    }),
+    invalidatesTags: ['DeleteBook'],
+}),
+    }),
+   
 });
 
-export const { useCreateBookMutation , useSearchByTitleQuery , useGetBookByIdQuery , useAddToWishlistMutation , useGetBooksByUserIdQuery , useLazyGetRecommendedBooksQuery } = bookApi;
+export const { useCreateBookMutation , useSearchByTitleQuery , useGetBookByIdQuery , useAddToWishlistMutation , useLazyGetBooksByUserIdQuery , useLazyGetRecommendedBooksQuery , useLazyGetUserWishlistQuery , useDeleteBookMutation} = bookApi;

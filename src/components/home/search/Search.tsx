@@ -21,10 +21,10 @@ const Search = () => {
        }
        useEffect(() => {
         dispatch(setSearchKeyword(debouncedValue)); 
-    }, [debouncedValue, dispatch]);   
+    }, [debouncedValue, dispatch]); 
+      
     return (
     <Stack direction={'row'} alignItems={'center'}>
-        <FilterAltIcon />
         <SearchWrapper>
             <SearchIconWrapper>
                 <SearchIcon />

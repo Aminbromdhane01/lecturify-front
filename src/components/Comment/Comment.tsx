@@ -22,8 +22,8 @@ const Comment = ({comment , image , username , date} : commentProps) => {
   return (
     <Box sx={{backgroundColor : 'white' , minHeight : '50px'}}>
         <Grid container pr={1} justifyContent={'center'} alignItems={'center'}>
-          <Grid item xs ={1}><Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" /></Grid>
-          <Grid item xs={9}><Typography variant='body1' fontWeight={'bold'} color={palette.skyBlueText}>Remy Sharp</Typography></Grid>
+          <Grid item xs ={1} mt={1}><Avatar alt={username} src="/static/images/avatar/1.jpg" /></Grid>
+          <Grid item xs={9}><Typography variant='body1' fontWeight={'bold'} color={palette.skyBlueText}>{username}</Typography></Grid>
           <Grid item xs={2}><Typography align='right' variant='body2' fontWeight={'bold'} color={palette.greyText}>{extractUTCDate(date as string)}</Typography></Grid>
         </Grid>
         <Grid container >

@@ -22,7 +22,7 @@ const CommentSection = ({bookId } : CommentSectionProps) => {
     {comments?.length == 0 && <Box>{constants.CommentsModule.NO_COMMENTS_MESSAGE}</Box>}
     {isLoading && <CircularProgress/>}
      {comments && comments.map(comment => (
-        <Comment key={comment.id} comment={comment.text} date={comment.createdAt as unknown as string} />
+        <Comment key={comment.id} comment={comment.text} date={comment.createdAt as unknown as string} username={comment.user.firstname } />
       ))}
     </>
   )

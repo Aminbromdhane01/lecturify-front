@@ -1,82 +1,51 @@
 import DataGrid from "@/layouts/DataGrid/DataGrid";
 import { GridColDef } from "@mui/x-data-grid";
-import { isValidElement, useState } from "react";
+import { isValidElement, useEffect, useState } from "react";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import { Rating } from "@mui/material";
+import { Box, Grid, Rating, Stack } from "@mui/material";
 import { mockBooks } from "@/mocks/mockData";
 import { BookInformationsContainer } from "@/components/BookPage/BookPage.style";
+import { useLazyGetUserWishlistQuery } from "@/RTK/api/BookApi";
+import { BookPagePaper } from "@/components/Book/Book.style";
+import { calculateTimeElapsed } from "@/helpers/calculateDate";
+import NoBooksFound from "@/components/NoBooksFound/NoBooksFound";
+import MainCard from "@/components/MainCard/MainCard";
+import SkeletonGrid from "@/layouts/SkeletonGrid/SkeletonGrid";
+import { decodeAccesToken } from "@/helpers/decodedAceesToken";
 
 
 const WishListDataTable: React.FC = () => {
-    const [page, setPage] = useState<number>(0);
-    const [rowsPerPage, setRowsPerPage] = useState<number>(10);
-  
-    const handleDeleteClick = (id: number) => {
-      console.log(`Deleted row with ID: ${id}`);
-    };
-  
-    const VISIBLE_FIELDS: string[] = ['name', 'genre', 'image', 'author' ];
-  
-    const columns: GridColDef[] = VISIBLE_FIELDS.map(field => ({
-      field,
-      headerName: field.charAt(0).toUpperCase() + field.slice(1),
-      width: 150,
-    }));
-  
-    columns.push({
-      field: 'delete',
-      headerName: 'Delete',
-      width: 100,
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <DeleteOutlineOutlinedIcon sx={{ color: 'red' }} onClick={() => handleDeleteClick(params.row.id)} />
-        );
-      },
-    });
-    columns.push({
-        field: 'rating',
-        headerName: 'Rating',
-        width: 150,
-        sortable: true,
-        renderCell: (params) => {
-          if (typeof params.value === 'number') {
-            return <Rating value={params.value} readOnly />;
-          }
-          if (isValidElement(params.value)) {
-            return params.value;
-          }
-          return null;
-        },
-      });
-  
-    const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-      setPage(newPage);
-    };
-  
-    const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setRowsPerPage(parseInt(event.target.value, 10));
-      setPage(0);
-    };
-  
-    return (
-      <BookInformationsContainer>
-      <DataGrid
-        image={'/favourite.svg'}
-        title="WishList"
-        rows={mockBooks}
-        columns={columns}
-        page={page}
-        rowsPerPage={rowsPerPage}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-        handleDeleteClick={handleDeleteClick}
-        loading={false}
-        width="100%"
-        marginTop="50px"
+  const [trigger, { data: books, isLoading, isSuccess }] = useLazyGetUserWishlistQuery();
+  console.log(books);
+
+useEffect(() => {
+trigger({userId : decodeAccesToken().sub});
+}, []);
+return (
+<Box display={'flex'} justifyContent={'center'} p={2}>
+<BookPagePaper elevation={2}  >
+  <Stack alignItems={'center'}>
+      {<Grid container justifyContent={'space-betwwen'} spacing={2} paddingLeft={3} alignItems={'center'}>
+          {books?.length == 0 && <NoBooksFound/>}
+          {isSuccess && books?.map((book) => (
+       <Grid item xs={12} sm={6} md={4} lg={3} key={book.id}>
+        <MainCard
+         title={book.title as string}
+         author={book.genre as string}
+         time={calculateTimeElapsed(book.date)}
+         id={book.id as unknown as number}
+         description={book.description as string}
+         image={book.image as string}
       />
-      </BookInformationsContainer>
-    );
+     </Grid>
+               ))}
+  {isLoading && 
+  <SkeletonGrid/>}      
+          </Grid>}
+          </Stack>
+</BookPagePaper>
+
+</Box>)
   };
   
   export default WishListDataTable;

@@ -11,7 +11,7 @@ console.log(book);
     
      return (
         isSuccess && <BookDetails title={book.title as string} author={constants.BookForm.MOCK_AUTHOR} publicationDate={book.date as string} rating={book.rating as string} numberofVotes={13}
-            description={constants.BookForm.MOCK_DESCRIPTION} id={params.bookId} content={book.content as string} image={book.image as string} />
+            description={book.description as string} id={params.bookId} content={book.content as string} image={book.image as string} />
 
     )
 }

@@ -1,22 +1,41 @@
 import DataGrid from "@/layouts/DataGrid/DataGrid";
 import { GridColDef } from "@mui/x-data-grid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import { useGetBooksByUserIdQuery } from "@/RTK/api/BookApi";
+import { useDeleteBookMutation, useLazyGetBooksByUserIdQuery } from "@/RTK/api/BookApi";
 import { decodeAccesToken } from "@/helpers/decodedAceesToken";
+import { Button, Modal, Stack, Typography } from "@mui/material";
+import { ModalContainer } from "@/layouts/Modal/Modal.style";
 
 
 const MyBooksData: React.FC = () => {
     const [page, setPage] = useState<number>(0);
-    const [rowsPerPage, setRowsPerPage] = useState<number>(5);
-    const { data: books, isLoading, refetch , isSuccess , isError , error } = useGetBooksByUserIdQuery({userId : decodeAccesToken().sub});
-    
-    
+    const [bookId, setBookId] = useState<number>();
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const [deleteBook] = useDeleteBookMutation();
 
+
+    const [rowsPerPage, setRowsPerPage] = useState<number>(5);
+    const [fetchbooks,{ data : books, error :err, isLoading : load}] = useLazyGetBooksByUserIdQuery();    
+    useEffect(()=>{
+      fetchbooks({userId : decodeAccesToken().sub})
+  },[])
+  console.log(decodeAccesToken().sub);
+  
   
     const handleDeleteClick = (id: number) => {
-      console.log(`Deleted row with ID: ${id}`);
+      setBookId(id)
+      handleOpen()
     };
+    const handleConfirmDelete = async () => {
+      if (bookId) {
+          await deleteBook(bookId);
+          fetchbooks({ userId: decodeAccesToken().sub }); 
+          handleClose();
+      }
+  };
   
     const VISIBLE_FIELDS: string[] = ['title', 'rating', 'date', 'genre',]
   
@@ -48,6 +67,48 @@ const MyBooksData: React.FC = () => {
     };
   
     return (
+      <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <ModalContainer sx={{width : '160px' , borderRaduis : '10px' ,}} >
+          <Stack direction={'row'} gap={4} width={'100%'}>
+          <Button
+            variant="contained"
+           color="error"
+           onClick={handleConfirmDelete}
+
+            sx={{
+              borderRadius: '5px',
+                  textTransform: 'none',
+                padding: '8px 16px',
+               '&:hover': {
+                backgroundColor: 'darkred',
+                },
+              }}
+           >
+           Delete
+          </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleClose}
+              sx={{
+                 borderRadius: '5px',
+                 textTransform: 'none',
+                 padding: '8px 16px',
+                   backgroundColor: 'gray',
+                   '&:hover': {
+                      backgroundColor: 'darkgray',
+                  },
+                 }}
+                >Cancel</Button>
+          </Stack>
+        </ModalContainer>
+      </Modal>
       <DataGrid
         image={'/mybooks.svg'}
         title="My Books"
@@ -58,10 +119,11 @@ const MyBooksData: React.FC = () => {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
         handleDeleteClick={handleDeleteClick}
-        loading={isLoading}
+        loading={load}
         width="100%"
         
       />
+      </>
     );
   };
   

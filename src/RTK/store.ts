@@ -20,6 +20,9 @@ import { commentApi } from './api/CommentApi'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { reviewApi } from './api/ReviewApi'
 import { profileApi } from './api/ProfileApi'
+import { authorApi } from './api/AuthorApi'
+import { categoryApi } from './api/CategoryApi'
+import { notificationApi } from './api/NotificationApi'
 
 
 const persistConfig = {
@@ -39,6 +42,9 @@ const rootReducer = combineReducers({
     [commentApi.reducerPath] : commentApi.reducer,
     [reviewApi.reducerPath] : reviewApi.reducer,
     [profileApi.reducerPath] : profileApi.reducer,
+    [authorApi.reducerPath] : authorApi.reducer,
+    [categoryApi.reducerPath] : categoryApi.reducer,
+    [notificationApi.reducerPath] : notificationApi.reducer,
     
     user: userReducer,
     book: bookReducer ,
@@ -54,7 +60,7 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false
-        }).concat(authApi.middleware ,refreshApi.middleware , bookApi.middleware ,adminApi.middleware ,recommendationApi.middleware , essayApi.middleware , commentApi.middleware , reviewApi.middleware , profileApi.middleware)
+        }).concat(authApi.middleware ,refreshApi.middleware , bookApi.middleware ,adminApi.middleware ,recommendationApi.middleware , essayApi.middleware , commentApi.middleware , reviewApi.middleware , profileApi.middleware , authorApi.middleware , categoryApi.middleware , notificationApi.middleware)
 })
 
 

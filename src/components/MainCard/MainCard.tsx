@@ -73,7 +73,7 @@ const MainCard = ({title , author , time , id , description , image} :MainCardPr
                 {isHovered && (
                 <DescriptionGrid item xs={12}>
                     <Typography color={'white'}>
-                           Description Boook gfsdhghfgdsj
+                           {description}
                     </Typography>
                 </DescriptionGrid>
                  )}

@@ -13,6 +13,7 @@ const menuItems = [
     { icon: 'book', content: constants.MenuItems.ADD_BOOK_EN, href: endpoints.ADD_BOOK_VUE_URL },
     { icon: 'settings', content: constants.MenuItems.SETTINGS_EN, href: "#" },
     { icon : 'essay' , content : constants.MenuItems.ESSAY_EN , href : endpoints.ESSAY_URL},
+    { icon : 'essay' , content : 'Essays List' , href : "/essay/list" },
     { icon : 'recommandation' , content : constants.MenuItems.RECOMMANDATION_EN , href : endpoints.RECOMMANDATION_VUE_URL },
     { icon : 'admin' , content : 'Admin Dashboard' , href : "/admin-dashboard" }
 

@@ -1,3 +1,5 @@
+import { UserData } from "./auth-api.types";
+
 export interface CreateCommentDto {
     text: string;
     bookId: number;
@@ -6,7 +8,7 @@ export interface CreateCommentDto {
 export interface UpdateCommentDto {
     text: string;
 
-}
+}   
 export interface Comment {
     id: number;
     text: string;
@@ -14,5 +16,6 @@ export interface Comment {
     createdAt: Date;
     userId: number;
     bookId: number;
+    user : UserData
   }
   
